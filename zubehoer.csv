@@ -1,1 +1,102 @@
-
+Name;Typ;Halterung_Slots;Effekt_AW_Modus;Verfuegbarkeit;Legalitaet;Preis;Regeln;Quelle
+Airburst-Verbindung;Zubehör;Werfer;Reduziert Abweichung;3;I;600;Erfolge zählen doppelt gegen Abweichung; ignoriert Schutz durch Liegend; benötigt WiFi;SR6 GRW
+Dreibein;Zubehör;Unterlauf;HM/SM ±0, AM -3;2;Frei;500;Neutralisiert HM- und SM-Malus, senkt AM-Malus auf -3 (ausgeklappt; WiFi: +1 Nebenhandlung zum Aus-/Einklappen);SR6 GRW
+Ersatzmagazin;Zubehör;–;–;2;Frei;5;Ungeladenes Standard-Ersatzmagazin für Stangen- (s) oder Trommelmagazine (t);SR6 GRW
+Gasventilsystem;Zubehör;Lauf (fest);HM ±0, SM -2;3;Frei;500;Neutralisiert HM-Malus und senkt SM-Malus auf -2 (nicht wieder entfernbar);SR6 GRW
+Gyrostabilisator;Zubehör;Unterlauf / Geschirr;HM/SM ±0, AM -3;3;Frei;1400;Oberkörpergeschirr für Gewehre/MGs; neutralisiert HM/SM-Malus, senkt AM-Malus auf -3;SR6 GRW
+Lasermarkierer (Standard);Zubehör;Auf oder Unter;+1 AW (SN/N/M);1;Frei;125;+1 AW in Sehr nah, Nah und Mittel (nicht kumulativ mit Smartgunsystem; Nebenhandlung zum Einschalten);SR6 GRW
+Periskop;Zubehör;Auf;Sicht um Ecken;2;Frei;70;Ermöglicht Sicht und Zielen um Ecken ohne direkte Exposition;SR6 GRW
+Schalldämpfer;Zubehör;Lauf;+2 Schwellenwert Hören;4;Frei;500;Dämpft Schussgeräusch und Mündungsblitz (+2 Schwellenwert Wahrnehmung; nicht für Revolver/Schrotflinten);SR6 GRW
+Schnelllader;Zubehör;Revolver;Schnelles Nachladen;1;Frei;25;Lädt alle Kammern eines Trommelrevolvers gleichzeitig nach;SR6 GRW
+Schnellziehholster;Zubehör;–;Schnellziehen;2;Frei;175;Ermöglicht effektives Schnellziehen von Pistolen;SR6 GRW
+Schockpolster;Zubehör;Schaft;HM/SM/AM -1 Malus;2;Frei;50;Senkt Rückstoßmalus bei HM, SM und AM um jeweils 1 (für Gewehre, Schrotflinten, schwere Waffen);SR6 GRW
+Smart-Feuerplattform;Zubehör;Unterlauf / Dreibein;HM/SM ±0, AM -3;5;Frei;2500;Robotisches Dreibein (Pilot 3, Zielerfassung 3, 180° Schwenkwinkel, 1 Haupt-/4 Nebenhandlungen);SR6 GRW
+Smartgunsystem (extern);Zubehör;Auf oder Unter;+2 AW (alle);2;L;200;+2 AW mit Smartlink, +1 Würfelpool per WiFi, Kamera (Kap. 1); Montage: Mechanik + Logik (4, 1 Std.);SR6 GRW
+Smartgunsystem (intern);Zubehör;Intern (0 Slots ab Werk);+2 AW (alle);1;L;+500;+2 AW mit Smartlink, +1 Würfelpool per WiFi, Kamera (Kap. 1); ab Werk ohne Slot-Verbrauch;SR6 GRW
+Springarm;Zubehör;Unterarm;Waffe per Nebenhandlung;2;Frei;350;Unterarm-Gleitschiene für Holdout, Leichte Pistole oder Taser (gleitet per Nebenhandlung in die Hand);SR6 GRW
+Tarnholster;Zubehör;–;+Tarnbarkeit;1;Frei;150;Verbessert die Tarnbarkeit einer verborgenen Handfeuerwaffe;SR6 GRW
+Zielfernrohr;Zubehör;Auf;Kein Verteidiger-Edge;1;Frei;350;Sichtvergrößerung + Kapazität 3; verhindert Edge des Ziels durch höheren Verteidigungswert beim Zielen;SR6 GRW
+Zweibein;Zubehör;Unterlauf;+2 AW (+3 WiFi);2;Frei;200;+2 AW (+3 per WiFi) beim Schießen aus liegender oder sitzender Position;SR6 GRW
+Angepasster Griff (Feuerwaffe);Waffenmodifikation;1 Slot;+1/+1/–/–/–;3;Frei;200;Auf Benutzer abgestimmter Griff (+1 AW Sehr nah/Nah; andere Nutzer erleiden -2 Würfelpool);Feuer frei!
+Ausgebauter Abzug;Waffenmodifikation;2 Slots;DNI-/Sprach-Abzug;3;I;250;Ersetzt mechanischen Abzug durch WiFi-/Smartgun-Auslösung (ohne WiFi nicht abfeuerbar);Feuer frei!
+Ausklappbare Schulterstütze;Waffenmodifikation;1 Slot;Eingeklappt: –/–/-1/-2/-3;2;Frei;75;Für MPs/Gewehre; eingeklappt +1 Tarnbarkeit, Umschalten per Nebenhandlung;Feuer frei!
+Biometrisches Waffenschloss;Waffenmodifikation;1 Slot;Zugriffsschutz;2;L;100;Sperrt Waffe für unbefugte Benutzer per Biometrie-Scan;Feuer frei!
+Einziehbare Schulterstütze;Waffenmodifikation;1 Slot;Aus: -2/–/+1/+2/+1 / Ein: +1/+1/–/-2/-2;2;Frei;250;Eingezogen +1 Tarnbarkeit; Umschalten per Nebenhandlung (WiFi: gratis Nebenhandlung);Feuer frei!
+Entfernte Schulterstütze;Waffenmodifikation;1 Slot;+2/–/-1/-2/-3;1;Frei;50;Nur für Waffen mit festem Schaft (Gewehre); erhöht Tarnbarkeit um 1;Feuer frei!
+Feste Schulterstütze;Waffenmodifikation;1 Slot;–/+1/+1/+2/+1 (oder -1/+1/+1/+2/+1);3;Frei;250;Ersetzt vorhandene Stütze (-1 Tarnbarkeit, falls zuvor keine Schulterstütze vorhanden war);Feuer frei!
+Freund-/Feind-Erkennungssystem;Waffenmodifikation;2 Slots;Verhindert Friendly Fire;3;L;400;Benötigt Smartgunsystem + WiFi; blockiert Schüsse auf Ziele in 0–3m zu bis zu 10 markierten Verbündeten;Feuer frei!
+Geckogriff;Waffenmodifikation;1 Slot;+1 Edge gegen Entwaffnen;2;Frei;90;+1 Edge gegen Entwaffnen; haftet per Nebenhandlung an Oberflächen oder Personen;Feuer frei!
+Gewichtserhöhung;Waffenmodifikation;1 Slot;-2/+2/+1/–/–, SM -1 Malus;3;Frei;175;Erhöht Masse; senkt SM-Rückstoßmalus um 1 (inkompatibel mit Gewichtssenkung);Feuer frei!
+Gewichtssenkung;Waffenmodifikation;1 Slot;+2/–/-2/–/–, SM +1 Malus;3;Frei;175;Reduziert Masse; erhöht SM-Rückstoßmalus um 1 (inkompatibel mit Gewichtserhöhung);Feuer frei!
+Laufverkürzung;Waffenmodifikation;1 Slot;+2/+1/-2/–/– (max. RW -1);2;Frei;65;+1 Tarnbarkeit, streicht höchste Reichweitenkategorie (nicht mit Laufverlängerung oder Tasern);Feuer frei!
+Laufverlängerung;Waffenmodifikation;1 Slot;Höhere Reichweite;3;L;350;Verbessert Reichweitenprofil auf größere Distanzen (-1 Tarnbarkeit; nicht mit Laufverkürzung);Feuer frei!
+Leicht zerlegbar;Waffenmodifikation;1 Slot;Zerlegbar für Schmuggel;3;I;400;Ermöglicht schnelles Zerlegen in Einzelteile (optionaler Tarnkoffer +250 ¥);Feuer frei!
+Metamenschen-Anpassung;Waffenmodifikation;1 Slot;Hebt -2 Metatyp-Malus auf;3;Frei;200;Passt Ergonomie an Zwerg/Troll an; andere Metatypen erleiden -2 Würfelpool;Feuer frei!
+Nahkampfverstärkung;Waffenmodifikation;2 Slots;Nahkampf: 3B, AW 4/–/–/–/–;3;Frei;300;Verstärkt Gehäuse mit Chemo-Forge; Waffe kann mit Nahkampf (Knüppel) geführt werden;Feuer frei!
+Nanokonstruktion;Waffenmodifikation;1 Slot;Schicksalswürfel;3;L;130;Ersetzt bei Angriffsproben 1 Würfel durch den Schicksalswürfel;Feuer frei!
+Persönlicher Stil;Waffenmodifikation;1 Slot;+1 Edge Sozial;2;Frei;250;Wähle Einschüchtern, Führen, Gebräuche oder Verhandeln: +1 Edge beim Ziehen der Waffe;Feuer frei!
+rEVOlution Arms Einziehbare Schulterstütze;Waffenmodifikation;1 Slot;Wie einziehbare Stütze + Schicksalswürfel;3;Frei;700;Hochwertige rEVO-Schulterstütze; Monaden können Schicksalswürfel per Nebenhandlung neu würfeln;Feuer frei!
+Rutheniumbeschichtung (Waffe);Waffenmodifikation;1 Slot;+1 Tarnbarkeit (+4 am Boden);4;I;1000;Photovoltaische Tarnbeschichtung; verschmilzt optisch mit Ruthenium-Panzerung;Feuer frei!
+Schulterstütze (Nachrüstung);Waffenmodifikation;1 Slot;-1/+2/+1/–/–;1;Frei;100;Für Waffen ohne bisherige Schulterstütze; senkt Tarnbarkeit um 1;Feuer frei!
+Seitliche Munitionshalterung;Waffenmodifikation;1 Slot;Nachladen = Nebenhandlung;2;L;150;Hält 1 Stangenmagazin oder 5 Patronen (-1 Tarnbarkeit; blockiert seitliche Zubehörhalterung);Feuer frei!
+Unterlaufgewicht / Schwerer Lauf;Waffenmodifikation;1 Slot;-2/+1/+1/–/–, HM/SM -1, AM -2;2;Frei;70;Senkt Rückstoßmalus bei HM/SM um 1 und bei AM um 2 (nicht kompatibel mit Tasern);Feuer frei!
+Unterlauf-Waffenhalterung;Waffenmodifikation;2 Slots;Ermöglicht Unterlaufwaffe;3;L;500;Basis-Halterung unter dem Lauf für Bolawerfer, Enterhaken, Kettensäge, Mini-Werfer oder Schrotflinte;Feuer frei!
+Unterlauf-Bolawerfer;Unterlauf-Anbau;Unterlauf-Halterung;4B, EM, AW 7/9/–/–/–, 2(i);3;L;800;Verstrickt Ziele aus dem Unterlauf (benötigt Unterlauf-Waffenhalterung);Feuer frei!
+Unterlauf-Enterhakenkanone;Unterlauf-Anbau;Unterlauf-Halterung;Spezial, EM, AW 2/4/8/–/–, 1(i);2;Frei;400;Verschießt Enterhaken mit Seil (benötigt Unterlauf-Waffenhalterung);Feuer frei!
+Unterlauf-Kettensäge;Unterlauf-Anbau;Unterlauf-Halterung;Nahkampf (Kettensäge);3;L;900;Kompakte Unterlauf-Kettensäge für den Nahkampf (benötigt Unterlauf-Waffenhalterung);Feuer frei!
+Unterlauf-Mini-Granatwerfer;Unterlauf-Anbau;Unterlauf-Halterung;wie Granate, EM;4;I;1350;Kompakter einschüssiger Granatwerfer für den Unterlauf (benötigt Unterlauf-Waffenhalterung);Feuer frei!
+Unterlauf-Schrotflinte;Unterlauf-Anbau;Unterlauf-Halterung;Schrotflinte (Unterlauf);3;L;350;Kompakte Unterlauf-Schrotflinte (benötigt Unterlauf-Waffenhalterung);Feuer frei!
+Verbessertes Gasventilsystem;Waffenmodifikation;1 Slot;–/+1/+2/+2/–, HM/SM -1, AM -2;3;Frei;600;Senkt Rückstoßmalus bei HM/SM um 1 und AM um 2 (nicht kompatibel mit Schalldämpfer/Gasventil);Feuer frei!
+Vordergriff;Waffenmodifikation;1 Slot;+1/+2/+1/–/–, SM -1 Malus;2;Frei;140;Verbessert Waffenkontrolle und senkt Salvenmodus-Malus um 1;Feuer frei!
+Waffenkommlink;Waffenmodifikation;2 Slots;GS 1, D/F 1/2;4;L;2000;Eigenes Kommlink in der Waffe (Firewall kumulativ mit PAN); schützt vor Matrix-Angriffen;Feuer frei!
+Waffen-Sicherheitssystem (Basis);Waffenmodifikation;2 Slots;Biometrie + 1 Falle;3;L;500;Biometrische Sicherung inkl. 1 Anti-Diebstahl-Option (Dorne, Elektroschock, Sprengstoff oder RFID);Feuer frei!
+Waffen-Sicherheitssystem: Dorne;Sicherheits-Option;[1] Kapazität;3K, AW 5/–/–/–/–;3;I;100;Federgespannte Dorne im Griff verletzen unbefugte Benutzer;Feuer frei!
+Waffen-Sicherheitssystem: Elektroschock;Sicherheits-Option;[1] Kapazität;Taser-Schock;3;L;150;Versetzt unbefugten Benutzern am Griff einen Elektroschock wie ein Taser;Feuer frei!
+Waffen-Sicherheitssystem: Sprengstoff;Sicherheits-Option;[1] Kapazität;Zerstörung / Sprenggranate;4;I;200;Zerstört die Waffe per Fernzündung oder detoniert wie eine Sprenggranate;Feuer frei!
+Waffen-Sicherheitssystem: RFID-Marker;Sicherheits-Option;[1] Kapazität;Ortungs-Richtstrahl;2;Frei;75;Sendet Peilsignal bei unbefugter Nutzung oder Überschreiten einer eingestellten Distanz;Feuer frei!
+Zubehörhalterung (Zusatz);Waffenmodifikation;1 Slot;+1 Zubehör-Slot;3;L;75;Schafft eine zusätzliche seitliche Halterung für externes Waffenzubehör;Feuer frei!
+Angepasster Griff (Nahkampf);Nahkampf-Modifikation;1 Slot;+2/–/–/–/–;3;Frei;200;+2 AW im Nahkampf für den angepassten Benutzer (andere erleiden -2 Würfelpool);Feuer frei!
+Dikote;Nahkampf-Modifikation;1 Slot;+1 AW;5;Frei;225;Diamantbeschichtung für Stahl-/Keramikklingen, Pfeile oder Bolzen (+1 AW);Feuer frei!
+Leuchtbeschichtung;Nahkampf-Modifikation;1 Slot;Lichtquelle;2;Frei;40;Lässt Waffe im Dunkeln leuchten;Feuer frei!
+Rutheniumbeschichtung (Nahkampf);Nahkampf-Modifikation;1 Slot;+4 AW (1. Angriff), +1 Tarn;4;I;1000;+1 Tarnbarkeit; +4 AW beim ersten Angriff aus der Tarnung (Reset: Haupthandlung);Feuer frei!
+Smart-Materialien;Nahkampf-Modifikation;1 Slot;+2 AW (Nebenhandlung), WiFi +1 Edge;3;L;900;+2 AW nach Nebenhandlung gegen aktuelles Ziel; WiFi: +1 Edge bei Angriffsproben;Feuer frei!
+Blitzende Klinge;Nahkampf-Modifikation;1 Slot;Status Geblendet II (III mit RL);4;L;150;Nur Klingenwaffen; blendet Gegner per Nebenhandlung (5 Ladungen; WiFi: +1 Nebenhandlung);Feuer frei!
+Schockbeschichtung;Nahkampf-Modifikation;1 Slot;(Schaden + 1)B(e);3;Frei;275;Nur Knüppel; wandelt Schaden bei Aktivierung in Elektrizitätsschaden um (3 Ladungen);Feuer frei!
+Stacheln (starr);Nahkampf-Modifikation;1 Slot;Schaden B → K;1;Frei;40;Nur Knüppel (nicht Teleskop); wandelt Betäubungsschaden in Körperlichen Schaden um;Feuer frei!
+Stacheln (einziehbar);Nahkampf-Modifikation;1 Slot;Umschaltbar B / K;2;Frei;115;Nur Knüppel; erlaubt Umschalten zwischen Betäubungs- und Körperlichem Schaden;Feuer frei!
+Dynamisches Spannungssystem;Projektil-Modifikation;1 Slot;Bogenstufe bis ×2 (max. 14);3;Frei;200;Nur Bögen; passt Zugstärke per Nebenhandlung an (ideal bei magisch erhöhter Stärke);Feuer frei!
+Abnehmbares Trommelmagazin;Zubehör;Lauf oder Unter;Kapazität × 2, -2 Tarnbarkeit;3;L;75;Verdoppelt Munitionskapazität; senkt Tarnbarkeit um 2 (bei Pistolen um 3);Feuer frei!
+Ares Gunfighter Gewehrholster;Zubehör;–;Formgedächtnis-Holster (3 Waffen);5;L;450;Rückenholster für Langwaffen/große Klingen mit RFID-Sensor (GS 2, D/F 1/1; 2 Sek. Freigabezeit);Feuer frei!
+Bajonett (starr);Zubehör;Lauf oder Unter;Nahkampf: 2K, AW 5/2*/–/–/–;3;L;75;Befestigte Klinge für MPs/Langwaffen (AW 2 geworfen bis 20m);Feuer frei!
+Bajonett (ausfahrbar);Zubehör;Lauf oder Unter;Nahkampf: 2K, AW 5/2*/–/–/–;4;L;90;Ausfahrbarer Dorn per Smartgun/Sprachbefehl (AW 2 geworfen bis 20m);Feuer frei!
+Gepanzertes Sicherheitsholster;Zubehör;–;+2 Wahrnehmung Diebstahl, +2 VW;3;L;250;Passgenaues Pistolenholster (+2 Wahrnehmung gegen Diebstahl, +2 VW gegen Beschuss der Waffe);Feuer frei!
+Gepanzertes Sicherheitsholster (WiFi);Zubehör;–;Biometrie-Sperre + Schutz;3;L;400;Wie Basismodell, zusätzlich mit biometrischem Scanner (GS 2, D/F 1/1);Feuer frei!
+Gyrostabilisator II;Zubehör;Unter;HM -1, SM -3, AM -4 Malus;3;Frei;1500;Senkt Stärkevoraussetzung für MMGs/SMGs auf 2+/3+; -1 G/R beim Tragen; WiFi-Freihand-Feuer;Feuer frei!
+Hüftpolstersystem;Zubehör;Schulterstütze;+2/+1/-1/-2/-4, +2 Ini Folgerunde;2;Frei;180;+2 Initiative in der Folgerunde nach dem Feuern; Handlung Zielen nicht möglich;Feuer frei!
+Lasermarkierer (Hochenergie);Zubehör;Auf oder Unter;+1 AW (alle RW), Blenden möglich;1;Frei;200;Wirkt in allen Reichweiten (Weit/Sehr weit mit Sichtvergrößerung); kann Ziele im Auge blenden;Feuer frei!
+Lasermarkierer (Niedrigenergie);Zubehör;Auf oder Unter;+1 AW (SN/N), +2 mit WiFi;1;Frei;80;+1 AW in Sehr nah & Nah (+2 mit WiFi; nicht kumulativ mit Smartgunsystem);Feuer frei!
+MG-Schutzschild (klein);Zubehör;Lauf, Auf oder Unter;+1 VW (max. 2 Schilde);4;I;250;Kumulativer Verteidigungswert-Bonus von +1 für Maschinengewehre;Feuer frei!
+MG-Schutzschild (groß);Zubehör;Lauf, Auf oder Unter;+2 VW, -3m Bewegung;4;I;350;+2 VW (-3m Bewegung; bei 2 Schilden: +4 VW, -5m Bewegung, Status Deckung I);Feuer frei!
+Munitionsgurt;Zubehör;–;Tragesystem für Taschen;2;Frei;50;Tragegurt für Munitionstaschen (+15 ¥ pro zusätzlicher Tasche);Feuer frei!
+Munitionstasche (Standard);Zubehör;–;Nachladen = Nebenhandlung;2;Frei;25;Fasst 1 Magazin (bis Sturmgewehr) oder 8 einzelne Patronen; Nachladen wird Nebenhandlung;Feuer frei!
+Ranger Arms „Eagle Eye“ Zielerfassung;Zubehör;Auf oder Unter;-4/-5/-4/+3/+2;5;L;550;Scharfschützen-Sensorpaket; Schütze darf keine Bewegungs- oder sonstigen Handlungen ausführen;Feuer frei!
+Schnellzieh-Köcher;Zubehör;–;Schneller Pfeilzugriff;2;Frei;115;Starrer Köcher für 20 Pfeile/Bolzen mit schneller Munitionsauswahl;Feuer frei!
+Schnellziehscheide;Zubehör;–;Schnellziehen (Nahkampf);2;Frei;160;Passgenaue Scheide ermöglicht die Handlung Schnellziehen für Nahkampfwaffen;Feuer frei!
+Schnellzieh-Tarnholster;Zubehör;–;+1 Tarnbarkeit, +1 Nebenhandlung;2;Frei;225;Für Pistolen/Taser; +1 Tarnbarkeit und gewährt 1 Nebenhandlung bei Schnellziehen;Feuer frei!
+Schnellzieh-Tarnscheide;Zubehör;–;Tarnung + Schnellziehen;2;Frei;115;Kombiniert Tarnscheide und Schnellziehscheide für Klingenwaffen;Feuer frei!
+Springarm (Nahkampf- und Wurfwaffen);Zubehör;Unterarm;Waffe per Nebenhandlung;2;Frei;125;Unterarm-Schiene für Messer/Wurfwaffen;Feuer frei!
+Taktische Lampe (Infrarotsicht);Zubehör;Auf oder Unter;IR-Beleuchtung;1;Frei;100;Strahlt unsichtbares Infrarotlicht zur Unterstützung von Infrarotsicht aus;Feuer frei!
+Taktische Lampe (Restlichtverstärkung);Zubehör;Auf oder Unter;+1 Edge bei Restlicht;1;Frei;100;Optimiert Lichtspektrum für Restlichtverstärkung (+1 Edge; für normale Augen kaum sichtbar);Feuer frei!
+Tarnscheide;Zubehör;–;+1 Tarnbarkeit (+2 WiFi);2;Frei;50;Für Nahkampfwaffen bis Messergröße (+1 Tarnbarkeit; WiFi-Chamäleongewebe: +2);Feuer frei!
+Tragegurt (Standard);Zubehör;–;Sicherer Waffentransport;3;Frei;50;Standard-Trageriemen für Langwaffen;Feuer frei!
+Tragegurt (Taktisch);Zubehör;–;Bereit machen = Nebenhandlung;4;L;75;Hält Langwaffe im niedrigen Anschlag; Waffe bereit machen wird zur Nebenhandlung;Feuer frei!
+Vergrößertes Stangenmagazin (Stufe 1–2);Zubehör;–;+5 / +10 Schuss;4;L;Stufe × 25;Stufe 1: +5 Schuss (-1 Tarnbarkeit); Stufe 2: +10 Schuss (-2 Tarnbarkeit);Feuer frei!
+Waffenkamera;Zubehör;Auf oder Unter;+1 Edge Hinterhalt, +1 Folgeschuss;4;L;350;+1 Edge bei Wahrnehmung aus Hinterhalt; +1 Würfelpool auf gezielten Folgeschuss; Kapazität 2;Feuer frei!
+Krime Betäubungsbajonett;Zubehör;Lauf oder Unter;Nahkampf: 4B(e), AW 6/–/–/–/–;3;Frei;700;Elektroschock-Bajonett für Langwaffen;Krime-Katalog
+Krime Externes Dualmodus-Smartgunsystem;Zubehör;Auf oder Unter;+2 AW (WiFi / Offline);2;L;500;Kann zwischen WiFi-Betrieb und komplettem Offline-Modus (Datenkabel) umschalten;Krime-Katalog
+Krime Keeper;Zubehör;–;Wartungs-Set;1;Frei;50;Universal-Reinigungsset mit Schmiermitteln und Wartungs-Lehrsoft;Krime-Katalog
+Krime Loudener;Zubehör;Lauf;+1/+1/+1/–/–, +1 Lautstärke;1;Frei;250;Erhöht Schussgeräusch um 1 Stufe; funktioniert auch bei Revolvern/Schrotflinten;Krime-Katalog
+Krime Offline-Supportlösungen;Zubehör;–;Offline-Adapter;1;Frei;25;Mechanische/analoge Ersatz-Bedienteile für gehackte oder offline betriebene Waffen;Krime-Katalog
+Krime Selbstverankerndes Dreibein;Zubehör;Unterlauf;HM/SM ±0, AM -3 (verankert: ±0);6;L;1000;Dreibein mit Spreng-Felsankern (neutralisiert auch AM-Malus komplett; Ersatzanker 300 ¥);Krime-Katalog
+Krime Trommelmagazine;Zubehör;–;Günstiges Trommelmagazin;2;Frei;5;Preiswertes Trommelmagazin für kompatible Krime-Waffen;Krime-Katalog
+Carbine Conversion System (CCS);Zubehör;Externes Gehäuse;Pistole → Karabiner;3;L;450;Metallfreies Umbau-Gehäuse für Pistolen (insb. H&K Fighter); verbessert Reichweite und bietet Montageschienen;SOTA 2082
