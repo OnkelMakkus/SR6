@@ -566,7 +566,7 @@
   }
 
   .modal-cat { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); text-transform: uppercase; letter-spacing: 1px; }
-  .modal-title { font-size: 1.35rem; font-weight: 700; color: #fff; margin-top: 2px; }
+  .modal-title { font-size: 1.35rem; font-weight: 700; color: #fff; margin-top: 2px; word-break: break-word; }
 
   .modal-close {
     background: transparent;
@@ -634,7 +634,6 @@
     </div>
   </header>
 
-  <!-- 7-Module Navigation -->
   <nav class="module-nav" id="moduleNav">
     <button class="mod-btn active" data-mod="weapons">
       <div class="mod-btn-top"><span>WAFFEN &amp; MUNI</span><span class="mod-badge" id="badge-weapons">0</span></div>
@@ -782,37 +781,44 @@
       .replace(/'/g, "&#39;");
   }
 
-  function parseCSV(text) {
-    const cleanText = (text || "").replace(/^\uFEFF/, "");
-    const lines = cleanText.split(/\r?\n/).filter(l => l.trim() !== "");
-    if (lines.length === 0) return [];
-    const sample = lines[0];
-    const delimiter = sample.split(";").length > sample.split(",").length ? ";" : ",";
-    const rows = [];
-    let row = [];
-    let current = "";
-    let inQuotes = false;
-
-    for (let i = 0; i < cleanText.length; i++) {
-      const char = cleanText[i];
-      const next = cleanText[i + 1];
-      if (char === '"') {
-        if (inQuotes && next === '"') { current += '"'; i++; }
-        else { inQuotes = !inQuotes; }
-      } else if (char === delimiter && !inQuotes) {
-        row.push(cleanCell(current));
-        current = "";
-      } else if ((char === "\r" || char === "\n") && !inQuotes) {
-        if (char === "\r" && next === "\n") i++;
-        row.push(cleanCell(current));
-        if (row.some(c => c !== "")) rows.push(row);
-        row = [];
-        current = "";
-      } else {
-        current += char;
+  function detectLineDelimiter(line) {
+    let commas = 0, semis = 0, inQ = false;
+    for (let i = 0; i < line.length; i++) {
+      const c = line[i];
+      if (c === '"') {
+        if (inQ && line[i + 1] === '"') { i++; }
+        else { inQ = !inQ; }
+      } else if (!inQ) {
+        if (c === ',') commas++;
+        else if (c === ';') semis++;
       }
     }
-    if (current !== "" || row.length > 0) {
+    return semis > commas ? ';' : ',';
+  }
+
+  function parseCSV(text) {
+    const cleanText = (text || "").replace(/^\uFEFF/, "");
+    const rawLines = cleanText.split(/\r?\n/);
+    const rows = [];
+    for (const rawLine of rawLines) {
+      if (!rawLine.trim()) continue;
+      const delimiter = detectLineDelimiter(rawLine);
+      const row = [];
+      let current = "";
+      let inQuotes = false;
+      for (let i = 0; i < rawLine.length; i++) {
+        const char = rawLine[i];
+        const next = rawLine[i + 1];
+        if (char === '"') {
+          if (inQuotes && next === '"') { current += '"'; i++; }
+          else { inQuotes = !inQuotes; }
+        } else if (char === delimiter && !inQuotes) {
+          row.push(cleanCell(current));
+          current = "";
+        } else {
+          current += char;
+        }
+      }
       row.push(cleanCell(current));
       if (row.some(c => c !== "")) rows.push(row);
     }
@@ -881,7 +887,6 @@
     }).join(" / ");
   }
 
-  // Mappers
   function mapWeapons(rows) {
     if (rows.length < 2) return [];
     let hIdx = rows.findIndex(r => r.some(c => c.toLowerCase().replace(/[^a-z0-9äöüß]/g, "") === "waffe"));
@@ -905,7 +910,7 @@
           c.includes("exotisch") || c.includes("projektil")) return "MELEE_PROJ";
       if (c.includes("granate") || c.includes("rakete") || c.includes("sprengstoff")) return "EXPLOSIVES";
       if (c.includes("munition")) return "AMMO";
-      if (c.includes("zubehör") || c.includes("modifikation")) return "GEAR_INLINE";
+      if (c.includes("zubehör") || c.includes("modifikation") || c.includes("halterung") || c.includes("sicherheits-option")) return "GEAR_INLINE";
       return "HEAVY_EXOTIC";
     };
     const list = [];
@@ -914,6 +919,10 @@
       const name = r[idx.name !== -1 ? idx.name : 0] || "";
       if (!name || name.toLowerCase() === "waffe") continue;
       const kat = r[idx.kategorie !== -1 ? idx.kategorie : 1] || "Sonstiges";
+      const regelnCol = idx.ausstattung !== -1 ? idx.ausstattung : 13;
+      const regelnText = r.length > 15 ? r.slice(regelnCol, r.length - 1).join("; ") : (r[regelnCol] || "-");
+      const quelleText = r.length > 15 ? r[r.length - 1] : (r[idx.quelle !== -1 ? idx.quelle : 14] || "-");
+
       list.push({
         id: `w-${i}`, name, kategorie: kat, group: classifyWeaponGroup(kat),
         schaden: r[idx.schaden !== -1 ? idx.schaden : 2] || "-",
@@ -923,8 +932,8 @@
         verf: r[idx.verf !== -1 ? idx.verf : 10] || "-",
         legal: r[idx.legal !== -1 ? idx.legal : 11] || "Frei",
         preis: r[idx.preis !== -1 ? idx.preis : 12] || "-",
-        regeln: r[idx.ausstattung !== -1 ? idx.ausstattung : 13] || "-",
-        quelle: r[idx.quelle !== -1 ? idx.quelle : 14] || "-"
+        regeln: regelnText || "-",
+        quelle: quelleText || "-"
       });
     }
     return list;
@@ -942,6 +951,10 @@
       const r = rows[i];
       const name = r[idx.name !== -1 ? idx.name : 0] || "";
       if (!name) continue;
+      const regCol = idx.regeln !== -1 ? idx.regeln : 7;
+      const regText = r.length > 9 ? r.slice(regCol, r.length - 1).join("; ") : (r[regCol] || "-");
+      const srcText = r.length > 9 ? r[r.length - 1] : (r[idx.quelle !== -1 ? idx.quelle : 8] || "-");
+
       list.push({
         id: `g-${i}`, name, typ: r[idx.typ !== -1 ? idx.typ : 1] || "Zubehör",
         halterung: r[idx.halterung !== -1 ? idx.halterung : 2] || "-",
@@ -949,8 +962,8 @@
         verf: r[idx.verf !== -1 ? idx.verf : 4] || "-",
         legal: r[idx.legal !== -1 ? idx.legal : 5] || "Frei",
         preis: r[idx.preis !== -1 ? idx.preis : 6] || "-",
-        regeln: r[idx.regeln !== -1 ? idx.regeln : 7] || "-",
-        quelle: r[idx.quelle !== -1 ? idx.quelle : 8] || "-"
+        regeln: regText || "-",
+        quelle: srcText || "-"
       });
     }
     return list;
