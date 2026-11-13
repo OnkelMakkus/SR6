@@ -40,6 +40,7 @@
     font-size: 14px;
     line-height: 1.45;
     min-height: 100vh;
+    overflow-x: hidden;
   }
 
   .app-shell {
@@ -63,7 +64,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
   }
 
@@ -115,6 +116,7 @@
     border-radius: 50%;
     background: var(--green);
     box-shadow: 0 0 8px var(--green);
+    flex-shrink: 0;
   }
 
   .status-pill strong { color: var(--cyan); }
@@ -132,7 +134,7 @@
   }
 
   @media (max-width: 680px) {
-    .module-nav { grid-template-columns: repeat(2, 1fr); }
+    .module-nav { grid-template-columns: repeat(2, 1fr); gap: 6px; }
   }
 
   .mod-btn {
@@ -246,10 +248,10 @@
     display: flex;
     flex-direction: column;
     gap: 3px;
-    flex: 1 1 165px;
+    flex: 1 1 155px;
   }
 
-  .control-group.search-grow { flex: 2.5 1 260px; }
+  .control-group.search-grow { flex: 2.5 1 250px; }
 
   .control-label {
     font-family: var(--font-mono);
@@ -334,6 +336,7 @@
 
   .info-strip.visible { display: flex; }
 
+  /* Desktop Table Styling */
   .table-scroll {
     width: 100%;
     overflow-x: auto;
@@ -475,6 +478,169 @@
   .badge-i    { background: var(--pink-dim); color: var(--pink); border: 1px solid rgba(255, 42, 109, 0.38); }
   .badge-mana { background: var(--purple-dim); color: var(--purple); border: 1px solid rgba(181, 101, 255, 0.38); }
   .badge-phys { background: var(--green-dim); color: var(--green); border: 1px solid rgba(16, 185, 129, 0.38); }
+
+  /* ==========================================================================
+     SMARTPHONE RESPONSIVE CARD LAYOUT (Zero horizontal scrolling <= 768px)
+     ========================================================================== */
+  @media (max-width: 768px) {
+    .app-shell { padding: 10px 8px 32px 8px; }
+
+    .hero-banner { padding: 12px 14px; gap: 8px; }
+    .hero-title { font-size: 1.25rem; }
+    .hero-sub { font-size: 0.78rem; }
+
+    .sub-tabs {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .sub-tabs::-webkit-scrollbar { display: none; }
+    .sub-tab-btn { flex-shrink: 0; font-size: 0.74rem; padding: 6px 10px; }
+
+    .controls-bar { padding: 10px 12px; gap: 8px; }
+    .control-group { flex: 1 1 calc(50% - 4px); min-width: 0; }
+    .control-group.search-grow { flex: 1 1 100%; }
+    .btn-reset { flex: 1 1 100%; }
+
+    .table-scroll {
+      overflow-x: visible;
+      padding: 10px;
+      background: var(--bg-main);
+    }
+
+    table, tbody { display: block; width: 100%; }
+    thead { display: none; }
+
+    tbody tr {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px 8px;
+      background: var(--bg-panel) !important;
+      border: 1px solid var(--border-bright);
+      border-left: 3px solid var(--cyan);
+      border-radius: 6px;
+      padding: 11px 12px;
+      margin-bottom: 9px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    }
+
+    tbody tr:active {
+      background: var(--bg-hover) !important;
+      border-color: var(--pink);
+    }
+
+    td {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 0;
+      border: none;
+      white-space: normal;
+      word-break: break-word;
+      min-width: 0 !important;
+      max-width: 100% !important;
+    }
+
+    td.col-name {
+      order: 1;
+      flex: 1 1 55%;
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.25;
+    }
+
+    td.col-leg {
+      order: 2;
+      flex: 0 0 auto;
+    }
+
+    td.col-price {
+      order: 3;
+      flex: 0 0 auto;
+      margin-left: auto;
+      font-size: 0.86rem;
+    }
+
+    td.col-cat {
+      order: 4;
+      flex: 1 1 100%;
+      font-size: 0.76rem;
+      color: var(--cyan);
+      padding-bottom: 5px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2px;
+    }
+
+    td.col-stat {
+      order: 5;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 3px 7px;
+      font-size: 0.78rem;
+    }
+
+    td.col-stat::before {
+      content: attr(data-label) ":";
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-right: 2px;
+    }
+
+    td.col-aw {
+      order: 6;
+      flex: 1 1 100%;
+      padding-top: 2px;
+    }
+
+    td.col-aw::before {
+      content: "AW:";
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      margin-right: 4px;
+    }
+
+    td.col-aw .aw-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    td.col-attrs {
+      order: 6;
+      flex: 1 1 100%;
+      overflow-x: auto;
+      padding: 2px 0;
+    }
+
+    td.col-notes {
+      order: 7;
+      flex: 1 1 100%;
+      font-size: 0.79rem;
+      color: #b4c2d6;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      line-height: 1.35;
+      margin-top: 2px;
+    }
+
+    td.col-source {
+      order: 8;
+      flex: 1 1 100%;
+      font-size: 0.69rem;
+      color: var(--text-dim);
+      opacity: 0.8;
+    }
+  }
 
   /* Template / Empty State */
   .state-box {
@@ -781,28 +947,13 @@
       .replace(/'/g, "&#39;");
   }
 
-  function detectLineDelimiter(line) {
-    let commas = 0, semis = 0, inQ = false;
-    for (let i = 0; i < line.length; i++) {
-      const c = line[i];
-      if (c === '"') {
-        if (inQ && line[i + 1] === '"') { i++; }
-        else { inQ = !inQ; }
-      } else if (!inQ) {
-        if (c === ',') commas++;
-        else if (c === ';') semis++;
-      }
-    }
-    return semis > commas ? ';' : ',';
-  }
-
   function parseCSV(text) {
     const cleanText = (text || "").replace(/^\uFEFF/, "");
     const rawLines = cleanText.split(/\r?\n/);
     const rows = [];
     for (const rawLine of rawLines) {
       if (!rawLine.trim()) continue;
-      const delimiter = detectLineDelimiter(rawLine);
+      const delimiter = rawLine.includes(';') ? ';' : ',';
       const row = [];
       let current = "";
       let inQuotes = false;
@@ -1119,6 +1270,17 @@
     URL.revokeObjectURL(url);
   }
 
+  function buildSortSelectHtml(options) {
+    const currentVal = `${STATE.sortKey}:${STATE.sortAsc ? "asc" : "desc"}`;
+    return `
+      <div class="control-group">
+        <label class="control-label">Sortierung</label>
+        <select id="selSort" class="sr-select">
+          ${options.map(o => `<option value="${o.val}" ${currentVal === o.val ? "selected" : ""}>${o.label}</option>`).join("")}
+        </select>
+      </div>`;
+  }
+
   function renderModuleChrome() {
     const subTabsEl = document.getElementById("subTabs");
     const controlsEl = document.getElementById("controlsBar");
@@ -1139,22 +1301,33 @@
       subTabsEl.innerHTML = groups.map(g => `<button class="sub-tab-btn ${STATE.subTab === g.id ? "active" : ""}" data-sub="${g.id}">${g.label}</button>`).join("");
       const cats = [...new Set(wList.map(w => w.kategorie))].sort((a, b) => a.localeCompare(b, "de"));
       const srcs = [...new Set(wList.map(w => w.quelle).filter(q => q !== "-"))].sort((a, b) => a.localeCompare(b, "de"));
+      const sortOpts = [
+        { val: "name:asc", label: "Name (A–Z)" }, { val: "name:desc", label: "Name (Z–A)" },
+        { val: "schaden:desc", label: "Schaden (Hoch → Niedrig)" }, { val: "preis:asc", label: "Preis (Günstig → Teuer)" },
+        { val: "preis:desc", label: "Preis (Teuer → Günstig)" }, { val: "verf:asc", label: "Verfügbarkeit (Niedrig → Hoch)" }
+      ];
       controlsEl.innerHTML = `
         <div class="control-group search-grow"><label class="control-label">Volltextsuche</label><input type="text" id="inpSearch" class="sr-input" value="${escapeHtml(STATE.search)}" placeholder="Waffe, Ausstattung, Schaden, Modus..."></div>
         <div class="control-group"><label class="control-label">Unterkategorie</label><select id="selF1" class="sr-select"><option value="">Alle</option>${cats.map(c => `<option value="${escapeHtml(c)}" ${STATE.f1 === c ? "selected" : ""}>${escapeHtml(c)}</option>`).join("")}</select></div>
         <div class="control-group"><label class="control-label">Legalität</label><select id="selF2" class="sr-select"><option value="">Alle</option><option value="Frei" ${STATE.f2 === "Frei" ? "selected" : ""}>Frei</option><option value="L" ${STATE.f2 === "L" ? "selected" : ""}>L (Lizenz)</option><option value="I" ${STATE.f2 === "I" ? "selected" : ""}>I (Illegal)</option></select></div>
         <div class="control-group"><label class="control-label">Munitions-Rechner</label><select id="selAmmo" class="sr-select ${STATE.ammo !== "STANDARD" ? "highlight-amber" : ""}"><option value="STANDARD" ${STATE.ammo === "STANDARD" ? "selected" : ""}>Standardmunition</option><option value="APDS" ${STATE.ammo === "APDS" ? "selected" : ""}>APDS (+2 AW / -1 Schaden)</option><option value="EXPLOSIV" ${STATE.ammo === "EXPLOSIV" ? "selected" : ""}>Explosiv (+1 Schaden)</option><option value="FLECHETTE" ${STATE.ammo === "FLECHETTE" ? "selected" : ""}>Flechette (+1 AW / -1 Schaden)</option><option value="GEL" ${STATE.ammo === "GEL" ? "selected" : ""}>Gel (Schaden → B)</option><option value="SCHOCKER" ${STATE.ammo === "SCHOCKER" ? "selected" : ""}>Schocker (+1 AW / -1 B(e))</option></select></div>
         <div class="control-group"><label class="control-label">Quelle</label><select id="selF3" class="sr-select"><option value="">Alle Quellen</option>${srcs.map(s => `<option value="${escapeHtml(s)}" ${STATE.f3 === s ? "selected" : ""}>${escapeHtml(s)}</option>`).join("")}</select></div>
+        ${buildSortSelectHtml(sortOpts)}
         <button class="btn-reset" id="btnReset">Reset</button>`;
     } else if (mod === "gear") {
       subTabsEl.innerHTML = "";
       const types = [...new Set(DB.gear.map(g => g.typ))].sort((a, b) => a.localeCompare(b, "de"));
       const srcs = [...new Set(DB.gear.map(g => g.quelle).filter(q => q !== "-"))].sort((a, b) => a.localeCompare(b, "de"));
+      const sortOpts = [
+        { val: "name:asc", label: "Name (A–Z)" }, { val: "preis:asc", label: "Preis (Günstig → Teuer)" },
+        { val: "preis:desc", label: "Preis (Teuer → Günstig)" }, { val: "verf:asc", label: "Verfügbarkeit" }
+      ];
       controlsEl.innerHTML = `
         <div class="control-group search-grow"><label class="control-label">Zubehör / Modifikation suchen</label><input type="text" id="inpSearch" class="sr-input" value="${escapeHtml(STATE.search)}" placeholder="Smartgun, Schalldämpfer, Gasventil, Halterung..."></div>
         <div class="control-group"><label class="control-label">Typ</label><select id="selF1" class="sr-select"><option value="">Alle Typen</option>${types.map(t => `<option value="${escapeHtml(t)}" ${STATE.f1 === t ? "selected" : ""}>${escapeHtml(t)}</option>`).join("")}</select></div>
         <div class="control-group"><label class="control-label">Legalität</label><select id="selF2" class="sr-select"><option value="">Alle</option><option value="Frei" ${STATE.f2 === "Frei" ? "selected" : ""}>Frei</option><option value="L" ${STATE.f2 === "L" ? "selected" : ""}>L</option><option value="I" ${STATE.f2 === "I" ? "selected" : ""}>I</option></select></div>
         <div class="control-group"><label class="control-label">Quelle</label><select id="selF3" class="sr-select"><option value="">Alle Quellen</option>${srcs.map(s => `<option value="${escapeHtml(s)}" ${STATE.f3 === s ? "selected" : ""}>${escapeHtml(s)}</option>`).join("")}</select></div>
+        ${buildSortSelectHtml(sortOpts)}
         <button class="btn-reset" id="btnReset">Reset</button>`;
     } else if (mod === "armor") {
       const cats = [
@@ -1167,10 +1340,15 @@
       ];
       subTabsEl.innerHTML = DB.armor.length > 0 ? cats.map(c => `<button class="sub-tab-btn ${STATE.subTab === c.id ? "active" : ""}" data-sub="${c.id}">${c.label}</button>`).join("") : "";
       const srcs = [...new Set(DB.armor.map(a => a.quelle).filter(q => q !== "-"))].sort((a, b) => a.localeCompare(b, "de"));
+      const sortOpts = [
+        { val: "name:asc", label: "Name (A–Z)" }, { val: "vw:desc", label: "V-Wert (Hoch → Niedrig)" },
+        { val: "preis:asc", label: "Preis (Günstig → Teuer)" }, { val: "preis:desc", label: "Preis (Teuer → Günstig)" }
+      ];
       controlsEl.innerHTML = `
         <div class="control-group search-grow"><label class="control-label">Panzerung / Modifikation suchen</label><input type="text" id="inpSearch" class="sr-input" value="${escapeHtml(STATE.search)}" placeholder="Panzerjacke, Mystic Weave, Kumulativ..."></div>
         <div class="control-group"><label class="control-label">Legalität</label><select id="selF2" class="sr-select"><option value="">Alle</option><option value="Frei" ${STATE.f2 === "Frei" ? "selected" : ""}>Frei</option><option value="L" ${STATE.f2 === "L" ? "selected" : ""}>L</option><option value="I" ${STATE.f2 === "I" ? "selected" : ""}>I</option></select></div>
         <div class="control-group"><label class="control-label">Quelle</label><select id="selF3" class="sr-select"><option value="">Alle Quellen</option>${srcs.map(s => `<option value="${escapeHtml(s)}" ${STATE.f3 === s ? "selected" : ""}>${escapeHtml(s)}</option>`).join("")}</select></div>
+        ${buildSortSelectHtml(sortOpts)}
         <button class="btn-reset" id="btnReset">Reset</button>`;
     } else if (mod === "equipment") {
       const eqCats = [...new Set(DB.equipment.map(e => e.kategorie))].sort((a, b) => a.localeCompare(b, "de"));
@@ -1179,10 +1357,15 @@
           .concat(eqCats.map(c => `<button class="sub-tab-btn ${STATE.subTab === c ? "active" : ""}" data-sub="${escapeHtml(c)}">${escapeHtml(c)} (${DB.equipment.filter(e => e.kategorie === c).length})</button>`)).join("")
         : "";
       const srcs = [...new Set(DB.equipment.map(e => e.quelle).filter(q => q !== "-"))].sort((a, b) => a.localeCompare(b, "de"));
+      const sortOpts = [
+        { val: "name:asc", label: "Name (A–Z)" }, { val: "preis:asc", label: "Preis (Günstig → Teuer)" },
+        { val: "preis:desc", label: "Preis (Teuer → Günstig)" }, { val: "verf:asc", label: "Verfügbarkeit" }
+      ];
       controlsEl.innerHTML = `
         <div class="control-group search-grow"><label class="control-label">Ausrüstung suchen</label><input type="text" id="inpSearch" class="sr-input" value="${escapeHtml(STATE.search)}" placeholder="Stim-Patch, Credstick, SIN, Medkit, Klettern, Kommlink..."></div>
         <div class="control-group"><label class="control-label">Legalität</label><select id="selF2" class="sr-select"><option value="">Alle</option><option value="Frei" ${STATE.f2 === "Frei" ? "selected" : ""}>Frei</option><option value="L" ${STATE.f2 === "L" ? "selected" : ""}>L</option><option value="I" ${STATE.f2 === "I" ? "selected" : ""}>I</option></select></div>
         <div class="control-group"><label class="control-label">Quelle</label><select id="selF3" class="sr-select"><option value="">Alle Quellen</option>${srcs.map(s => `<option value="${escapeHtml(s)}" ${STATE.f3 === s ? "selected" : ""}>${escapeHtml(s)}</option>`).join("")}</select></div>
+        ${buildSortSelectHtml(sortOpts)}
         <button class="btn-reset" id="btnReset">Reset</button>`;
     } else if (mod === "spells") {
       const spellCats = ["ALL", "Kampfzauber", "Heilzauber", "Illusionszauber", "Manipulationszauber", "Wahrnehmungszauber"];
@@ -1191,11 +1374,16 @@
         return `<button class="sub-tab-btn ${STATE.subTab === c ? "active" : ""}" data-sub="${c}">${c === "ALL" ? "Alle Zauber" : c} (${cnt})</button>`;
       }).join("") : "";
       const srcs = [...new Set(DB.spells.map(s => s.quelle).filter(q => q !== "-"))].sort((a, b) => a.localeCompare(b, "de"));
+      const sortOpts = [
+        { val: "name:asc", label: "Name (A–Z)" }, { val: "entzug:asc", label: "Entzug (Niedrig → Hoch)" },
+        { val: "entzug:desc", label: "Entzug (Hoch → Niedrig)" }
+      ];
       controlsEl.innerHTML = `
         <div class="control-group search-grow"><label class="control-label">Zauber suchen</label><input type="text" id="inpSearch" class="sr-input" value="${escapeHtml(STATE.search)}" placeholder="Feuerball, Unsichtbarkeit, Entzug, Status..."></div>
         <div class="control-group"><label class="control-label">Art</label><select id="selF1" class="sr-select"><option value="">Alle</option><option value="P" ${STATE.f1 === "P" ? "selected" : ""}>P (Physisch)</option><option value="M" ${STATE.f1 === "M" ? "selected" : ""}>M (Mana)</option></select></div>
         <div class="control-group"><label class="control-label">Dauer</label><select id="selF2" class="sr-select"><option value="">Alle</option><option value="S" ${STATE.f2 === "S" ? "selected" : ""}>S (Sofort)</option><option value="A" ${STATE.f2 === "A" ? "selected" : ""}>A (Aufrechterhalten)</option><option value="ZB" ${STATE.f2 === "ZB" ? "selected" : ""}>ZB (Zeitbegrenzt)</option><option value="P" ${STATE.f2 === "P" ? "selected" : ""}>P (Permanent)</option></select></div>
         <div class="control-group"><label class="control-label">Quelle</label><select id="selF3" class="sr-select"><option value="">Alle Quellen</option>${srcs.map(s => `<option value="${escapeHtml(s)}" ${STATE.f3 === s ? "selected" : ""}>${escapeHtml(s)}</option>`).join("")}</select></div>
+        ${buildSortSelectHtml(sortOpts)}
         <button class="btn-reset" id="btnReset">Reset</button>`;
     } else if (mod === "spirits") {
       subTabsEl.innerHTML = "";
@@ -1236,12 +1424,20 @@
     if (selF2) selF2.addEventListener("change", e => { STATE.f2 = e.target.value; renderDataArea(); });
     const selF3 = document.getElementById("selF3");
     if (selF3) selF3.addEventListener("change", e => { STATE.f3 = e.target.value; renderDataArea(); });
+    const selSort = document.getElementById("selSort");
+    if (selSort) {
+      selSort.addEventListener("change", e => {
+        const [k, dir] = e.target.value.split(":");
+        STATE.sortKey = k; STATE.sortAsc = dir === "asc";
+        renderDataArea();
+      });
+    }
     const selAmmo = document.getElementById("selAmmo");
     if (selAmmo) selAmmo.addEventListener("change", e => { STATE.ammo = e.target.value; selAmmo.classList.toggle("highlight-amber", STATE.ammo !== "STANDARD"); renderDataArea(); });
     const selSpiritKS = document.getElementById("selSpiritKS");
     if (selSpiritKS) selSpiritKS.addEventListener("change", e => { STATE.spiritKS = e.target.value; selSpiritKS.classList.toggle("highlight-purple", STATE.spiritKS !== "FORMULA"); renderDataArea(); });
     const btnReset = document.getElementById("btnReset");
-    if (btnReset) btnReset.addEventListener("click", () => { STATE.subTab = "ALL"; STATE.search = ""; STATE.f1 = ""; STATE.f2 = ""; STATE.f3 = ""; STATE.ammo = "STANDARD"; STATE.spiritKS = "FORMULA"; renderAll(); });
+    if (btnReset) btnReset.addEventListener("click", () => { STATE.subTab = "ALL"; STATE.search = ""; STATE.f1 = ""; STATE.f2 = ""; STATE.f3 = ""; STATE.ammo = "STANDARD"; STATE.spiritKS = "FORMULA"; STATE.sortKey = "name"; STATE.sortAsc = true; renderAll(); });
   }
 
   function sortItems(items) {
@@ -1305,7 +1501,19 @@
         ${sorted.length === 0 ? `<tr><td colspan="11" class="state-box">// KEINE TREFFER</td></tr>` : sorted.map(w => {
           const eff = applyAmmoToWeapon(w, STATE.ammo);
           const awHtml = `<div class="aw-grid">` + eff.aw.map(v => { const emp = !v || v === "-" || v === "–"; return `<span class="aw-cell ${emp ? "empty" : (eff.isModded ? "modded" : "")}">${escapeHtml(emp ? "–" : v)}</span>`; }).join("") + `</div>`;
-          return `<tr data-item-id="${w.id}"><td class="col-name">${escapeHtml(w.name)}</td><td class="col-cat">${escapeHtml(w.kategorie)}</td><td class="col-dmg ${eff.isModded ? "modded" : ""}">${escapeHtml(eff.schaden)}</td><td class="col-mono">${escapeHtml(w.modus)}</td><td>${awHtml}</td><td class="col-mono">${escapeHtml(w.munition)}</td><td class="col-mono">${escapeHtml(w.verf)}</td><td>${getLegalityBadge(w.legal)}</td><td class="col-price">${formatPrice(w.preis)}</td><td class="col-notes">${escapeHtml(w.regeln)}</td><td class="col-source">${escapeHtml(w.quelle)}</td></tr>`;
+          return `<tr data-item-id="${w.id}">
+            <td class="col-name">${escapeHtml(w.name)}</td>
+            <td class="col-cat">${escapeHtml(w.kategorie)}</td>
+            <td class="col-dmg col-stat ${eff.isModded ? "modded" : ""}" data-label="Schaden">${escapeHtml(eff.schaden)}</td>
+            <td class="col-mono col-stat" data-label="Modus">${escapeHtml(w.modus)}</td>
+            <td class="col-aw">${awHtml}</td>
+            <td class="col-mono col-stat" data-label="Muni">${escapeHtml(w.munition)}</td>
+            <td class="col-mono col-stat" data-label="Verf.">${escapeHtml(w.verf)}</td>
+            <td class="col-leg">${getLegalityBadge(w.legal)}</td>
+            <td class="col-price">${formatPrice(w.preis)}</td>
+            <td class="col-notes">${escapeHtml(w.regeln)}</td>
+            <td class="col-source">${escapeHtml(w.quelle)}</td>
+          </tr>`;
         }).join("")}
       </tbody></table>`;
     } else if (mod === "gear") {
@@ -1325,7 +1533,17 @@
         <th data-sort="verf">Verf. <span class="sort-arrow">⇅</span></th><th data-sort="legal">Leg. <span class="sort-arrow">⇅</span></th>
         <th data-sort="preis" style="text-align:right;">Preis <span class="sort-arrow">⇅</span></th><th data-sort="regeln">Regeln <span class="sort-arrow">⇅</span></th><th data-sort="quelle">Quelle <span class="sort-arrow">⇅</span></th>
       </tr></thead><tbody>
-        ${sorted.length === 0 ? `<tr><td colspan="9" class="state-box">// KEINE TREFFER</td></tr>` : sorted.map(g => `<tr data-item-id="${g.id}"><td class="col-name">${escapeHtml(g.name)}</td><td class="col-cat">${escapeHtml(g.typ)}</td><td class="col-mono">${escapeHtml(g.halterung)}</td><td class="col-cyan">${escapeHtml(g.effekt)}</td><td class="col-mono">${escapeHtml(g.verf)}</td><td>${getLegalityBadge(g.legal)}</td><td class="col-price">${formatPrice(g.preis)}</td><td class="col-notes">${escapeHtml(g.regeln)}</td><td class="col-source">${escapeHtml(g.quelle)}</td></tr>`).join("")}
+        ${sorted.length === 0 ? `<tr><td colspan="9" class="state-box">// KEINE TREFFER</td></tr>` : sorted.map(g => `<tr data-item-id="${g.id}">
+          <td class="col-name">${escapeHtml(g.name)}</td>
+          <td class="col-cat">${escapeHtml(g.typ)}</td>
+          <td class="col-mono col-stat" data-label="Halterung">${escapeHtml(g.halterung)}</td>
+          <td class="col-cyan col-stat" data-label="Effekt">${escapeHtml(g.effekt)}</td>
+          <td class="col-mono col-stat" data-label="Verf.">${escapeHtml(g.verf)}</td>
+          <td class="col-leg">${getLegalityBadge(g.legal)}</td>
+          <td class="col-price">${formatPrice(g.preis)}</td>
+          <td class="col-notes">${escapeHtml(g.regeln)}</td>
+          <td class="col-source">${escapeHtml(g.quelle)}</td>
+        </tr>`).join("")}
       </tbody></table>`;
     } else if (mod === "armor") {
       if (DB.armor.length === 0) { renderMissingCsvCard("armor"); return; }
@@ -1345,7 +1563,19 @@
         <th data-sort="verf">Verf. <span class="sort-arrow">⇅</span></th><th data-sort="legal">Leg. <span class="sort-arrow">⇅</span></th>
         <th data-sort="preis" style="text-align:right;">Preis <span class="sort-arrow">⇅</span></th><th data-sort="regeln">Regeln <span class="sort-arrow">⇅</span></th><th data-sort="quelle">Quelle <span class="sort-arrow">⇅</span></th>
       </tr></thead><tbody>
-        ${sorted.length === 0 ? `<tr><td colspan="11" class="state-box">// KEINE TREFFER</td></tr>` : sorted.map(a => `<tr data-item-id="${a.id}"><td class="col-name">${escapeHtml(a.name)}</td><td class="col-cat">${escapeHtml(a.kategorie)}</td><td class="col-cyan">${escapeHtml(a.vw)}</td><td class="col-mono">${escapeHtml(a.sozial)}</td><td class="col-mono">${escapeHtml(a.kap)}</td><td class="col-notes">${escapeHtml(a.merkmale)}</td><td class="col-mono">${escapeHtml(a.verf)}</td><td>${getLegalityBadge(a.legal)}</td><td class="col-price">${formatPrice(a.preis)}</td><td class="col-notes">${escapeHtml(a.regeln)}</td><td class="col-source">${escapeHtml(a.quelle)}</td></tr>`).join("")}
+        ${sorted.length === 0 ? `<tr><td colspan="11" class="state-box">// KEINE TREFFER</td></tr>` : sorted.map(a => `<tr data-item-id="${a.id}">
+          <td class="col-name">${escapeHtml(a.name)}</td>
+          <td class="col-cat">${escapeHtml(a.kategorie)}</td>
+          <td class="col-cyan col-stat" data-label="V-Wert">${escapeHtml(a.vw)}</td>
+          <td class="col-mono col-stat" data-label="Sozial">${escapeHtml(a.sozial)}</td>
+          <td class="col-mono col-stat" data-label="Kap.">${escapeHtml(a.kap)}</td>
+          <td class="col-notes">${escapeHtml(a.merkmale)}</td>
+          <td class="col-mono col-stat" data-label="Verf.">${escapeHtml(a.verf)}</td>
+          <td class="col-leg">${getLegalityBadge(a.legal)}</td>
+          <td class="col-price">${formatPrice(a.preis)}</td>
+          <td class="col-notes">${escapeHtml(a.regeln)}</td>
+          <td class="col-source">${escapeHtml(a.quelle)}</td>
+        </tr>`).join("")}
       </tbody></table>`;
     } else if (mod === "equipment") {
       if (DB.equipment.length === 0) { renderMissingCsvCard("equipment"); return; }
@@ -1364,7 +1594,17 @@
         <th data-sort="verf">Verf. <span class="sort-arrow">⇅</span></th><th data-sort="legal">Leg. <span class="sort-arrow">⇅</span></th>
         <th data-sort="preis" style="text-align:right;">Preis <span class="sort-arrow">⇅</span></th><th data-sort="regeln">Regeln &amp; WiFi <span class="sort-arrow">⇅</span></th><th data-sort="quelle">Quelle <span class="sort-arrow">⇅</span></th>
       </tr></thead><tbody>
-        ${sorted.length === 0 ? `<tr><td colspan="9" class="state-box">// KEINE TREFFER</td></tr>` : sorted.map(e => `<tr data-item-id="${e.id}"><td class="col-name">${escapeHtml(e.name)}</td><td class="col-cat">${escapeHtml(e.kategorie)}</td><td class="col-mono">${escapeHtml(e.stufe)}</td><td class="col-cyan">${escapeHtml(e.effekt)}</td><td class="col-mono">${escapeHtml(e.verf)}</td><td>${getLegalityBadge(e.legal)}</td><td class="col-price">${formatPrice(e.preis)}</td><td class="col-notes">${escapeHtml(e.regeln)}</td><td class="col-source">${escapeHtml(e.quelle)}</td></tr>`).join("")}
+        ${sorted.length === 0 ? `<tr><td colspan="9" class="state-box">// KEINE TREFFER</td></tr>` : sorted.map(e => `<tr data-item-id="${e.id}">
+          <td class="col-name">${escapeHtml(e.name)}</td>
+          <td class="col-cat">${escapeHtml(e.kategorie)}</td>
+          <td class="col-mono col-stat" data-label="Stufe/Kap.">${escapeHtml(e.stufe)}</td>
+          <td class="col-cyan col-stat" data-label="Effekt">${escapeHtml(e.effekt)}</td>
+          <td class="col-mono col-stat" data-label="Verf.">${escapeHtml(e.verf)}</td>
+          <td class="col-leg">${getLegalityBadge(e.legal)}</td>
+          <td class="col-price">${formatPrice(e.preis)}</td>
+          <td class="col-notes">${escapeHtml(e.regeln)}</td>
+          <td class="col-source">${escapeHtml(e.quelle)}</td>
+        </tr>`).join("")}
       </tbody></table>`;
     } else if (mod === "spells") {
       if (DB.spells.length === 0) { renderMissingCsvCard("spells"); return; }
@@ -1385,7 +1625,18 @@
         <th data-sort="entzug">Entzug <span class="sort-arrow">⇅</span></th><th data-sort="effekt">Schaden / Effekt <span class="sort-arrow">⇅</span></th>
         <th data-sort="regeln">Beschreibung <span class="sort-arrow">⇅</span></th><th data-sort="quelle">Quelle <span class="sort-arrow">⇅</span></th>
       </tr></thead><tbody>
-        ${sorted.length === 0 ? `<tr><td colspan="10" class="state-box">// KEINE TREFFER</td></tr>` : sorted.map(s => `<tr data-item-id="${s.id}"><td class="col-name">${escapeHtml(s.name)}</td><td class="col-cat">${escapeHtml(s.kategorie)}</td><td class="col-cat">${escapeHtml(s.untertyp)}</td><td class="col-mono">${escapeHtml(s.reichweite)}</td><td><span class="badge ${s.art.toUpperCase() === "M" ? "badge-mana" : "badge-phys"}">${escapeHtml(s.art)}</span></td><td class="col-mono">${escapeHtml(s.dauer)}</td><td class="col-dmg">${escapeHtml(s.entzug)}</td><td class="col-cyan">${escapeHtml(s.effekt)}</td><td class="col-notes">${escapeHtml(s.regeln)}</td><td class="col-source">${escapeHtml(s.quelle)}</td></tr>`).join("")}
+        ${sorted.length === 0 ? `<tr><td colspan="10" class="state-box">// KEINE TREFFER</td></tr>` : sorted.map(s => `<tr data-item-id="${s.id}">
+          <td class="col-name">${escapeHtml(s.name)}</td>
+          <td class="col-cat">${escapeHtml(s.kategorie)} (${escapeHtml(s.untertyp)})</td>
+          <td class="col-cat" style="display:none;">${escapeHtml(s.untertyp)}</td>
+          <td class="col-mono col-stat" data-label="RW">${escapeHtml(s.reichweite)}</td>
+          <td class="col-stat" data-label="Art"><span class="badge ${s.art.toUpperCase() === "M" ? "badge-mana" : "badge-phys"}">${escapeHtml(s.art)}</span></td>
+          <td class="col-mono col-stat" data-label="Dauer">${escapeHtml(s.dauer)}</td>
+          <td class="col-dmg col-stat" data-label="Entzug">${escapeHtml(s.entzug)}</td>
+          <td class="col-cyan col-stat" data-label="Effekt">${escapeHtml(s.effekt)}</td>
+          <td class="col-notes">${escapeHtml(s.regeln)}</td>
+          <td class="col-source">${escapeHtml(s.quelle)}</td>
+        </tr>`).join("")}
       </tbody></table>`;
     } else if (mod === "spirits") {
       if (DB.spirits.length === 0) { renderMissingCsvCard("spirits"); return; }
@@ -1408,7 +1659,16 @@
       </tr></thead><tbody>
         ${sorted.length === 0 ? `<tr><td colspan="8" class="state-box">// KEINE TREFFER</td></tr>` : sorted.map(sp => {
           const attrHtml = `<div class="attr-grid">` + sp.attrs.map(a => `<span class="attr-cell ${isCalc ? "calc" : ""}">${escapeHtml(evalSpiritExpr(a, ksChoice))}</span>`).join("") + `</div>`;
-          return `<tr data-item-id="${sp.id}"><td class="col-name">${escapeHtml(sp.name)}</td><td class="col-cat">${escapeHtml(sp.kategorie)}</td><td>${attrHtml}</td><td class="col-mono ${isCalc ? "col-purple" : ""}">${escapeHtml(evalSpiritExpr(sp.ini, ksChoice))}</td><td class="col-mono ${isCalc ? "col-purple" : ""}">${escapeHtml(evalSpiritExpr(sp.zm, ksChoice))}</td><td class="col-cyan">${escapeHtml(evalSpiritExpr(sp.vw, ksChoice))}</td><td class="col-notes">${escapeHtml(sp.kraefte)}</td><td class="col-source">${escapeHtml(sp.quelle)}</td></tr>`;
+          return `<tr data-item-id="${sp.id}">
+            <td class="col-name">${escapeHtml(sp.name)}</td>
+            <td class="col-cat">${escapeHtml(sp.kategorie)}</td>
+            <td class="col-attrs">${attrHtml}</td>
+            <td class="col-mono col-stat ${isCalc ? "col-purple" : ""}" data-label="Ini">${escapeHtml(evalSpiritExpr(sp.ini, ksChoice))}</td>
+            <td class="col-mono col-stat ${isCalc ? "col-purple" : ""}" data-label="ZM">${escapeHtml(evalSpiritExpr(sp.zm, ksChoice))}</td>
+            <td class="col-cyan col-stat" data-label="VW">${escapeHtml(evalSpiritExpr(sp.vw, ksChoice))}</td>
+            <td class="col-notes">${escapeHtml(sp.kraefte)}</td>
+            <td class="col-source">${escapeHtml(sp.quelle)}</td>
+          </tr>`;
         }).join("")}
       </tbody></table>`;
     } else if (mod === "powers") {
@@ -1431,7 +1691,17 @@
         <th data-sort="reichweite">RW <span class="sort-arrow">⇅</span></th><th data-sort="dauer">Dauer <span class="sort-arrow">⇅</span></th>
         <th data-sort="effekt">Probe / Effekt <span class="sort-arrow">⇅</span></th><th data-sort="regeln">Beschreibung <span class="sort-arrow">⇅</span></th><th data-sort="quelle">Quelle <span class="sort-arrow">⇅</span></th>
       </tr></thead><tbody>
-        ${sorted.length === 0 ? `<tr><td colspan="9" class="state-box">// KEINE TREFFER</td></tr>` : sorted.map(p => `<tr data-item-id="${p.id}"><td class="col-name">${escapeHtml(p.name)}</td><td class="col-cat">${escapeHtml(p.kategorie)}</td><td><span class="badge ${p.art.toUpperCase() === "M" ? "badge-mana" : "badge-phys"}">${escapeHtml(p.art)}</span></td><td class="col-mono">${escapeHtml(p.handlung)}</td><td class="col-mono">${escapeHtml(p.reichweite)}</td><td class="col-mono">${escapeHtml(p.dauer)}</td><td class="col-cyan">${escapeHtml(p.effekt)}</td><td class="col-notes">${escapeHtml(p.regeln)}</td><td class="col-source">${escapeHtml(p.quelle)}</td></tr>`).join("")}
+        ${sorted.length === 0 ? `<tr><td colspan="9" class="state-box">// KEINE TREFFER</td></tr>` : sorted.map(p => `<tr data-item-id="${p.id}">
+          <td class="col-name">${escapeHtml(p.name)}</td>
+          <td class="col-cat">${escapeHtml(p.kategorie)}</td>
+          <td class="col-stat" data-label="Art"><span class="badge ${p.art.toUpperCase() === "M" ? "badge-mana" : "badge-phys"}">${escapeHtml(p.art)}</span></td>
+          <td class="col-mono col-stat" data-label="Handl.">${escapeHtml(p.handlung)}</td>
+          <td class="col-mono col-stat" data-label="RW">${escapeHtml(p.reichweite)}</td>
+          <td class="col-mono col-stat" data-label="Dauer">${escapeHtml(p.dauer)}</td>
+          <td class="col-cyan col-stat" data-label="Effekt">${escapeHtml(p.effekt)}</td>
+          <td class="col-notes">${escapeHtml(p.regeln)}</td>
+          <td class="col-source">${escapeHtml(p.quelle)}</td>
+        </tr>`).join("")}
       </tbody></table>`;
     }
 
@@ -1439,6 +1709,8 @@
       th.addEventListener("click", () => {
         const k = th.dataset.sort;
         if (STATE.sortKey === k) STATE.sortAsc = !STATE.sortAsc; else { STATE.sortKey = k; STATE.sortAsc = true; }
+        const selSort = document.getElementById("selSort");
+        if (selSort) selSort.value = `${STATE.sortKey}:${STATE.sortAsc ? "asc" : "desc"}`;
         renderDataArea();
       });
     });
