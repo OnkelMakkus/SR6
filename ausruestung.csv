@@ -1,0 +1,123 @@
+Name;Kategorie;Stufe_Kapazitaet;Effekt_Werte;Verfuegbarkeit;Legalitaet;Preis;Regeln;Quelle
+Stim-Patch (Stufe 1–6);Biotech & Patches;Stufe 1–6;Entfernt (Stufe)B & Benommen;3;Frei;Stufe × 25;Hält [Stufe × 10] Min. an, danach (Stufe + 1)B unresistierter Schaden; kein Ausruhen während Wirkung;SR6 GRW
+Trauma-Patch;Biotech & Patches;–;Stabilisiert + heilt 1W6+1 Überzählig;3;Frei;500;Stabilisiert sofort bei Überzähligem Schaden und beendet Status Blutend (immer WiFi-aktiv);SR6 GRW
+Tranq-Patch (Stufe 1–12);Biotech & Patches;Stufe 1–12;(Stufe)B Betäubungsschaden;3;Frei;(Stufe × Stufe) × 10;Verursacht Betäubungsschaden in Höhe der Stufe (Widerstand: Konstitution);SR6 GRW
+Antidot-Patch;Biotech & Patches;–;Beendet Status Vergiftet;3;Frei;150;Neutralisiert Toxine und beendet Status Vergiftet (bei seltenen Giften Spezial-Patch nötig);SR6 GRW
+Chem-Patch;Biotech & Patches;–;Trägerpflaster für Toxin/Droge;3;Frei;20;Leeres Slap-Patch (Preis 20 ¥ + Dosis Toxin/Chemikalie; unfreiwilliges Ziel: Nahkampfangriff);SR6 GRW
+Medkit (Stufe 1–6);Biotech & Patches;Stufe 1–6;Heilt 1 Kästchen / Nettoerfolg;3;Frei;Stufe × 250;Biotech/Medkit-Stufe + Logik (5 – Essenz), max. 1h nach Kampf (WiFi: +1 Würfelpool);SR6 GRW
+Medkit-Nachfüllpack;Biotech & Patches;1 Anwendung;Verbrauchsmaterial für Medkit;1;Frei;100;Nach jeder Medkit-Behandlung nötig (bis zu 5 Packs passen in die Medkit-Box);SR6 GRW
+Erste-Hilfe-Set;Biotech & Patches;1 Anwendung;Ermöglicht Erste Hilfe ohne Malus;1;Frei;50;Nötig für Erste Hilfe (max. 1 Min. nach Kampf; ohne Set -2 Würfelpool und kein Edge);SR6 GRW
+Einweg-Spritze;Biotech & Patches;1 Dosis;Injektion;2;Frei;10;Sterile Einwegspritze zur Verabreichung flüssiger Medikamente, Drogen oder Toxine;SR6 GRW
+Vitalmonitor;Biotech & Patches;–;Überwacht Vitalwerte;2;Frei;300;Misst Puls, Blutdruck, Temperatur und Blut-/Schweißproben (als Armband oder in Kleidung/Kommlink);SR6 GRW
+DocWagon-Vertrag (Standard);Biotech & Patches;1 Jahr / Monat;Notfall-Rettung (HTR);1;Frei;5000 (500/Monat);Medizinische Notfall-Evakuierung und Erstversorgung durch DocWagon-Team;SR6 GRW
+DocWagon-Vertrag (Gold);Biotech & Patches;1 Jahr / Monat;1× Gratis-Reanimation, 50% HTR;1;Frei;25000 (2500/Monat);1 kostenlose Reanimation/Jahr, 50% Rabatt auf HTR-Gebühr, 10% Rabatt auf Klinikaufenthalt;SR6 GRW
+DocWagon-Vertrag (Platin);Biotech & Patches;1 Jahr / Monat;Priorisierte HTR-Rettung;1;Frei;50000 (5000/Monat);Erweiterte Premium-Notfallrettung und Intensivversorgung;SR6 GRW
+DocWagon-Vertrag (Superplatin);Biotech & Patches;1 Jahr / Monat;Höchste HTR-Priorität;1;Frei;100000 (10000/Monat);Maximale medizinische Deckung und sofortige HTR-Intervention;SR6 GRW
+Beglaubigter Credstick: Standard;Credsticks & IDs;Max. 5.000 ¥;Anonymes Zahlungsmittel;1;Frei;5;Nicht personengebundenes digitales Bargeld (Guthaben gehört dem Besitzer);SR6 GRW
+Beglaubigter Credstick: Silber;Credsticks & IDs;Max. 20.000 ¥;Anonymes Zahlungsmittel;1;Frei;20;Nicht personengebundenes digitales Bargeld bis 20.000 Nuyen;SR6 GRW
+Beglaubigter Credstick: Gold;Credsticks & IDs;Max. 100.000 ¥;Anonymes Zahlungsmittel;2;Frei;100;Nicht personengebundenes digitales Bargeld bis 100.000 Nuyen;SR6 GRW
+Beglaubigter Credstick: Platin;Credsticks & IDs;Max. 500.000 ¥;Anonymes Zahlungsmittel;3;Frei;500;Nicht personengebundenes digitales Bargeld bis 500.000 Nuyen;SR6 GRW
+Beglaubigter Credstick: Ebenholz;Credsticks & IDs;Max. 1.000.000 ¥;Anonymes Zahlungsmittel;5;Frei;1000;Nicht personengebundenes digitales Bargeld bis 1.000.000 Nuyen;SR6 GRW
+Gefälschte SIN (Stufe 1–6);Credsticks & IDs;Stufe 1–6;Digitale Identität (Stufe × 2);Stufe × 3;I;Stufe × 2500;Gefälschte Systemidentifikationsnummer (Prüfung: Systemstufe × 2 vs. Stufe der SIN);SR6 GRW
+Gefälschte Lizenz (Stufe 1–6);Credsticks & IDs;Stufe 1–6;Lizenz für L-Ausrüstung;Stufe × 3;I;Stufe × 200;Gilt für eine bestimmte Kategorie (z. B. Waffen, Cyberware, Magie; max. Stufe der verknüpften SIN);SR6 GRW
+Kommlink: Meta Link;Kommlinks & Matrix;GS 1;D/F 1/0, 0 Slots;2;Frei;100;Günstiges Wegwerf-Kommlink mit Basisfunktionen (AR, Kamera, Credstickport);SR6 GRW
+Kommlink: VolksKOMM;Kommlinks & Matrix;GS 1;D/F 1/0, 0 Slots;2;Frei;0;Kostenloses Berliner Bürger-Kommlink (nicht auf Schleichfahrt stellbar, überwacht durch BERVAG);Berlin 2080
+Kommlink: Sony Emperor;Kommlinks & Matrix;GS 2;D/F 1/1, 1 Slot;2;Frei;700;Solides Alltagskommlink mit 1 Programmslot;SR6 GRW
+Kommlink: Renraku Sensei;Kommlinks & Matrix;GS 3;D/F 2/0, 1 Slot;2;Frei;1000;Kommlink mit erhöhter Datenverarbeitung für PAN-Slaves;SR6 GRW
+Kommlink: Erika Elite;Kommlinks & Matrix;GS 4;D/F 2/1, 2 Slots;2;Frei;2500;Beliebtes Runner-Kommlink mit 2 Programmslots und solider Firewall;SR6 GRW
+Kommlink: Hermes Ikon;Kommlinks & Matrix;GS 5;D/F 3/0, 2 Slots;3;Frei;5000;Leistungsstarkes Business-Kommlink mit hoher Datenverarbeitung;SR6 GRW
+Kommlink: Transys Avalon;Kommlinks & Matrix;GS 6;D/F 3/1, 3 Slots;3;Frei;8000;High-End-Kommlink mit Gerätestufe 6 und 3 aktiven Programmslots;SR6 GRW
+AR-Handschuhe;Elektronik & RFID;GS 3;Taktiles AR-Feedback;1;Frei;150;Ermöglicht haptisches Greifen und Bedienen virtueller AR-Objekte;SR6 GRW
+Biometrischer Scanner;Elektronik & RFID;GS 3;Fingerabdruck-/Retinascan;2;Frei;200;Prüft biometrische Merkmale zur Identitäts- und Zugangskontrolle;SR6 GRW
+Datenchips (10 Stück);Elektronik & RFID;GS 1;Offline-Datenspeicher;1;Frei;5;Physische Speichermedien für Dateien, Pläne oder Software;SR6 GRW
+Drucker;Elektronik & RFID;GS 3;Tragbarer 2D/Dokumentendrucker;1;Frei;25;Kompakter Drucker für Papier- und Plastikdokumente;SR6 GRW
+Elektronisches Papier;Elektronik & RFID;GS 1;Flexibles Digitaldisplay;1;Frei;5;Dünne, wiederbeschreibbare Anzeige-Folie für Dokumente und Karten;SR6 GRW
+Satellitenverbindung;Elektronik & RFID;GS 4;Globaler Matrixzugang;3;Frei;500;Stellt Matrixverbindung über Satellit in abgelegenen Regionen her;SR6 GRW
+Sim-Modul;Elektronik & RFID;GS 3;Kaltes Sim (VR);2;Frei;100;Ermöglicht VR-Zugang mit kaltem Sim für Kommlinks;SR6 GRW
+Sim-Modul (Heißes Sim);Elektronik & RFID;GS 3;Heißes Sim (+1W6 VR-Ini);2;I;250;Modifiziertes Sim-Modul für heißes Sim (Biofeedback-Schaden wird körperlich);SR6 GRW
+Simrig;Elektronik & RFID;GS 3;Zeichnet Simsinndaten auf;4;Frei;1000;Nimmt alle Sinneseindrücke und Emotionen des Trägers auf;SR6 GRW
+Subvokales Mikrofon;Elektronik & RFID;GS 3;Lautlose Sprachbefehle;2;Frei;50;Erfasst Kehlkopfvibrationen für unhörbare Kommunikation (Wahrnehmung zum Mithören -4);SR6 GRW
+Trideoprojektor;Elektronik & RFID;GS 3;Holografische 3D-Anzeige;1;Frei;200;Projiziert dreidimensionale Trideo-Bilder und Karten in den Raum;SR6 GRW
+Troden;Elektronik & RFID;GS 3;Direktes Neuralinterface (DNI);1;Frei;70;Stirnband/Kappe mit Elektroden; verleiht DNI ohne Datenbuchse;SR6 GRW
+Standard-RFID-Chips (10 Stück);Elektronik & RFID;GS 1;Geotagging & AR-Tags;1;Frei;1;Selbstklebende Mikrochips für AR-Nachrichten, Inventar und Ortung;SR6 GRW
+Sensor-RFID-Chips (10 Stück);Elektronik & RFID;GS 2;24h Sensor-Aufzeichnung;2;Frei;40;Speichert 24h lang Daten eines Einzelsensors (max. Stufe 2; WiFi: Echtzeitabruf);SR6 GRW
+Sicherheits-/Spionage-RFID-Chips (10 Stück);Elektronik & RFID;GS 3;EMP-geschützt / Schleichfahrt;3;I;50;EMP-sicher (nicht durch RFID-Löscher löschbar); Spionage-Variante läuft auf Schleichfahrt (10 Würfel);SR6 GRW
+Datenwanze;Kommunikation & Störsender;–;Direktverbindung am Kabel;2;Frei;300;Wird an Datenkabel geklemmt; umgeht Rauschen und stellt direkte Matrixverbindung her;SR6 GRW
+Headkom-Blocker (Stufe 1–6);Kommunikation & Störsender;Stufe 1–6;Blockiert implantiertes Kommlink;5;I;Stufe × 150;Unterbindet WiFi-/Matrixfunktionen implantierter Kommlinks (Entfernung: Mechanik + Geschicklichkeit 5);SR6 GRW
+Mikro-Transceiver;Kommunikation & Störsender;GS 2;Funkreichweite 1 km;1;Frei;100;Ohrstöpsel + subvokales Mikrofon für verschlüsselte Team-Sprachkommunikation;SR6 GRW
+RFID-Löscher;Kommunikation & Störsender;GS 3;Löscht RFID-Chips;3;Frei;450;Zerstört Standard-RFIDs (10 Patronen = Elektronik + Logik 2, 1 Min.; WiFi: lädt in 1h);SR6 GRW
+Störsender: Bereich (Stufe 1–6);Kommunikation & Störsender;Stufe 1–6;Rauschen = Stufe (-1/10m);3;I;Stufe × 200;Erzeugt kugelförmiges Störfeld (WiFi: kann eigene Geräte/Personas ausnehmen);SR6 GRW
+Störsender: Gerichtet (Stufe 1–6);Kommunikation & Störsender;Stufe 1–6;Rauschen = Stufe (-1/30m, 30°);3;I;Stufe × 200;Kegelförmiges Störfeld mit 30° Winkel (WiFi: Ausnahmeliste möglich);SR6 GRW
+Wanzenscanner;Kommunikation & Störsender;–;Ortet WiFi-Geräte (20m);2;Frei;100;Elektronik + Logik vs. Matrixwahrnehmung im 20m-Radius (WiFi: +2 automatische Erfolge);SR6 GRW
+White-Noise-Generator (Stufe 1–6);Kommunikation & Störsender;Stufe 1–6;-Stufe Würfelpool Hören;2;Frei;Stufe × 50;Stört Abhörversuche in [Stufe] Metern Umkreis (WiFi: verdreifacht Reichweite);SR6 GRW
+Brille;Optik & Sicht;Kap. 1–4;Träger für Sichtverstärkungen;1;Frei;Kapazität × 100;Schutzbrille mit Kapazität 1–4 für Sicht-Upgrades;SR6 GRW
+Endoskop;Optik & Sicht;–;Glasfaserkamera (1m);3;Frei;250;Dünnes Kamerakabel zum Spähen unter Türen hindurch oder um Ecken;SR6 GRW
+Fernglas (elektronisch);Optik & Sicht;Kap. 1–3;Sichtvergrößerung + Kap. 1–3;1;Frei;Kapazität × 50;Digitales Fernglas mit Aufnahmefunktion und Slots für Sichtverstärkungen;SR6 GRW
+Fernglas (optisch);Optik & Sicht;Kap. 1;Sichtvergrößerung (analog);1;Frei;50;Rein optisches Fernglas (ermöglicht physische Sichtlinie für Spruchzauberei);SR6 GRW
+Kamera;Optik & Sicht;Kap. 1–6;Foto-/Trideoaufnahme + Kap. 1–6;1;Frei;Kapazität × 100;Hand- oder Helmkamera mit hoher Kapazität für Sichtverstärkungen;SR6 GRW
+Kontaktlinsen;Optik & Sicht;Kap. 1–3;Unauffällige Sichtverstärkung;2;Frei;Kapazität × 200;Unsichtbare Kontaktlinsen mit Platz für bis zu 3 Kapazitätspunkte;SR6 GRW
+Mage-Sight-Brille;Optik & Sicht;–;Astrale Sichtlinie per Glasfaser;5;Frei;3000;Ermöglicht Erwachten physische/astrale Sichtlinie um Ecken (10m Glasfaserkabel);SR6 GRW
+Mikrokamera;Optik & Sicht;Kap. 1;Winzige Spionagekamera;1;Frei;100;Knopfgroße Kamera mit Kapazität 1;SR6 GRW
+Monokel;Optik & Sicht;Kap. 1–4;Einzelokular + Kap. 1–4;1;Frei;Kapazität × 120;An Stirnband, Helm oder Kette tragbares Einzel-Sichtgerät;SR6 GRW
+Sichtgerät (Goggles);Optik & Sicht;Kap. 1–6;Kopfhalterung + Kap. 1–6;1;Frei;Kapazität × 50;Robuste Schutzmaske/Goggles mit maximaler Kapazität für Sicht-Upgrades;SR6 GRW
+Bildverbindung (Sicht-Upgrade);Optik & Sicht;[1] Kapazität;Zeigt AR & AROs an;1;Frei;+25;Grundvoraussetzung zur visuellen Darstellung von AR-Informationen;SR6 GRW
+Blitzkompensation (Sicht-Upgrade);Optik & Sicht;[1] Kapazität;+1 Edge gegen Blendung;1;Frei;+250;Schützt vor grellem Licht und senkt Flash-Pack-Status um 1 Stufe;SR6 GRW
+Infrarotsicht (Sicht-Upgrade);Optik & Sicht;[1] Kapazität;+1 Edge bei Dunkelheit (Wärme);2;Frei;+500;Zeigt Wärmesignaturen in völliger Dunkelheit (+1 Edge vs. ungeschützte Ziele);SR6 GRW
+Restlichtverstärkung (Sicht-Upgrade);Optik & Sicht;[1] Kapazität;+1 Edge bei schwachem Licht;2;Frei;+500;Verstärkt Restlicht (Sternenlicht) auf Tageslichtniveau;SR6 GRW
+Sichtverbesserung (Sicht-Upgrade);Optik & Sicht;[2] Kapazität;+1 Würfelpool Wahrnehmung;1;Frei;+500;Verbessert Detailerkennung und gewährt +1 Würfelpool auf visuelle Wahrnehmung;SR6 GRW
+Sichtvergrößerung (Sicht-Upgrade);Optik & Sicht;[1] Kapazität;Optischer/Digitaler Zoom;1;Frei;+250;Vergrößert entfernte Ziele (Voraussetzung für Zielen auf Weit/Sehr weit);SR6 GRW
+Smartlink (Sicht-Upgrade);Optik & Sicht;[2] Kapazität;+2 AW mit Smartgunsystem;2;Frei;+2000;Zeigt Zieldaten, Munitionsstand und schaltet den +2 AW-Bonus von Smartguns frei;SR6 GRW
+Ultraschallverbindung (Sicht-Upgrade);Optik & Sicht;[1] Kapazität;Visualisiert Ultraschalldaten;1;Frei;+300;Stellt Echodaten eines Ultraschallsensors optisch im Sichtfeld dar;SR6 GRW
+Kopfhörer;Audio;Kap. 1–6;Headset + Kap. 1–6;1;Frei;Kapazität × 50;Gepolsterter Kopfhörer mit hoher Kapazität für Audioverstärkungen;SR6 GRW
+Lasermikrofon;Audio;Kap. 1–6;Abhören über Scheiben (100m);2;Frei;Kapazität × 100;Misst Laservibrationen an Fensterscheiben auf bis zu 100m Entfernung;SR6 GRW
+Mikrofon;Audio;Kap. 1–6;Aufnahmemikrofon + Kap. 1–6;1;Frei;Kapazität × 50;Kompaktes Mikrofon mit Kapazität für Audio-Upgrades;SR6 GRW
+Ohrstöpsel;Audio;Kap. 1–3;Unauffällig + Kap. 1–3;1;Frei;Kapazität × 50;Im Ohr tragbare Stöpsel mit Kapazität 1–3;SR6 GRW
+Richtmikrofon;Audio;Kap. 1–6;Abhören auf Distanz (100m);2;Frei;Kapazität × 50;Fokussiert Gespräche in bis zu 100m Entfernung;SR6 GRW
+Audioverbesserung (Audio-Upgrade);Audio;[1] Kapazität;+1 Würfelpool Hören;1;Frei;+500;Erweitert Hörspektrum (Infra-/Ultraschall) und gibt +1 Würfelpool auf akustische Wahrnehmung;SR6 GRW
+Richtungsdetektor (Audio-Upgrade);Audio;[2] Kapazität;+1 Edge Geräuschquelle orten;2;Frei;+1000;Lokalisiert Ursprung eines Geräuschs (+1 Edge; WiFi: +1 Würfelpool);SR6 GRW
+Selektiver Geräuschfilter (Stufe 1–3);Audio;[Stufe] Kap.;Filtert (Stufe) Geräuschmuster;3;Frei;+(Stufe × 250);Blendet Lärm aus und erkennt/alarmiert bei bis zu [Stufe] gespeicherten Geräuschmustern;SR6 GRW
+Sensorgehäuse: Tragbar;Sensoren;Kap. 1–3;Max. Sensorstufe 3;1;Frei;Kapazität × 100;Handgerät-Gehäuse für Einzelsensoren oder Sensorarray (max. Stufe 3);SR6 GRW
+Sensorgehäuse: Stationär;Sensoren;Kap. 1–6;Max. Sensorstufe 4;1;Frei;Kapazität × 250;Fest installierbares Gehäuse für Sensoren (max. Stufe 4);SR6 GRW
+Sensorarray (Stufe 2–8);Sensoren;[Stufe] Kap.;Enthält (Stufe) Sensorfunktionen;3;Frei;Stufe × 1000;Kombiniert mehrere Sensorfunktionen (Atmosphäre, Cyberware, Geiger, Geruch, Laser, MAD, Ultraschall) in einem Paket;SR6 GRW
+Einzelsensor (Stufe 1–8);Sensoren;[1] Kapazität;1 gewählte Sensorfunktion;2;Frei;Stufe × 100;Einzelner Sensor (z. B. MAD-Scanner 5m, Cyberwarescanner 15m, Ultraschall, Geigerzähler);SR6 GRW
+Automatischer Dietrich;Einbruch & Sicherheit;–;+1 Würfelpool Schlösser knacken;4;L;500;Elektrische Sperrpistole für mechanische Schlösser (+1 Würfelpool auf Mechanik + Geschicklichkeit);SR6 GRW
+Brecheisen;Einbruch & Sicherheit;–;Verdoppelt Stärke beim Aufbrechen;1;Frei;20;Stabile Hebelstange zum Aufbrechen von Türen, Kisten und Schlössern;SR6 GRW
+Dietrich-Set;Einbruch & Sicherheit;–;Mechanische Schlösser knacken;2;L;250;Klassisches Dietrich-Besteck (nötig für Mechanik + Geschicklichkeit gegen mechanische Schlösser);SR6 GRW
+Gussform für Abdruckhandschuh (Stufe 1–4);Einbruch & Sicherheit;Stufe 1–4;Kopiert biometrische Abdrücke;6;I;Stufe × 500;Erstellt Silikon-Abdrücke von Fingerabdrücken oder Handflächen zur Umgehung biometrischer Scanner;SR6 GRW
+Magnetkarten-Kopierer;Einbruch & Sicherheit;–;Kopiert Magnetstreifen-Karten;4;I;600;Liest und klont klassische Magnetstreifen-Schlüsselkarten;SR6 GRW
+Magschlossknacker (Stufe 1–4);Einbruch & Sicherheit;Stufe 1–4;Überlistet Kartenleser-Magschlösser;3;I;Stufe × 2000;Simuliert legitime Schlüsselkarte (WiFi: +1 auf Stufe des Magschlossknackers);SR6 GRW
+Mini-Schweißgerät;Einbruch & Sicherheit;–;Schneidet Metall & Schlösser;1;Frei;250;Tragbarer Schneidbrenner (benötigt Treibstoffkanister für 80 ¥);SR6 GRW
+Monofilamentkettensäge;Einbruch & Sicherheit;–;Schaden 8 gegen Barrieren;3;Frei;500;Tragbare Motorsäge mit Monofilamentdraht zum Durchtrennen von Türen, Bäumen und Gittern;SR6 GRW
+Sequencer (Stufe 1–6);Einbruch & Sicherheit;Stufe 1–6;Knackt Tastatur-Magschlösser;4;I;Stufe × 250;Berechnet Zugangscodes für elektronische Tasten-Magschlösser;SR6 GRW
+Kleber-Lösungsmittel;Einbruch & Sicherheit;1 m²;Löst Sprühkleber auf;1;Frei;90;Löst ca. 1 Quadratmeter ausgehärteten Aerosol-Sprühkleber auf;SR6 GRW
+Sprühkleber;Einbruch & Sicherheit;1 m²;Stärke/Konstitution 5;1;Frei;150;Verklebt Oberflächen/Türen in 1 Kampfrunde (Aufbrechen: Vergleichende Probe Konstitution + Stärke vs. 5);SR6 GRW
+Thermit-Brennstab;Einbruch & Sicherheit;–;Feuerschaden 10K (Barrieren);5;L;500;Schmilzt Löcher durch Stahl und Plasstahl (nicht als Kampfwaffe nutzbar; WiFi-Zündung);SR6 GRW
+Cyberwareblocker;Einbruch & Sicherheit;–;Blockiert externe Cyberware-Links;3;Frei;250;Stört kabellose Steuerbefehle an Cybergliedmaßen/Implantate;SR6 GRW
+Metall-Handschellen;Einbruch & Sicherheit;–;Fesselung (Standard);1;Frei;20;Klassische Stahlhandschellen;SR6 GRW
+Plasstahl-Handschellen;Einbruch & Sicherheit;–;Fesselung (Schwer);2;Frei;50;Verstärkte Hochsicherheits-Handschellen;SR6 GRW
+Plastikstreifen (10 Stück);Einbruch & Sicherheit;–;Einweg-Kabelbinder;1;Frei;5;Leichte Einwegfesseln für schnelle Festnahmen;SR6 GRW
+Kletterausrüstung;Überleben & Klettern;–;Ermöglicht Klettern ohne Malus;1;Frei;200;Vollständiges Klettergeschirr mit Karabinern, Haken, Steigeisen und Sicherung;SR6 GRW
+Geckotape-Handschuhe;Überleben & Klettern;–;Klettern an glatten Wänden;3;Frei;250;Haft-Handschuhe und Überziehsohlen (nutzlos wenn nass; WiFi: schaltet Haftung per Signal ab);SR6 GRW
+Abseilhandschuhe;Überleben & Klettern;–;+1 Edge beim Seil-Festhalten;1;Frei;50;Schützt Hände vor Schnittverletzungen bei Microwire und Camouflageseil;SR6 GRW
+Enterhakenkanone;Überleben & Klettern;–;Verschießt Seil + Haken;3;Frei;500;Druckluftwerfer für Kletterseile (Seil separat kaufen);SR6 GRW
+Standardseil (100 m);Überleben & Klettern;100 m;Traglast Standard;1;Frei;50;Klassisches synthetisches Kletterseil pro 100 Meter;SR6 GRW
+Microwire (100 m);Überleben & Klettern;100 m;Extrem dünn & reißfest;2;Frei;50;Ultradünnes Hochleistungsseil (erfordert Abseilhandschuhe);SR6 GRW
+Camouflageseil (100 m);Überleben & Klettern;100 m;Tarnseil + Katalysatorstab;3;I;85;Passt Farbe an Umgebung an; löst sich mit Katalysatorstab (120 ¥, 3I) rückstandslos auf;SR6 GRW
+Myomeres Seil (10 m);Überleben & Klettern;10 m;Ferngesteuert (2m/Runde);4;Frei;200;Bewegt und verknotet sich selbstständig per WiFi-Steuerung (max. 30m);SR6 GRW
+Atemschutzmaske (Stufe 1–6);Überleben & Klettern;Stufe 1–6;+Stufe Würfelpool Inhalation;1;Frei;Stufe × 50;Filtert Gase und Toxine mit Inhalationsvektor (+Stufe auf Widerstandsproben);SR6 GRW
+Gasmaske;Überleben & Klettern;1 Std. Luft;Immunität Inhalationsvektor;1;Frei;200;Vollgesichtsmaske mit 1h Sauerstofftank (Ersatz 40 ¥); immun gegen Inhalationsgifte;SR6 GRW
+Freitauch-Atemmaske;Überleben & Klettern;–;Unterwasser-Atmung (Oblaten);4;Frei;500;Vollgesichtsmaske mit Atemoblaten-Einschub für risikoarmes Freitauchen;Arkane Kräfte
+Chemoanzug (Stufe 1–6);Überleben & Klettern;Stufe 1–6;Schutz gegen Kontakttoxine;4;Frei;Stufe × 150;Schutzanzug gegen Säuren und chemische Kontaktgifte;SR6 GRW
+Hazmat-Anzug;Überleben & Klettern;4 Std. Luft;Chem. Versiegelung + Sensorplatz;3;Frei;3000;Vollständiger Gefahrgutanzug mit 4h Lufttank und Platz für 1 Sensor (z. B. Geigerzähler);SR6 GRW
+Taucherausrüstung;Überleben & Klettern;2 Std. Luft;Kälteresistenz 2 + Lufttank;3;Frei;2000;Neoprenanzug, Atemregler, 2h Lufttank (Ersatz 50 ¥) und Tarierweste;SR6 GRW
+Survival-Kit;Überleben & Klettern;–;Überlebensausrüstung Wildnis;2;Frei;200;Kompass, Wasserfilter, Feuerstarter, Rettungsdecke, Notrationen und Signalspiegel;SR6 GRW
+Wanderausrüstung (Einfach / Vollständig);Überleben & Klettern;–;Alpine Grundausrüstung;1 / 2;Frei;400 / 1200;Wetterfeste Berg- und Trekkingausrüstung (vollständige Version inkl. Zelt & Kocher);Datapuls Alpen
+Ares Victory Murmeltier (Zelt + Schlafsack);Überleben & Klettern;–;Kälteresistenz 3 (regenerierend);3;Frei;1800;Beheizter Schlafsack mit Solar-Zelt (regeneriert alle 8h einen Punkt Kälteresistenz);Datapuls Alpen
+Taschenlampe;Überleben & Klettern;–;Lichtquelle;1;Frei;25;Robuste LED-Stablampe (auch als Infrarot- oder Restlicht-Variante verfügbar);SR6 GRW
+Leuchtstab;Überleben & Klettern;–;Chemische Lichtquelle;1;Frei;25;Wasserdichter Knick-Leuchtstab für mehrere Stunden Umgebungslicht;SR6 GRW
+Magnesiumfackel;Überleben & Klettern;–;Grelles Signallicht / Hitze;1;Frei;5;Brennt extrem hell und heiß (auch unter Wasser nutzbar);SR6 GRW
+Mini-Signalraketenkanone;Überleben & Klettern;–;Verschießt Signalraketen;1;Frei;175;Kompakte Signalpistole (Munition: Mini-Signalrakete 25 ¥);SR6 GRW
+Pressluftatmer (Feuerwehr);Überleben & Klettern;2 Std. Luft;Immunität Inhalation, WiFi +1 Edge;2;Frei;800;Hitzeresistentes Atemschutzgerät (Auffüllen 50 €; WiFi: +1 Edge auf Konstitutionsproben);Datapuls Feuerläufer
+Werkzeugkiste (Fertigkeit);Werkzeuge;Tragbar;Ermöglicht Bauen/Reparieren;1;Frei;500;Tragbare Werkzeugtasche für eine gewählte Fertigkeit (z. B. Elektronik, Mechanik, Waffenbau);SR6 GRW
+Laden (Fertigkeit);Werkzeuge;Lieferwagen;+1 Würfelpool + Ersatzteile;4;Frei;5000;Mobile Werkstatt im Van (+1 Würfelpool auf Bauen/Reparieren + Standardersatzteile);SR6 GRW
+Werkstatt (Fertigkeit);Werkzeuge;Stationär;+1 Würfelpool + 1 Edge;7;Frei;50000;Stationäre Halle mit schweren Maschinen (+1 Würfelpool + 1 Edge auf alle Bauen/Reparieren-Proben);SR6 GRW
