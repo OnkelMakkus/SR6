@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SR6 // Arsenal-Datenbank</title>
+<title>SR6 // Schattenkompendium Datenbank</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2216%22 fill=%22%23090d14%22/><text x=%2250%22 y=%2268%22 font-family=%22monospace%22 font-weight=%22bold%22 font-size=%2252%22 fill=%22%2300f0ff%22 text-anchor=%22middle%22>SR</text></svg>">
 <style>
   :root {
-    --bg-void: #06080b;
-    --bg-main: #0b0f15;
-    --bg-panel: #111722;
-    --bg-panel-alt: #0e141d;
-    --bg-hover: #192436;
-    --bg-input: #080c12;
-    --border: #1e2c3d;
+    --bg-void: #05070a;
+    --bg-main: #0a0e14;
+    --bg-panel: #101622;
+    --bg-panel-alt: #0d131d;
+    --bg-hover: #182334;
+    --bg-input: #070b10;
+    --border: #1d2b3c;
     --border-bright: #2c4159;
     --cyan: #00f0ff;
     --cyan-dim: rgba(0, 240, 255, 0.12);
@@ -21,7 +21,10 @@
     --pink-dim: rgba(255, 42, 109, 0.14);
     --amber: #ffb703;
     --amber-dim: rgba(255, 183, 3, 0.14);
+    --purple: #b565ff;
+    --purple-dim: rgba(181, 101, 255, 0.14);
     --green: #10b981;
+    --green-dim: rgba(16, 185, 129, 0.14);
     --text: #e2e8f0;
     --text-dim: #8b9bb4;
     --font-sans: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -44,42 +47,36 @@
   }
 
   .app-shell {
-    max-width: 1600px;
+    max-width: 1640px;
     margin: 0 auto;
-    padding: 20px 24px 48px 24px;
+    padding: 18px 22px 48px 22px;
   }
 
   @media (max-width: 640px) {
     .app-shell {
-      padding: 12px 10px 32px 10px;
+      padding: 10px 8px 32px 8px;
     }
   }
 
-  /* Header */
+  /* Header Banner */
   .hero-banner {
-    background: linear-gradient(135deg, #0b111a 0%, #131c2b 55%, #1a1022 100%);
+    background: linear-gradient(135deg, #0b111a 0%, #131c2b 55%, #1c1026 100%);
     border: 1px solid var(--border-bright);
     border-left: 4px solid var(--cyan);
     border-radius: 6px;
-    padding: 20px 24px;
-    margin-bottom: 16px;
+    padding: 18px 24px;
+    margin-bottom: 14px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-  }
-
-  .hero-left {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
   }
 
   .hero-kicker {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: 0.74rem;
     letter-spacing: 2px;
     color: var(--pink);
     text-transform: uppercase;
@@ -87,11 +84,12 @@
 
   .hero-title {
     font-family: var(--font-mono);
-    font-size: 1.65rem;
+    font-size: 1.6rem;
     font-weight: 800;
     letter-spacing: 1px;
     color: #fff;
     text-transform: uppercase;
+    margin-top: 2px;
   }
 
   .hero-title span {
@@ -100,13 +98,14 @@
   }
 
   .hero-sub {
-    font-size: 0.85rem;
+    font-size: 0.84rem;
     color: var(--text-dim);
+    margin-top: 2px;
   }
 
   .status-pill {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 0.79rem;
     background: var(--bg-input);
     border: 1px solid var(--border-bright);
     padding: 8px 14px;
@@ -129,46 +128,117 @@
     color: var(--cyan);
   }
 
-  /* Quick Group Tabs */
-  .group-tabs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
+  /* Primary Module Navigation */
+  .module-nav {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
     margin-bottom: 14px;
   }
 
-  .tab-btn {
+  @media (max-width: 960px) {
+    .module-nav {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .module-nav {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .mod-btn {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-bottom: 3px solid transparent;
+    color: var(--text-dim);
+    padding: 11px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.18s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .mod-btn:hover {
+    background: var(--bg-hover);
+    border-color: var(--border-bright);
+    color: #fff;
+  }
+
+  .mod-btn.active {
+    background: linear-gradient(180deg, #131d2d 0%, #0e1522 100%);
+    border-color: var(--cyan);
+    border-bottom-color: var(--pink);
+    color: #fff;
+    box-shadow: 0 4px 18px rgba(0, 240, 255, 0.14);
+  }
+
+  .mod-btn-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  .mod-btn.active .mod-btn-top {
+    color: var(--cyan);
+  }
+
+  .mod-badge {
+    font-size: 0.7rem;
+    padding: 1px 6px;
+    border-radius: 3px;
+    background: var(--bg-input);
+    border: 1px solid var(--border-bright);
+    color: var(--text-dim);
+  }
+
+  .mod-btn.active .mod-badge {
+    color: var(--cyan);
+    border-color: rgba(0, 240, 255, 0.4);
+  }
+
+  .mod-btn-sub {
+    font-size: 0.74rem;
+    color: var(--text-dim);
+  }
+
+  /* Sub-Tabs (e.g. Weapon groups / Spell categories) */
+  .sub-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .sub-tab-btn {
     background: var(--bg-panel);
     border: 1px solid var(--border);
     color: var(--text-dim);
     font-family: var(--font-mono);
-    font-size: 0.8rem;
-    padding: 8px 14px;
+    font-size: 0.78rem;
+    padding: 6px 12px;
     border-radius: 4px;
     cursor: pointer;
-    transition: all 0.18s ease;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    transition: all 0.15s;
   }
 
-  .tab-btn:hover {
+  .sub-tab-btn:hover {
     border-color: var(--cyan);
     color: #fff;
-    background: var(--bg-hover);
   }
 
-  .tab-btn.active {
+  .sub-tab-btn.active {
     background: var(--cyan-dim);
     border-color: var(--cyan);
     color: var(--cyan);
     font-weight: 700;
-    box-shadow: 0 0 12px rgba(0, 240, 255, 0.18);
-  }
-
-  .tab-count {
-    font-size: 0.72rem;
-    opacity: 0.75;
   }
 
   /* Main Database Card */
@@ -179,37 +249,27 @@
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.65);
   }
 
-  /* Controls Grid */
+  /* Dynamic Filter Bar */
   .controls-bar {
-    display: grid;
-    grid-template-columns: 2.2fr 1.1fr 0.9fr 1.1fr 1fr auto;
+    display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     padding: 14px 16px;
     background: var(--bg-panel-alt);
     border-bottom: 1px solid var(--border);
     border-radius: 6px 6px 0 0;
-    align-items: center;
-  }
-
-  @media (max-width: 1100px) {
-    .controls-bar {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-    .search-box {
-      grid-column: 1 / -1;
-    }
-  }
-
-  @media (max-width: 600px) {
-    .controls-bar {
-      grid-template-columns: 1fr;
-    }
+    align-items: flex-end;
   }
 
   .control-group {
     display: flex;
     flex-direction: column;
     gap: 3px;
+    flex: 1 1 170px;
+  }
+
+  .control-group.search-grow {
+    flex: 2.5 1 260px;
   }
 
   .control-label {
@@ -222,7 +282,8 @@
 
   .sr-input, .sr-select {
     width: 100%;
-    padding: 8px 11px;
+    height: 36px;
+    padding: 7px 11px;
     background: var(--bg-input);
     border: 1px solid var(--border-bright);
     border-radius: 4px;
@@ -238,21 +299,26 @@
     box-shadow: 0 0 0 2px var(--cyan-dim);
   }
 
-  .sr-select.ammo-active {
+  .sr-select.highlight-amber {
     border-color: var(--amber);
     color: var(--amber);
-    background: rgba(255, 183, 3, 0.07);
+    background: rgba(255, 183, 3, 0.08);
+  }
+
+  .sr-select.highlight-purple {
+    border-color: var(--purple);
+    color: var(--purple);
+    background: rgba(181, 101, 255, 0.08);
   }
 
   .btn-reset {
-    align-self: flex-end;
-    padding: 8px 14px;
     height: 36px;
+    padding: 0 14px;
     background: transparent;
     border: 1px solid var(--pink);
     color: var(--pink);
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 700;
     text-transform: uppercase;
     border-radius: 4px;
@@ -267,22 +333,28 @@
     box-shadow: 0 0 12px rgba(255, 42, 109, 0.45);
   }
 
-  /* Ammo Info Strip */
-  .ammo-banner {
+  /* Info Banner (Active Ammo or Active Force Level) */
+  .info-strip {
     display: none;
     padding: 8px 16px;
     background: var(--amber-dim);
     border-bottom: 1px solid rgba(255, 183, 3, 0.35);
     color: var(--amber);
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 0.79rem;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 8px;
   }
 
-  .ammo-banner.visible {
+  .info-strip.purple {
+    background: var(--purple-dim);
+    border-bottom-color: rgba(181, 101, 255, 0.35);
+    color: var(--purple);
+  }
+
+  .info-strip.visible {
     display: flex;
   }
 
@@ -303,12 +375,12 @@
     position: sticky;
     top: 0;
     z-index: 5;
-    background: #090d14;
+    background: #080c12;
     color: var(--cyan);
     font-family: var(--font-mono);
-    font-size: 0.76rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.8px;
+    letter-spacing: 0.7px;
     padding: 11px 10px;
     border-bottom: 2px solid var(--border-bright);
     cursor: pointer;
@@ -326,7 +398,7 @@
   }
 
   thead th.no-sort:hover {
-    background: #090d14;
+    background: #080c12;
     color: var(--cyan);
   }
 
@@ -364,7 +436,7 @@
   .col-name {
     font-weight: 600;
     color: #fff;
-    min-width: 175px;
+    min-width: 165px;
   }
 
   .col-cat {
@@ -376,7 +448,7 @@
   .col-dmg {
     font-family: var(--font-mono);
     font-weight: 700;
-    font-size: 0.92rem;
+    font-size: 0.9rem;
     color: var(--pink);
     white-space: nowrap;
   }
@@ -386,19 +458,54 @@
     text-shadow: 0 0 8px rgba(255, 183, 3, 0.35);
   }
 
-  .col-mode {
+  .col-cyan {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--text);
+    font-weight: 700;
+    color: var(--cyan);
     white-space: nowrap;
   }
 
-  /* 5-Range AW Pills */
+  .col-purple {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    color: var(--purple);
+    white-space: nowrap;
+  }
+
+  .col-mono {
+    font-family: var(--font-mono);
+    font-size: 0.81rem;
+    white-space: nowrap;
+  }
+
+  .col-price {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: #6ee7b7;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .col-notes {
+    font-size: 0.82rem;
+    color: #cbd5e1;
+    min-width: 180px;
+    max-width: 340px;
+  }
+
+  .col-source {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+
+  /* 5-Range AW Grid */
   .aw-header-sub {
     display: grid;
-    grid-template-columns: repeat(5, minmax(26px, 1fr));
+    grid-template-columns: repeat(5, minmax(25px, 1fr));
     gap: 3px;
-    font-size: 0.64rem;
+    font-size: 0.63rem;
     color: var(--text-dim);
     text-align: center;
     margin-top: 2px;
@@ -406,10 +513,10 @@
 
   .aw-grid {
     display: inline-grid;
-    grid-template-columns: repeat(5, minmax(26px, 1fr));
+    grid-template-columns: repeat(5, minmax(25px, 1fr));
     gap: 3px;
     font-family: var(--font-mono);
-    font-size: 0.79rem;
+    font-size: 0.78rem;
     text-align: center;
   }
 
@@ -432,94 +539,123 @@
     font-weight: 400;
   }
 
-  .col-mono {
+  /* Spirit 9-Attribute Mini-Grid */
+  .attr-header-sub {
+    display: grid;
+    grid-template-columns: repeat(9, minmax(36px, 1fr));
+    gap: 2px;
+    font-size: 0.63rem;
+    color: var(--text-dim);
+    text-align: center;
+    margin-top: 2px;
+  }
+
+  .attr-grid {
+    display: inline-grid;
+    grid-template-columns: repeat(9, minmax(36px, 1fr));
+    gap: 2px;
     font-family: var(--font-mono);
-    font-size: 0.82rem;
+    font-size: 0.74rem;
+    text-align: center;
+  }
+
+  .attr-cell {
+    background: var(--bg-input);
+    border: 1px solid #1c2838;
+    border-radius: 3px;
+    padding: 2px 2px;
+    color: var(--text);
     white-space: nowrap;
   }
 
+  .attr-cell.calc {
+    color: var(--purple);
+    border-color: rgba(181, 101, 255, 0.35);
+    font-weight: 700;
+  }
+
+  /* Badges */
   .badge {
     display: inline-block;
     padding: 2px 7px;
     border-radius: 3px;
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: 0.74rem;
     font-weight: 700;
     white-space: nowrap;
   }
 
-  .badge-frei {
-    background: var(--cyan-dim);
-    color: var(--cyan);
-    border: 1px solid rgba(0, 240, 255, 0.28);
-  }
+  .badge-frei { background: var(--cyan-dim); color: var(--cyan); border: 1px solid rgba(0, 240, 255, 0.28); }
+  .badge-l    { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(255, 183, 3, 0.35); }
+  .badge-i    { background: var(--pink-dim); color: var(--pink); border: 1px solid rgba(255, 42, 109, 0.38); }
+  .badge-mana { background: var(--purple-dim); color: var(--purple); border: 1px solid rgba(181, 101, 255, 0.38); }
+  .badge-phys { background: var(--green-dim); color: var(--green); border: 1px solid rgba(16, 185, 129, 0.38); }
 
-  .badge-l {
-    background: var(--amber-dim);
-    color: var(--amber);
-    border: 1px solid rgba(255, 183, 3, 0.35);
-  }
-
-  .badge-i {
-    background: var(--pink-dim);
-    color: var(--pink);
-    border: 1px solid rgba(255, 42, 109, 0.38);
-  }
-
-  .col-price {
-    font-family: var(--font-mono);
-    font-weight: 600;
-    color: #6ee7b7;
-    text-align: right;
-    white-space: nowrap;
-  }
-
-  .col-notes {
-    font-size: 0.82rem;
-    color: #cbd5e1;
-    min-width: 180px;
-    max-width: 320px;
-  }
-
-  .col-source {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--text-dim);
-    white-space: nowrap;
-  }
-
-  /* Loader & Error */
+  /* Empty / Template State Box */
   .state-box {
-    padding: 50px 20px;
+    padding: 46px 20px;
     text-align: center;
     font-family: var(--font-mono);
     color: var(--cyan);
-    line-height: 1.7;
   }
 
-  .state-box.error {
-    color: var(--pink);
-  }
-
-  .help-box {
-    max-width: 680px;
-    margin: 18px auto 0 auto;
-    padding: 14px 18px;
+  .template-card {
+    max-width: 720px;
+    margin: 0 auto;
     background: var(--bg-input);
     border: 1px solid var(--border-bright);
+    border-left: 4px solid var(--amber);
     border-radius: 6px;
+    padding: 20px 24px;
     text-align: left;
     font-family: var(--font-sans);
-    font-size: 0.86rem;
     color: var(--text);
   }
 
-  /* Weapon Detail Modal */
+  .template-card h3 {
+    font-family: var(--font-mono);
+    color: var(--amber);
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .template-cols {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    background: #05070a;
+    border: 1px solid var(--border);
+    padding: 10px;
+    border-radius: 4px;
+    color: var(--cyan);
+    overflow-x: auto;
+    margin: 12px 0;
+    white-space: nowrap;
+  }
+
+  .btn-template {
+    background: var(--cyan-dim);
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+
+  .btn-template:hover {
+    background: var(--cyan);
+    color: #05070a;
+  }
+
+  /* Universal Detail Modal */
   .modal-backdrop {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(3, 5, 8, 0.82);
+    background: rgba(3, 5, 8, 0.84);
     backdrop-filter: blur(3px);
     z-index: 999;
     justify-content: center;
@@ -536,8 +672,10 @@
     border: 1px solid var(--cyan);
     border-top: 4px solid var(--pink);
     border-radius: 6px;
-    max-width: 560px;
+    max-width: 640px;
     width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
     padding: 22px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 25px rgba(0, 240, 255, 0.15);
   }
@@ -577,6 +715,7 @@
     height: 32px;
     border-radius: 4px;
     cursor: pointer;
+    flex-shrink: 0;
   }
 
   .modal-close:hover {
@@ -587,8 +726,14 @@
   .modal-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 8px;
     margin-bottom: 14px;
+  }
+
+  @media (max-width: 500px) {
+    .modal-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   .stat-box {
@@ -600,14 +745,14 @@
 
   .stat-box-label {
     font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-size: 0.67rem;
     color: var(--text-dim);
     text-transform: uppercase;
   }
 
   .stat-box-val {
     font-family: var(--font-mono);
-    font-size: 1rem;
+    font-size: 0.96rem;
     font-weight: 700;
     color: #fff;
     margin-top: 2px;
@@ -620,24 +765,37 @@
     margin-bottom: 14px;
   }
 
+  .modal-attrs {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 4px;
+    margin-bottom: 14px;
+  }
+
+  @media (max-width: 560px) {
+    .modal-attrs {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+
   .range-box {
     background: var(--bg-input);
     border: 1px solid var(--border-bright);
     border-radius: 4px;
-    padding: 7px 4px;
+    padding: 6px 4px;
     text-align: center;
   }
 
   .range-box span {
     display: block;
     font-family: var(--font-mono);
-    font-size: 0.65rem;
+    font-size: 0.63rem;
     color: var(--text-dim);
   }
 
   .range-box strong {
     font-family: var(--font-mono);
-    font-size: 1.05rem;
+    font-size: 0.98rem;
     color: var(--cyan);
   }
 
@@ -648,7 +806,8 @@
     border-radius: 0 4px 4px 0;
     font-size: 0.88rem;
     color: #cbd5e1;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
+    line-height: 1.5;
   }
 
   .modal-actions {
@@ -656,28 +815,11 @@
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-  }
-
-  .btn-copy {
-    background: var(--cyan-dim);
-    border: 1px solid var(--cyan);
-    color: var(--cyan);
-    font-family: var(--font-mono);
-    font-size: 0.82rem;
-    font-weight: 700;
-    padding: 9px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.18s;
-  }
-
-  .btn-copy:hover {
-    background: var(--cyan);
-    color: #06080b;
+    flex-wrap: wrap;
   }
 
   .footer-bar {
-    margin-top: 16px;
+    margin-top: 14px;
     text-align: right;
     font-family: var(--font-mono);
     font-size: 0.74rem;
@@ -690,118 +832,59 @@
 <div class="app-shell">
   <!-- Header -->
   <header class="hero-banner">
-    <div class="hero-left">
-      <div class="hero-kicker">// SHADOWRUN 6. EDITION • KOMPENDIUM</div>
-      <h1 class="hero-title">SR6 <span>ARSENAL</span> DATENBANK</h1>
-      <div class="hero-sub">Klicke auf eine Waffe für Details &amp; Spieltisch-Export • Nutze den Munitions-Simulator für Live-Werte</div>
+    <div>
+      <div class="hero-kicker">// SHADOWRUN 6. EDITION • MATRIX-KOMPENDIUM</div>
+      <h1 class="hero-title">SR6 <span>SCHATTEN</span> DATENBANK</h1>
+      <div class="hero-sub">Waffen, Zubehör, Panzerung, Zauber &amp; Geister • Klicke auf einen Eintrag für Spieltisch-Details</div>
     </div>
     <div class="status-pill">
       <span class="status-dot" id="statusDot"></span>
-      <span id="statsDisplay">VERBINDE MIT MATRIX...</span>
+      <span id="statsDisplay">INITIALISIERE...</span>
     </div>
   </header>
 
-  <!-- Quick Category Group Tabs -->
-  <nav class="group-tabs" id="groupTabs">
-    <button class="tab-btn active" data-group="ALL">Alle Einträge <span class="tab-count" id="cnt-ALL"></span></button>
-    <button class="tab-btn" data-group="PISTOLS">Pistolen &amp; Taser <span class="tab-count" id="cnt-PISTOLS"></span></button>
-    <button class="tab-btn" data-group="SMG_SHOTGUN">MPs &amp; Schrotflinten <span class="tab-count" id="cnt-SMG_SHOTGUN"></span></button>
-    <button class="tab-btn" data-group="RIFLES">Gewehre <span class="tab-count" id="cnt-RIFLES"></span></button>
-    <button class="tab-btn" data-group="HEAVY_EXOTIC">Schwere &amp; Exotische <span class="tab-count" id="cnt-HEAVY_EXOTIC"></span></button>
-    <button class="tab-btn" data-group="MELEE_PROJ">Nahkampf &amp; Projektil <span class="tab-count" id="cnt-MELEE_PROJ"></span></button>
-    <button class="tab-btn" data-group="GEAR">Zubehör <span class="tab-count" id="cnt-GEAR"></span></button>
+  <!-- Primary 5-Module Navigation -->
+  <nav class="module-nav" id="moduleNav">
+    <button class="mod-btn active" data-mod="weapons">
+      <div class="mod-btn-top"><span>WAFFEN &amp; MUNI</span><span class="mod-badge" id="badge-weapons">0</span></div>
+      <div class="mod-btn-sub">Feuer-, Nahkampf-, Granaten &amp; Muni</div>
+    </button>
+    <button class="mod-btn" data-mod="gear">
+      <div class="mod-btn-top"><span>WAFFENZUBEHÖR</span><span class="mod-badge" id="badge-gear">0</span></div>
+      <div class="mod-btn-sub">Aufsätze, Halterungen &amp; Mods</div>
+    </button>
+    <button class="mod-btn" data-mod="armor">
+      <div class="mod-btn-top"><span>PANZERUNG</span><span class="mod-badge" id="badge-armor">0</span></div>
+      <div class="mod-btn-sub">Kleidung, Schilde &amp; Mods</div>
+    </button>
+    <button class="mod-btn" data-mod="spells">
+      <div class="mod-btn-top"><span>ZAUBER</span><span class="mod-badge" id="badge-spells">0</span></div>
+      <div class="mod-btn-sub">Kampf, Heilung, Illusion, Mani, Wahrn.</div>
+    </button>
+    <button class="mod-btn" data-mod="spirits">
+      <div class="mod-btn-top"><span>GEISTER</span><span class="mod-badge" id="badge-spirits">0</span></div>
+      <div class="mod-btn-sub">Attribute, Kräfte &amp; KS-Rechner</div>
+    </button>
   </nav>
 
-  <!-- Main Database Container -->
+  <!-- Dynamic Sub-Tabs -->
+  <div class="sub-tabs" id="subTabs"></div>
+
+  <!-- Main Content Card -->
   <main class="db-card">
-    <div class="controls-bar">
-      <div class="control-group search-box">
-        <label class="control-label" for="searchInput">Volltextsuche</label>
-        <input type="text" id="searchInput" class="sr-input" placeholder="Waffe, Ausstattung (z. B. Smartgun, Schalldämpfer), Schaden...">
-      </div>
-
-      <div class="control-group">
-        <label class="control-label" for="categoryFilter">Unterkategorie</label>
-        <select id="categoryFilter" class="sr-select">
-          <option value="">Alle Unterkategorien</option>
-        </select>
-      </div>
-
-      <div class="control-group">
-        <label class="control-label" for="legalityFilter">Legalität</label>
-        <select id="legalityFilter" class="sr-select">
-          <option value="">Alle</option>
-          <option value="Frei">Frei (Legal)</option>
-          <option value="L">L (Lizenz)</option>
-          <option value="I">I (Illegal)</option>
-        </select>
-      </div>
-
-      <div class="control-group">
-        <label class="control-label" for="ammoSelect">Munitions-Rechner</label>
-        <select id="ammoSelect" class="sr-select">
-          <option value="STANDARD">Standardmunition</option>
-          <option value="APDS">APDS (+2 AW / -1 Schaden)</option>
-          <option value="EXPLOSIV">Explosiv (+1 Schaden)</option>
-          <option value="FLECHETTE">Flechette (+1 AW / -1 Schaden)</option>
-          <option value="GEL">Gel (Schaden → B)</option>
-          <option value="SCHOCKER">Schocker (+1 AW / -1 B(e))</option>
-        </select>
-      </div>
-
-      <div class="control-group">
-        <label class="control-label" for="sourceFilter">Regelwerk</label>
-        <select id="sourceFilter" class="sr-select">
-          <option value="">Alle Quellen</option>
-        </select>
-      </div>
-
-      <button id="resetBtn" class="btn-reset" title="Alle Filter zurücksetzen">Reset</button>
-    </div>
-
-    <div class="ammo-banner" id="ammoBanner">
-      <span id="ammoBannerText"></span>
-      <span>Gilt automatisch für alle kompatiblen Feuerwaffen</span>
-    </div>
-
-    <div class="table-scroll">
-      <div id="statusMessage" class="state-box">// LADE WAFFENDATEN...</div>
-      <table id="weaponsTable" style="display: none;">
-        <thead>
-          <tr>
-            <th data-key="waffe">Waffe <span class="sort-arrow">⇅</span></th>
-            <th data-key="kategorie">Kategorie <span class="sort-arrow">⇅</span></th>
-            <th data-key="schaden">Schaden <span class="sort-arrow">⇅</span></th>
-            <th data-key="modus">Modus <span class="sort-arrow">⇅</span></th>
-            <th class="no-sort">
-              Angriffswerte
-              <div class="aw-header-sub">
-                <span title="Sehr nah (0–3 m)">SN</span>
-                <span title="Nah (4–50 m)">N</span>
-                <span title="Mittel (51–250 m)">M</span>
-                <span title="Weit (251–500 m)">W</span>
-                <span title="Sehr weit (501+ m)">SW</span>
-              </div>
-            </th>
-            <th data-key="munition">Munition <span class="sort-arrow">⇅</span></th>
-            <th data-key="verf">Verf. <span class="sort-arrow">⇅</span></th>
-            <th data-key="legal">Leg. <span class="sort-arrow">⇅</span></th>
-            <th data-key="preis" style="text-align: right;">Preis <span class="sort-arrow">⇅</span></th>
-            <th data-key="ausstattung">Ausstattung &amp; Regeln <span class="sort-arrow">⇅</span></th>
-            <th data-key="quelle">Quelle <span class="sort-arrow">⇅</span></th>
-          </tr>
-        </thead>
-        <tbody id="tableBody"></tbody>
-      </table>
+    <div class="controls-bar" id="controlsBar"></div>
+    <div class="info-strip" id="infoStrip"></div>
+    <div class="table-scroll" id="contentArea">
+      <div class="state-box">// LADE DATEN AUS DER MATRIX...</div>
     </div>
   </main>
 
-  <footer class="footer-bar" id="footerSource">
-    VERBINDE DATENQUELLE...
+  <footer class="footer-bar" id="footerBar">
+    SR6 KOMPENDIUM • HOSTED ON GITHUB PAGES
   </footer>
 </div>
 
-<!-- Detail Modal -->
+<!-- Universal Detail Modal -->
 <div class="modal-backdrop" id="detailModal">
   <div class="modal-card">
     <div class="modal-top">
@@ -811,46 +894,9 @@
       </div>
       <button class="modal-close" id="mClose" title="Schließen">✕</button>
     </div>
-
-    <div class="modal-grid">
-      <div class="stat-box">
-        <div class="stat-box-label">Schaden</div>
-        <div class="stat-box-val" id="mDmg" style="color: var(--pink);"></div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-box-label">Feuermodus</div>
-        <div class="stat-box-val" id="mMode"></div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-box-label">Munition</div>
-        <div class="stat-box-val" id="mAmmo"></div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-box-label">Verfügbarkeit</div>
-        <div class="stat-box-val" id="mVerf"></div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-box-label">Preis</div>
-        <div class="stat-box-val" id="mPrice" style="color: #6ee7b7;"></div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-box-label">Quelle</div>
-        <div class="stat-box-val" id="mSource" style="font-size: 0.85rem;"></div>
-      </div>
-    </div>
-
-    <div class="modal-ranges">
-      <div class="range-box"><span>SEHR NAH (0–3m)</span><strong id="mAw0"></strong></div>
-      <div class="range-box"><span>NAH (4–50m)</span><strong id="mAw1"></strong></div>
-      <div class="range-box"><span>MITTEL (51–250m)</span><strong id="mAw2"></strong></div>
-      <div class="range-box"><span>WEIT (251–500m)</span><strong id="mAw3"></strong></div>
-      <div class="range-box"><span>SEHR WEIT (501+)</span><strong id="mAw4"></strong></div>
-    </div>
-
-    <div class="modal-notes" id="mNotes"></div>
-
+    <div id="mBody"></div>
     <div class="modal-actions">
-      <button class="btn-copy" id="mCopyBtn">📋 Werte für Spieltisch kopieren</button>
+      <button class="btn-template" id="mCopyBtn">📋 Werte für Spieltisch kopieren</button>
       <span id="mCopyFeedback" style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--green);"></span>
     </div>
   </div>
@@ -863,31 +909,67 @@
     STANDARD:  { label: "Standardmunition",   aw: 0, dmg: 0,  type: null,   mult: "× 1" },
     APDS:      { label: "APDS-Munition",      aw: 2, dmg: -1, type: null,   mult: "× 3 (Verf. 4I)" },
     EXPLOSIV:  { label: "Explosivmunition",   aw: 0, dmg: 1,  type: null,   mult: "× 2 (Verf. 2I)" },
-    FLECHETTE: { label: "Flechettemunition",  aw: 1, dmg: -1, type: null,   mult: "× 1" },
-    GEL:       { label: "Gelmunition",        aw: 0, dmg: 0,  type: "B",    mult: "× 1" },
+    FLECHETTE: { label: "Flechettemunition",  aw: 1, dmg: -1, type: null,   mult: "× 1,5" },
+    GEL:       { label: "Gelmunition",        aw: 0, dmg: 0,  type: "B",    mult: "× 1,5" },
     SCHOCKER:  { label: "Schockermunition",   aw: 1, dmg: -1, type: "B(e)", mult: "× 2" }
   };
 
-  let allWeapons = [];
-  let activeGroup = "ALL";
-  let sortState = { key: "waffe", asc: true };
-  let currentModalText = "";
+  // CSV Schemas & Downloadable Templates
+  const TEMPLATES = {
+    gear: {
+      filename: "zubehoer.csv",
+      title: "Waffenzubehör & Modifikationen (zubehoer.csv)",
+      desc: "Zusätzlich zu Zubehör-Einträgen aus waffen.csv kannst du hier eine eigene zubehoer.csv ablegen.",
+      header: "Name;Typ;Halterung_Slots;Effekt_AW_Modus;Verfuegbarkeit;Legalitaet;Preis;Regeln;Quelle",
+      sample: "Smartgunsystem (extern);Zubehör;Auf/Unter;+2 AW (alle);2;L;200;+2 AW mit Smartlink, +1 Würfelpool per WiFi, Kamera (Kap. 1);SR6 GRW"
+    },
+    armor: {
+      filename: "panzerung.csv",
+      title: "Panzerung & Panzerungsmodifikatoren (panzerung.csv)",
+      desc: "Lege panzerung.csv im selben GitHub-Ordner wie index.html ab, um Kleidung, Panzerungen, Helme, Schilde und Panzerungsmods anzuzeigen.",
+      header: "Name;Kategorie;Verteidigungswert;Sozial;Kapazitaet;Merkmale;Verfuegbarkeit;Legalitaet;Preis;Regeln;Quelle",
+      sample: "Panzerjacke;Panzerung;+4;-2;8;–;2;Frei;1000;Klassische gepanzerte Jacke;SR6 GRW\nMystic Weave (Stufe 1–4);Panzerungsmodifikation;–;–;[Stufe × 2];Magieresistenz;6;L;Stufe × 10.000;Erhöht Verteidigung gegen Zauber;Feuer frei!"
+    },
+    spells: {
+      filename: "zauber.csv",
+      title: "Zauber-Kompendium (zauber.csv)",
+      desc: "Lege zauber.csv im GitHub-Repository ab, um alle Zauber mit Reichweite, Art, Dauer, Entzug und Effekten durchsuchbar zu machen.",
+      header: "Name;Kategorie;Untertyp;Reichweite;Art;Dauer;Entzug;Schaden_Effekt;Beschreibung;Quelle",
+      sample: "Feuerball;Kampfzauber;Indirekt, Flächenwirkung;BF (F);P;S;6;Indirekt (Feuer), Status Brennend;Erzeugt eine Explosion aus Flammen im Zielgebiet;SR6 GRW\nHeilen;Heilzauber;Essenz;B;P;P;3;Heilt Kästchen = Nettoerfolge;Heilt Körperlichen Schaden (max. 1x pro Verletzungssatz);SR6 GRW"
+    },
+    spirits: {
+      filename: "geister.csv",
+      title: "Geister & Kraftstufe-Rechner (geister.csv)",
+      desc: "Lege geister.csv im GitHub-Repository ab. Alle Formeln mit 'KS' werden vom integrierten Kraftstufe-Rechner automatisch für KS 1–12 berechnet!",
+      header: "Name;Kategorie;K;G;R;S;W;L;I;C;ESS;Initiative;Astrale_Ini;Handlungen;Zustandsmonitor;Verteidigungswert;Bewegung;Fertigkeiten;Kraefte;Optionale_Kraefte;Beschwoerungsort_Regeln;Quelle",
+      sample: "Erdgeist;Elementargeist;KS + 4;KS - 2;KS - 1;KS + 4;KS;KS - 1;KS;KS;KS;(KS × 2) - 1 + 2W6;(KS × 2) - 1 + 3W6;1 Haupt, 3 Neben;(KS ÷ 2) + 8;KS / KS + 4 / (KS × 2) + 4;5/10/+1;Astral, Exotische Waffen, Nahkampf, Wahrnehmung;Astrale Gestalt, Bewegung, Bewusstsein, Materialisierung, Suche, Verschleierung;Elementarer Angriff, Grauen, Panzer, Schutz, Unfall, Verwirrung;Erdreich, Fels oder Stein;SR6 GRW"
+    }
+  };
 
-  const searchInput = document.getElementById("searchInput");
-  const categoryFilter = document.getElementById("categoryFilter");
-  const legalityFilter = document.getElementById("legalityFilter");
-  const sourceFilter = document.getElementById("sourceFilter");
-  const ammoSelect = document.getElementById("ammoSelect");
-  const ammoBanner = document.getElementById("ammoBanner");
-  const ammoBannerText = document.getElementById("ammoBannerText");
-  const resetBtn = document.getElementById("resetBtn");
-  const tableBody = document.getElementById("tableBody");
-  const weaponsTable = document.getElementById("weaponsTable");
-  const statusMessage = document.getElementById("statusMessage");
-  const statsDisplay = document.getElementById("statsDisplay");
-  const statusDot = document.getElementById("statusDot");
-  const footerSource = document.getElementById("footerSource");
+  // Global Application State
+  const DB = {
+    weapons: [],
+    gear: [],
+    armor: [],
+    spells: [],
+    spirits: []
+  };
 
+  const STATE = {
+    mod: "weapons",
+    subTab: "ALL",
+    search: "",
+    f1: "",
+    f2: "",
+    f3: "",
+    ammo: "STANDARD",
+    spiritKS: "FORMULA",
+    sortKey: "name",
+    sortAsc: true,
+    modalCopyText: ""
+  };
+
+  // Utility Functions
   function cleanCell(val) {
     return (val || "")
       .replace(/^\uFEFF/, "")
@@ -907,8 +989,9 @@
   function parseCSV(text) {
     const cleanText = (text || "").replace(/^\uFEFF/, "");
     const lines = cleanText.split(/\r?\n/).filter(l => l.trim() !== "");
-    const sampleLine = lines.find(l => l.toLowerCase().includes("waffe")) || lines[0] || "";
-    const delimiter = sampleLine.split(";").length > sampleLine.split(",").length ? ";" : ",";
+    if (lines.length === 0) return [];
+    const sample = lines[0];
+    const delimiter = sample.split(";").length > sample.split(",").length ? ";" : ",";
     const rows = [];
     let row = [];
     let current = "";
@@ -930,7 +1013,7 @@
       } else if ((char === "\r" || char === "\n") && !inQuotes) {
         if (char === "\r" && next === "\n") i++;
         row.push(cleanCell(current));
-        if (row.some(cell => cell !== "")) rows.push(row);
+        if (row.some(c => c !== "")) rows.push(row);
         row = [];
         current = "";
       } else {
@@ -939,59 +1022,26 @@
     }
     if (current !== "" || row.length > 0) {
       row.push(cleanCell(current));
-      if (row.some(cell => cell !== "")) rows.push(row);
+      if (row.some(c => c !== "")) rows.push(row);
     }
     return rows;
   }
 
-  function classifyGroup(cat) {
-    const c = (cat || "").toLowerCase();
-    if (c.includes("pistole") || c.includes("taser")) return "PISTOLS";
-    if (c.includes("maschinenpistole") || c.includes("schrotflinte")) return "SMG_SHOTGUN";
-    if (c.includes("gewehr") || c.includes("karabiner")) return "RIFLES";
-    if (c.includes("lmg") || c.includes("mmg") || c.includes("smg") || c.includes("sturmkanone") ||
-        c.includes("werfer") || c.includes("laser") || c.includes("emitter") || c.includes("druckluft")) return "HEAVY_EXOTIC";
-    if (c.includes("klinge") || c.includes("knüppel") || c.includes("waffenlos") ||
-        c.includes("exotisch") || c.includes("projektil")) return "MELEE_PROJ";
-    if (c.includes("zubehör")) return "GEAR";
-    return "HEAVY_EXOTIC";
-  }
-
-  function supportsAmmo(cat) {
-    const c = (cat || "").toLowerCase();
-    return (
-      c.includes("pistole") ||
-      c.includes("maschinenpistole") ||
-      c.includes("schrotflinte") ||
-      c.includes("gewehr") ||
-      c.includes("karabiner") ||
-      c === "lmg" || c === "mmg" || c === "smg"
-    );
-  }
-
-  function applyAmmoToWeapon(w, ammoKey) {
-    if (ammoKey === "STANDARD" || !supportsAmmo(w.kategorie)) {
-      return { schaden: w.schaden, aw: [...w.aw], isModded: false };
-    }
-    const mod = AMMO_MODS[ammoKey];
-    let newDmg = w.schaden;
-    const dmgMatch = /^(\d+)(K|B(?:\(e\))?)$/i.exec(w.schaden.trim());
-    if (dmgMatch) {
-      const baseNum = parseInt(dmgMatch[1], 10);
-      const baseType = dmgMatch[2];
-      const finalNum = Math.max(1, baseNum + mod.dmg);
-      const finalType = mod.type ? mod.type : baseType;
-      newDmg = `${finalNum}${finalType}`;
-    }
-
-    const newAw = w.aw.map(val => {
-      if (/^\d+$/.test(val.trim())) {
-        return String(Math.max(1, parseInt(val.trim(), 10) + mod.aw));
+  function buildHeaderIndex(headerRow, aliasMap) {
+    const normHeaders = headerRow.map(h => h.toLowerCase().replace(/[^a-z0-9äöüß]/g, ""));
+    const result = {};
+    for (const [key, aliases] of Object.entries(aliasMap)) {
+      let found = -1;
+      for (const alias of aliases) {
+        const idx = normHeaders.indexOf(alias);
+        if (idx !== -1) {
+          found = idx;
+          break;
+        }
       }
-      return val;
-    });
-
-    return { schaden: newDmg, aw: newAw, isModded: true };
+      result[key] = found;
+    }
+    return result;
   }
 
   function parseNumber(val) {
@@ -1004,382 +1054,1182 @@
   function formatPrice(val) {
     if (!val || val === "-" || val === "–") return "–";
     const num = parseNumber(val);
-    if (num >= 0 && /^\d[\d.,\s]*[¥€]?$/.test(val.trim())) {
-      return num.toLocaleString("de-DE") + " ¥";
+    if (num >= 0 && /^[+-]?\d[\d.,\s]*[¥€]?$/.test(val.trim())) {
+      const prefix = val.trim().startsWith("+") ? "+" : "";
+      return prefix + num.toLocaleString("de-DE") + " ¥";
     }
     return escapeHtml(val);
-  }
-
-  function mapRowsToObjects(rows) {
-    if (rows.length < 2) return [];
-    let headerRowIdx = rows.findIndex(r =>
-      r.some(cell => cell.toLowerCase().replace(/[^a-z0-9äöüß]/g, "") === "waffe")
-    );
-    if (headerRowIdx === -1) headerRowIdx = 0;
-
-    const headers = rows[headerRowIdx].map(h => h.toLowerCase().replace(/[^a-z0-9äöüß]/g, ""));
-    const findIdx = (names, fallback) => {
-      for (const n of names) {
-        const idx = headers.indexOf(n);
-        if (idx !== -1) return idx;
-      }
-      return fallback;
-    };
-
-    const idxMap = {
-      waffe: findIdx(["waffe", "name"], 0),
-      kategorie: findIdx(["kategorie", "art", "typ"], 1),
-      schaden: findIdx(["schaden", "schadenswert"], 2),
-      modus: findIdx(["modus", "feuermodus"], 3),
-      awSn: findIdx(["awsehrnah", "sehrnah"], 4),
-      awN: findIdx(["awnah", "nah"], 5),
-      awM: findIdx(["awmittel", "mittel"], 6),
-      awW: findIdx(["awweit", "weit"], 7),
-      awSw: findIdx(["awsehrweit", "sehrweit"], 8),
-      munition: findIdx(["munition", "muni"], 9),
-      verf: findIdx(["verfuegbarkeit", "verfügbarkeit", "verf"], 10),
-      legal: findIdx(["legalitaet", "legalität", "leg"], 11),
-      preis: findIdx(["preis", "kosten"], 12),
-      ausstattung: findIdx(["ausstattung", "regeln", "anmerkungen"], 13),
-      quelle: findIdx(["quelle", "buch"], 14)
-    };
-
-    const items = [];
-    for (let i = headerRowIdx + 1; i < rows.length; i++) {
-      const r = rows[i];
-      const waffe = r[idxMap.waffe] || "";
-      if (!waffe || waffe.toLowerCase() === "waffe") continue;
-      const kategorie = r[idxMap.kategorie] || "Sonstiges";
-
-      items.push({
-        id: i,
-        waffe,
-        kategorie,
-        group: classifyGroup(kategorie),
-        schaden: r[idxMap.schaden] || "-",
-        modus: r[idxMap.modus] || "-",
-        aw: [
-          r[idxMap.awSn] || "-",
-          r[idxMap.awN] || "-",
-          r[idxMap.awM] || "-",
-          r[idxMap.awW] || "-",
-          r[idxMap.awSw] || "-"
-        ],
-        munition: r[idxMap.munition] || "-",
-        verf: r[idxMap.verf] || "-",
-        legal: r[idxMap.legal] || "Frei",
-        preis: r[idxMap.preis] || "-",
-        ausstattung: r[idxMap.ausstattung] || "-",
-        quelle: r[idxMap.quelle] || "-"
-      });
-    }
-    return items;
-  }
-
-  function populateControls(data) {
-    document.getElementById("cnt-ALL").textContent = `(${data.length})`;
-    ["PISTOLS", "SMG_SHOTGUN", "RIFLES", "HEAVY_EXOTIC", "MELEE_PROJ", "GEAR"].forEach(g => {
-      const c = data.filter(w => w.group === g).length;
-      const el = document.getElementById(`cnt-${g}`);
-      if (el) el.textContent = `(${c})`;
-    });
-
-    const categories = [...new Set(data.map(w => w.kategorie).filter(Boolean))].sort((a, b) => a.localeCompare(b, "de"));
-    categories.forEach(cat => {
-      const opt = document.createElement("option");
-      opt.value = cat;
-      opt.textContent = cat;
-      categoryFilter.appendChild(opt);
-    });
-
-    const sources = [...new Set(data.map(w => w.quelle).filter(q => q && q !== "-"))].sort((a, b) => a.localeCompare(b, "de"));
-    sources.forEach(src => {
-      const opt = document.createElement("option");
-      opt.value = src;
-      opt.textContent = src;
-      sourceFilter.appendChild(opt);
-    });
   }
 
   function getLegalityBadge(leg) {
     const clean = (leg || "").trim().toUpperCase();
     if (clean === "I") return `<span class="badge badge-i" title="Illegal">I</span>`;
     if (clean === "L") return `<span class="badge badge-l" title="Lizenzpflichtig">L</span>`;
-    return `<span class="badge badge-frei" title="Frei verkäuflich">${escapeHtml(leg || "Frei")}</span>`;
+    return `<span class="badge badge-frei">${escapeHtml(leg || "Frei")}</span>`;
   }
 
-  function renderAwCells(awArr, isModded) {
-    return `<div class="aw-grid">` + awArr.map(val => {
-      const isEmpty = !val || val === "-" || val === "–";
-      const cls = isEmpty ? "empty" : (isModded ? "modded" : "");
-      return `<span class="aw-cell ${cls}">${escapeHtml(isEmpty ? "–" : val)}</span>`;
-    }).join("") + `</div>`;
-  }
+  // Spirit Formula Evaluator (evaluates KS expressions safely)
+  function evalSpiritExpr(expr, ksChoice) {
+    if (!expr || expr === "-" || expr === "–") return "–";
+    if (ksChoice === "FORMULA" || !/KS/i.test(expr)) return expr;
+    const ks = parseInt(ksChoice, 10);
 
-  function sortData(list) {
-    const { key, asc } = sortState;
-    const dir = asc ? 1 : -1;
-    return [...list].sort((a, b) => {
-      if (key === "preis" || key === "verf" || key === "schaden") {
-        const numA = parseNumber(a[key]);
-        const numB = parseNumber(b[key]);
-        if (numA !== numB) return (numA - numB) * dir;
+    // Split by "/" for multi-part values like "KS / KS + 4 / (KS × 2) + 4"
+    return expr.split("/").map(part => {
+      let p = part.trim();
+      if (!/KS/i.test(p)) return p;
+
+      // Separate trailing dice notation like "+ 2W6" or "+ 3W6"
+      let diceSuffix = "";
+      const diceMatch = p.match(/(\+\s*\d+W6)$/i);
+      if (diceMatch) {
+        diceSuffix = " " + diceMatch[1].replace(/\s+/g, " ");
+        p = p.slice(0, diceMatch.index).trim();
       }
-      return String(a[key]).localeCompare(String(b[key]), "de", { numeric: true }) * dir;
+
+      const mathStr = p
+        .replace(/KS/gi, `(${ks})`)
+        .replace(/×/g, "*")
+        .replace(/÷/g, "/");
+
+      if (/^[0-9+\-*/().\s]+$/.test(mathStr)) {
+        try {
+          const val = Function(`"use strict"; return (${mathStr});`)();
+          if (typeof val === "number" && !isNaN(val)) {
+            return String(Math.max(1, Math.ceil(val))) + diceSuffix;
+          }
+        } catch (_) {}
+      }
+      return part.trim();
+    }).join(" / ");
+  }
+
+  // Mappers for each CSV type
+  function mapWeapons(rows) {
+    if (rows.length < 2) return [];
+    let hIdx = rows.findIndex(r => r.some(c => c.toLowerCase().replace(/[^a-z0-9äöüß]/g, "") === "waffe"));
+    if (hIdx === -1) hIdx = 0;
+
+    const idx = buildHeaderIndex(rows[hIdx], {
+      name: ["waffe", "name"],
+      kategorie: ["kategorie", "art", "typ"],
+      schaden: ["schaden", "schadenswert"],
+      modus: ["modus", "feuermodus"],
+      aw0: ["awsehrnah", "sehrnah"],
+      aw1: ["awnah", "nah"],
+      aw2: ["awmittel", "mittel"],
+      aw3: ["awweit", "weit"],
+      aw4: ["awsehrweit", "sehrweit"],
+      munition: ["munition", "muni"],
+      verf: ["verfuegbarkeit", "verfügbarkeit", "verf"],
+      legal: ["legalitaet", "legalität", "leg"],
+      preis: ["preis", "kosten"],
+      ausstattung: ["ausstattung", "regeln", "anmerkungen"],
+      quelle: ["quelle", "buch"]
+    });
+
+    const classifyWeaponGroup = (cat) => {
+      const c = (cat || "").toLowerCase();
+      if (c.includes("pistole") || c.includes("taser")) return "PISTOLS";
+      if (c.includes("maschinenpistole") || c.includes("schrotflinte")) return "SMG_SHOTGUN";
+      if (c.includes("gewehr") || c.includes("karabiner")) return "RIFLES";
+      if (c.includes("lmg") || c.includes("mmg") || c.includes("smg") || c.includes("sturmkanone") ||
+          c.includes("werfer") || c.includes("laser") || c.includes("emitter") || c.includes("druckluft")) return "HEAVY_EXOTIC";
+      if (c.includes("klinge") || c.includes("knüppel") || c.includes("waffenlos") ||
+          c.includes("exotisch") || c.includes("projektil")) return "MELEE_PROJ";
+      if (c.includes("granate") || c.includes("rakete") || c.includes("sprengstoff")) return "EXPLOSIVES";
+      if (c.includes("munition")) return "AMMO";
+      if (c.includes("zubehör") || c.includes("modifikation")) return "GEAR_INLINE";
+      return "HEAVY_EXOTIC";
+    };
+
+    const list = [];
+    for (let i = hIdx + 1; i < rows.length; i++) {
+      const r = rows[i];
+      const name = r[idx.name !== -1 ? idx.name : 0] || "";
+      if (!name || name.toLowerCase() === "waffe") continue;
+      const kat = r[idx.kategorie !== -1 ? idx.kategorie : 1] || "Sonstiges";
+      list.push({
+        id: `w-${i}`,
+        name,
+        kategorie: kat,
+        group: classifyWeaponGroup(kat),
+        schaden: r[idx.schaden !== -1 ? idx.schaden : 2] || "-",
+        modus: r[idx.modus !== -1 ? idx.modus : 3] || "-",
+        aw: [
+          r[idx.aw0 !== -1 ? idx.aw0 : 4] || "-",
+          r[idx.aw1 !== -1 ? idx.aw1 : 5] || "-",
+          r[idx.aw2 !== -1 ? idx.aw2 : 6] || "-",
+          r[idx.aw3 !== -1 ? idx.aw3 : 7] || "-",
+          r[idx.aw4 !== -1 ? idx.aw4 : 8] || "-"
+        ],
+        munition: r[idx.munition !== -1 ? idx.munition : 9] || "-",
+        verf: r[idx.verf !== -1 ? idx.verf : 10] || "-",
+        legal: r[idx.legal !== -1 ? idx.legal : 11] || "Frei",
+        preis: r[idx.preis !== -1 ? idx.preis : 12] || "-",
+        regeln: r[idx.ausstattung !== -1 ? idx.ausstattung : 13] || "-",
+        quelle: r[idx.quelle !== -1 ? idx.quelle : 14] || "-"
+      });
+    }
+    return list;
+  }
+
+  function mapGear(rows) {
+    if (rows.length < 2) return [];
+    const idx = buildHeaderIndex(rows[0], {
+      name: ["name", "zubehoer", "zubehör", "modifikation"],
+      typ: ["typ", "kategorie", "art"],
+      halterung: ["halterungslots", "halterung", "slots"],
+      effekt: ["effektawmodus", "effekt", "modifikator", "bonus"],
+      verf: ["verfuegbarkeit", "verfügbarkeit", "verf"],
+      legal: ["legalitaet", "legalität", "leg"],
+      preis: ["preis", "kosten"],
+      regeln: ["regeln", "ausstattung", "anmerkungen"],
+      quelle: ["quelle", "buch"]
+    });
+
+    const list = [];
+    for (let i = 1; i < rows.length; i++) {
+      const r = rows[i];
+      const name = r[idx.name !== -1 ? idx.name : 0] || "";
+      if (!name) continue;
+      list.push({
+        id: `g-${i}`,
+        name,
+        typ: r[idx.typ !== -1 ? idx.typ : 1] || "Zubehör",
+        halterung: r[idx.halterung !== -1 ? idx.halterung : 2] || "-",
+        effekt: r[idx.effekt !== -1 ? idx.effekt : 3] || "-",
+        verf: r[idx.verf !== -1 ? idx.verf : 4] || "-",
+        legal: r[idx.legal !== -1 ? idx.legal : 5] || "Frei",
+        preis: r[idx.preis !== -1 ? idx.preis : 6] || "-",
+        regeln: r[idx.regeln !== -1 ? idx.regeln : 7] || "-",
+        quelle: r[idx.quelle !== -1 ? idx.quelle : 8] || "-"
+      });
+    }
+    return list;
+  }
+
+  function mapArmor(rows) {
+    if (rows.length < 2) return [];
+    const idx = buildHeaderIndex(rows[0], {
+      name: ["name", "panzerung"],
+      kategorie: ["kategorie", "typ", "art"],
+      vw: ["verteidigungswert", "vwert", "vw"],
+      sozial: ["sozial", "sozialmodifikator"],
+      kap: ["kapazitaet", "kapazität", "kap"],
+      merkmale: ["merkmale", "eigenschaften"],
+      verf: ["verfuegbarkeit", "verfügbarkeit", "verf"],
+      legal: ["legalitaet", "legalität", "leg"],
+      preis: ["preis", "kosten"],
+      regeln: ["regeln", "anmerkungen", "ausstattung"],
+      quelle: ["quelle", "buch"]
+    });
+
+    const list = [];
+    for (let i = 1; i < rows.length; i++) {
+      const r = rows[i];
+      const name = r[idx.name !== -1 ? idx.name : 0] || "";
+      if (!name) continue;
+      list.push({
+        id: `a-${i}`,
+        name,
+        kategorie: r[idx.kategorie !== -1 ? idx.kategorie : 1] || "Panzerung",
+        vw: r[idx.vw !== -1 ? idx.vw : 2] || "-",
+        sozial: r[idx.sozial !== -1 ? idx.sozial : 3] || "-",
+        kap: r[idx.kap !== -1 ? idx.kap : 4] || "-",
+        merkmale: r[idx.merkmale !== -1 ? idx.merkmale : 5] || "-",
+        verf: r[idx.verf !== -1 ? idx.verf : 6] || "-",
+        legal: r[idx.legal !== -1 ? idx.legal : 7] || "Frei",
+        preis: r[idx.preis !== -1 ? idx.preis : 8] || "-",
+        regeln: r[idx.regeln !== -1 ? idx.regeln : 9] || "-",
+        quelle: r[idx.quelle !== -1 ? idx.quelle : 10] || "-"
+      });
+    }
+    return list;
+  }
+
+  function mapSpells(rows) {
+    if (rows.length < 2) return [];
+    const idx = buildHeaderIndex(rows[0], {
+      name: ["name", "zauber"],
+      kategorie: ["kategorie", "schule"],
+      untertyp: ["untertyp", "typ", "merkmale"],
+      reichweite: ["reichweite", "rw"],
+      art: ["art"],
+      dauer: ["dauer"],
+      entzug: ["entzug"],
+      effekt: ["schadeneffekt", "schaden", "effekt"],
+      regeln: ["beschreibung", "regeln", "text"],
+      quelle: ["quelle", "buch"]
+    });
+
+    const list = [];
+    for (let i = 1; i < rows.length; i++) {
+      const r = rows[i];
+      const name = r[idx.name !== -1 ? idx.name : 0] || "";
+      if (!name) continue;
+      list.push({
+        id: `s-${i}`,
+        name,
+        kategorie: r[idx.kategorie !== -1 ? idx.kategorie : 1] || "Sonstige",
+        untertyp: r[idx.untertyp !== -1 ? idx.untertyp : 2] || "-",
+        reichweite: r[idx.reichweite !== -1 ? idx.reichweite : 3] || "-",
+        art: r[idx.art !== -1 ? idx.art : 4] || "-",
+        dauer: r[idx.dauer !== -1 ? idx.dauer : 5] || "-",
+        entzug: r[idx.entzug !== -1 ? idx.entzug : 6] || "-",
+        effekt: r[idx.effekt !== -1 ? idx.effekt : 7] || "-",
+        regeln: r[idx.regeln !== -1 ? idx.regeln : 8] || "-",
+        quelle: r[idx.quelle !== -1 ? idx.quelle : 9] || "-"
+      });
+    }
+    return list;
+  }
+
+  function mapSpirits(rows) {
+    if (rows.length < 2) return [];
+    const idx = buildHeaderIndex(rows[0], {
+      name: ["name", "geist"],
+      kategorie: ["kategorie", "typ"],
+      k: ["k", "konstitution"],
+      g: ["g", "geschicklichkeit"],
+      r: ["r", "reaktion"],
+      s: ["s", "staerke", "stärke"],
+      w: ["w", "wil", "willenskraft"],
+      l: ["l", "logik"],
+      i: ["i", "intuition"],
+      c: ["c", "charisma"],
+      ess: ["ess", "essenz"],
+      ini: ["initiative", "ini"],
+      aini: ["astraleini", "astraleinitiative"],
+      handlungen: ["handlungen"],
+      zm: ["zustandsmonitor", "zm"],
+      vw: ["verteidigungswert", "vw"],
+      bewegung: ["bewegung"],
+      fertigkeiten: ["fertigkeiten"],
+      kraefte: ["kraefte", "kräfte"],
+      optKraefte: ["optionalekraefte", "optionalekräfte", "zusaetzlichekraefte"],
+      regeln: ["beschwoerungsortregeln", "regeln", "anmerkungen"],
+      quelle: ["quelle", "buch"]
+    });
+
+    const list = [];
+    for (let i = 1; i < rows.length; i++) {
+      const r = rows[i];
+      const name = r[idx.name !== -1 ? idx.name : 0] || "";
+      if (!name) continue;
+      list.push({
+        id: `sp-${i}`,
+        name,
+        kategorie: r[idx.kategorie !== -1 ? idx.kategorie : 1] || "Geist",
+        attrs: [
+          r[idx.k !== -1 ? idx.k : 2] || "-",
+          r[idx.g !== -1 ? idx.g : 3] || "-",
+          r[idx.r !== -1 ? idx.r : 4] || "-",
+          r[idx.s !== -1 ? idx.s : 5] || "-",
+          r[idx.w !== -1 ? idx.w : 6] || "-",
+          r[idx.l !== -1 ? idx.l : 7] || "-",
+          r[idx.i !== -1 ? idx.i : 8] || "-",
+          r[idx.c !== -1 ? idx.c : 9] || "-",
+          r[idx.ess !== -1 ? idx.ess : 10] || "-"
+        ],
+        ini: r[idx.ini !== -1 ? idx.ini : 11] || "-",
+        aini: r[idx.aini !== -1 ? idx.aini : 12] || "-",
+        handlungen: r[idx.handlungen !== -1 ? idx.handlungen : 13] || "-",
+        zm: r[idx.zm !== -1 ? idx.zm : 14] || "-",
+        vw: r[idx.vw !== -1 ? idx.vw : 15] || "-",
+        bewegung: r[idx.bewegung !== -1 ? idx.bewegung : 16] || "-",
+        fertigkeiten: r[idx.fertigkeiten !== -1 ? idx.fertigkeiten : 17] || "-",
+        kraefte: r[idx.kraefte !== -1 ? idx.kraefte : 18] || "-",
+        optKraefte: r[idx.optKraefte !== -1 ? idx.optKraefte : 19] || "-",
+        regeln: r[idx.regeln !== -1 ? idx.regeln : 20] || "-",
+        quelle: r[idx.quelle !== -1 ? idx.quelle : 21] || "-"
+      });
+    }
+    return list;
+  }
+
+  // Ammo calculation helper
+  function supportsAmmo(cat) {
+    const c = (cat || "").toLowerCase();
+    return (
+      c.includes("pistole") || c.includes("maschinenpistole") ||
+      c.includes("schrotflinte") || c.includes("gewehr") ||
+      c.includes("karabiner") || c === "lmg" || c === "mmg" || c === "smg"
+    );
+  }
+
+  function applyAmmoToWeapon(w, ammoKey) {
+    if (ammoKey === "STANDARD" || !supportsAmmo(w.kategorie)) {
+      return { schaden: w.schaden, aw: [...w.aw], isModded: false };
+    }
+    const mod = AMMO_MODS[ammoKey];
+    let newDmg = w.schaden;
+    const dmgMatch = /^(\d+)(K|B(?:\(e\))?)$/i.exec(w.schaden.trim());
+    if (dmgMatch) {
+      const finalNum = Math.max(1, parseInt(dmgMatch[1], 10) + mod.dmg);
+      const finalType = mod.type ? mod.type : dmgMatch[2];
+      newDmg = `${finalNum}${finalType}`;
+    }
+    const newAw = w.aw.map(val => /^\d+$/.test(val.trim()) ? String(Math.max(1, parseInt(val.trim(), 10) + mod.aw)) : val);
+    return { schaden: newDmg, aw: newAw, isModded: true };
+  }
+
+  // Template Download Helper
+  function downloadTemplate(modKey) {
+    const t = TEMPLATES[modKey];
+    if (!t) return;
+    const content = "\uFEFF" + t.header + "\n" + t.sample + "\n";
+    const blob = new Blob([content], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = t.filename;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  // Render Sub-Tabs & Controls per Module
+  function renderModuleChrome() {
+    const subTabsEl = document.getElementById("subTabs");
+    const controlsEl = document.getElementById("controlsBar");
+    const mod = STATE.mod;
+
+    if (mod === "weapons") {
+      const wList = DB.weapons.filter(w => w.group !== "GEAR_INLINE");
+      const groups = [
+        { id: "ALL", label: `Alle (${wList.length})` },
+        { id: "PISTOLS", label: `Pistolen & Taser (${wList.filter(w => w.group === "PISTOLS").length})` },
+        { id: "SMG_SHOTGUN", label: `MPs & Schrotflinten (${wList.filter(w => w.group === "SMG_SHOTGUN").length})` },
+        { id: "RIFLES", label: `Gewehre (${wList.filter(w => w.group === "RIFLES").length})` },
+        { id: "HEAVY_EXOTIC", label: `Schwere & Exotische (${wList.filter(w => w.group === "HEAVY_EXOTIC").length})` },
+        { id: "MELEE_PROJ", label: `Nahkampf & Projektil (${wList.filter(w => w.group === "MELEE_PROJ").length})` },
+        { id: "EXPLOSIVES", label: `Granaten & Sprengstoff (${wList.filter(w => w.group === "EXPLOSIVES").length})` },
+        { id: "AMMO", label: `Munition (${wList.filter(w => w.group === "AMMO").length})` }
+      ];
+      subTabsEl.innerHTML = groups.map(g =>
+        `<button class="sub-tab-btn ${STATE.subTab === g.id ? "active" : ""}" data-sub="${g.id}">${g.label}</button>`
+      ).join("");
+
+      const cats = [...new Set(wList.map(w => w.kategorie))].sort((a, b) => a.localeCompare(b, "de"));
+      const srcs = [...new Set(wList.map(w => w.quelle).filter(q => q !== "-"))].sort((a, b) => a.localeCompare(b, "de"));
+
+      controlsEl.innerHTML = `
+        <div class="control-group search-grow">
+          <label class="control-label">Volltextsuche</label>
+          <input type="text" id="inpSearch" class="sr-input" value="${escapeHtml(STATE.search)}" placeholder="Waffe, Ausstattung (z. B. Smartgun), Schaden, Modus...">
+        </div>
+        <div class="control-group">
+          <label class="control-label">Unterkategorie</label>
+          <select id="selF1" class="sr-select">
+            <option value="">Alle Unterkategorien</option>
+            ${cats.map(c => `<option value="${escapeHtml(c)}" ${STATE.f1 === c ? "selected" : ""}>${escapeHtml(c)}</option>`).join("")}
+          </select>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Legalität</label>
+          <select id="selF2" class="sr-select">
+            <option value="">Alle</option>
+            <option value="Frei" ${STATE.f2 === "Frei" ? "selected" : ""}>Frei (Legal)</option>
+            <option value="L" ${STATE.f2 === "L" ? "selected" : ""}>L (Lizenz)</option>
+            <option value="I" ${STATE.f2 === "I" ? "selected" : ""}>I (Illegal)</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Munitions-Rechner</label>
+          <select id="selAmmo" class="sr-select ${STATE.ammo !== "STANDARD" ? "highlight-amber" : ""}">
+            <option value="STANDARD" ${STATE.ammo === "STANDARD" ? "selected" : ""}>Standardmunition</option>
+            <option value="APDS" ${STATE.ammo === "APDS" ? "selected" : ""}>APDS (+2 AW / -1 Schaden)</option>
+            <option value="EXPLOSIV" ${STATE.ammo === "EXPLOSIV" ? "selected" : ""}>Explosiv (+1 Schaden)</option>
+            <option value="FLECHETTE" ${STATE.ammo === "FLECHETTE" ? "selected" : ""}>Flechette (+1 AW / -1 Schaden)</option>
+            <option value="GEL" ${STATE.ammo === "GEL" ? "selected" : ""}>Gel (Schaden → B)</option>
+            <option value="SCHOCKER" ${STATE.ammo === "SCHOCKER" ? "selected" : ""}>Schocker (+1 AW / -1 B(e))</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Quelle</label>
+          <select id="selF3" class="sr-select">
+            <option value="">Alle Quellen</option>
+            ${srcs.map(s => `<option value="${escapeHtml(s)}" ${STATE.f3 === s ? "selected" : ""}>${escapeHtml(s)}</option>`).join("")}
+          </select>
+        </div>
+        <button class="btn-reset" id="btnReset">Reset</button>
+      `;
+    } else if (mod === "gear") {
+      subTabsEl.innerHTML = "";
+      const types = [...new Set(DB.gear.map(g => g.typ))].sort((a, b) => a.localeCompare(b, "de"));
+      const srcs = [...new Set(DB.gear.map(g => g.quelle).filter(q => q !== "-"))].sort((a, b) => a.localeCompare(b, "de"));
+
+      controlsEl.innerHTML = `
+        <div class="control-group search-grow">
+          <label class="control-label">Zubehör / Modifikation suchen</label>
+          <input type="text" id="inpSearch" class="sr-input" value="${escapeHtml(STATE.search)}" placeholder="Smartgun, Schalldämpfer, Gasventil, Halterung, Effekt...">
+        </div>
+        <div class="control-group">
+          <label class="control-label">Typ</label>
+          <select id="selF1" class="sr-select">
+            <option value="">Alle Typen</option>
+            ${types.map(t => `<option value="${escapeHtml(t)}" ${STATE.f1 === t ? "selected" : ""}>${escapeHtml(t)}</option>`).join("")}
+          </select>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Legalität</label>
+          <select id="selF2" class="sr-select">
+            <option value="">Alle</option>
+            <option value="Frei" ${STATE.f2 === "Frei" ? "selected" : ""}>Frei</option>
+            <option value="L" ${STATE.f2 === "L" ? "selected" : ""}>L (Lizenz)</option>
+            <option value="I" ${STATE.f2 === "I" ? "selected" : ""}>I (Illegal)</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Quelle</label>
+          <select id="selF3" class="sr-select">
+            <option value="">Alle Quellen</option>
+            ${srcs.map(s => `<option value="${escapeHtml(s)}" ${STATE.f3 === s ? "selected" : ""}>${escapeHtml(s)}</option>`).join("")}
+          </select>
+        </div>
+        <button class="btn-reset" id="btnReset">Reset</button>
+      `;
+    } else if (mod === "armor") {
+      const cats = [
+        { id: "ALL", label: `Alle (${DB.armor.length})` },
+        { id: "Panzerung", label: `Panzerung (${DB.armor.filter(a => a.kategorie.toLowerCase() === "panzerung").length})` },
+        { id: "Kleidung", label: `Kleidung (${DB.armor.filter(a => a.kategorie.toLowerCase().includes("kleidung")).length})` },
+        { id: "Helm", label: `Helme (${DB.armor.filter(a => a.kategorie.toLowerCase().includes("helm")).length})` },
+        { id: "Schild", label: `Schilde (${DB.armor.filter(a => a.kategorie.toLowerCase().includes("schild")).length})` },
+        { id: "Modifikation", label: `Modifikationen (${DB.armor.filter(a => a.kategorie.toLowerCase().includes("mod")).length})` }
+      ];
+      subTabsEl.innerHTML = DB.armor.length > 0
+        ? cats.map(c => `<button class="sub-tab-btn ${STATE.subTab === c.id ? "active" : ""}" data-sub="${c.id}">${c.label}</button>`).join("")
+        : "";
+
+      const srcs = [...new Set(DB.armor.map(a => a.quelle).filter(q => q !== "-"))].sort((a, b) => a.localeCompare(b, "de"));
+      controlsEl.innerHTML = `
+        <div class="control-group search-grow">
+          <label class="control-label">Panzerung / Modifikation suchen</label>
+          <input type="text" id="inpSearch" class="sr-input" value="${escapeHtml(STATE.search)}" placeholder="Panzerjacke, Mystic Weave, Kumulativ, Feuerresistenz...">
+        </div>
+        <div class="control-group">
+          <label class="control-label">Legalität</label>
+          <select id="selF2" class="sr-select">
+            <option value="">Alle</option>
+            <option value="Frei" ${STATE.f2 === "Frei" ? "selected" : ""}>Frei</option>
+            <option value="L" ${STATE.f2 === "L" ? "selected" : ""}>L (Lizenz)</option>
+            <option value="I" ${STATE.f2 === "I" ? "selected" : ""}>I (Illegal)</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Quelle</label>
+          <select id="selF3" class="sr-select">
+            <option value="">Alle Quellen</option>
+            ${srcs.map(s => `<option value="${escapeHtml(s)}" ${STATE.f3 === s ? "selected" : ""}>${escapeHtml(s)}</option>`).join("")}
+          </select>
+        </div>
+        <button class="btn-reset" id="btnReset">Reset</button>
+      `;
+    } else if (mod === "spells") {
+      const spellCats = ["ALL", "Kampfzauber", "Heilzauber", "Illusionszauber", "Manipulationszauber", "Wahrnehmungszauber"];
+      subTabsEl.innerHTML = DB.spells.length > 0
+        ? spellCats.map(c => {
+            const cnt = c === "ALL" ? DB.spells.length : DB.spells.filter(s => s.kategorie.toLowerCase().includes(c.toLowerCase().replace("zauber", ""))).length;
+            return `<button class="sub-tab-btn ${STATE.subTab === c ? "active" : ""}" data-sub="${c}">${c === "ALL" ? "Alle Zauber" : c} (${cnt})</button>`;
+          }).join("")
+        : "";
+
+      const srcs = [...new Set(DB.spells.map(s => s.quelle).filter(q => q !== "-"))].sort((a, b) => a.localeCompare(b, "de"));
+      controlsEl.innerHTML = `
+        <div class="control-group search-grow">
+          <label class="control-label">Zauber oder Effekt suchen</label>
+          <input type="text" id="inpSearch" class="sr-input" value="${escapeHtml(STATE.search)}" placeholder="Feuerball, Unsichtbarkeit, Entzug, Status...">
+        </div>
+        <div class="control-group">
+          <label class="control-label">Art</label>
+          <select id="selF1" class="sr-select">
+            <option value="">Alle Arten</option>
+            <option value="P" ${STATE.f1 === "P" ? "selected" : ""}>P (Physisch)</option>
+            <option value="M" ${STATE.f1 === "M" ? "selected" : ""}>M (Mana)</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Dauer</label>
+          <select id="selF2" class="sr-select">
+            <option value="">Alle Dauern</option>
+            <option value="S" ${STATE.f2 === "S" ? "selected" : ""}>S (Sofort)</option>
+            <option value="A" ${STATE.f2 === "A" ? "selected" : ""}>A (Aufrechterhalten)</option>
+            <option value="ZB" ${STATE.f2 === "ZB" ? "selected" : ""}>ZB (Zeitbegrenzt)</option>
+            <option value="P" ${STATE.f2 === "P" ? "selected" : ""}>P (Permanent)</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Quelle</label>
+          <select id="selF3" class="sr-select">
+            <option value="">Alle Quellen</option>
+            ${srcs.map(s => `<option value="${escapeHtml(s)}" ${STATE.f3 === s ? "selected" : ""}>${escapeHtml(s)}</option>`).join("")}
+          </select>
+        </div>
+        <button class="btn-reset" id="btnReset">Reset</button>
+      `;
+    } else if (mod === "spirits") {
+      subTabsEl.innerHTML = "";
+      const cats = [...new Set(DB.spirits.map(s => s.kategorie))].sort((a, b) => a.localeCompare(b, "de"));
+      const srcs = [...new Set(DB.spirits.map(s => s.quelle).filter(q => q !== "-"))].sort((a, b) => a.localeCompare(b, "de"));
+
+      controlsEl.innerHTML = `
+        <div class="control-group search-grow">
+          <label class="control-label">Geist oder Kraft suchen</label>
+          <input type="text" id="inpSearch" class="sr-input" value="${escapeHtml(STATE.search)}" placeholder="Erdgeist, Verschleierung, Regeneration, Elementarer Angriff...">
+        </div>
+        <div class="control-group">
+          <label class="control-label">Kraftstufe-Rechner (KS)</label>
+          <select id="selSpiritKS" class="sr-select ${STATE.spiritKS !== "FORMULA" ? "highlight-purple" : ""}">
+            <option value="FORMULA" ${STATE.spiritKS === "FORMULA" ? "selected" : ""}>Formel-Ansicht (KS)</option>
+            ${[1,2,3,4,5,6,7,8,9,10,11,12].map(n =>
+              `<option value="${n}" ${STATE.spiritKS === String(n) ? "selected" : ""}>Kraftstufe ${n} (Werte berechnen)</option>`
+            ).join("")}
+          </select>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Typ</label>
+          <select id="selF1" class="sr-select">
+            <option value="">Alle Geist-Typen</option>
+            ${cats.map(c => `<option value="${escapeHtml(c)}" ${STATE.f1 === c ? "selected" : ""}>${escapeHtml(c)}</option>`).join("")}
+          </select>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Quelle</label>
+          <select id="selF3" class="sr-select">
+            <option value="">Alle Quellen</option>
+            ${srcs.map(s => `<option value="${escapeHtml(s)}" ${STATE.f3 === s ? "selected" : ""}>${escapeHtml(s)}</option>`).join("")}
+          </select>
+        </div>
+        <button class="btn-reset" id="btnReset">Reset</button>
+      `;
+    }
+
+    // Bind chrome events
+    subTabsEl.querySelectorAll(".sub-tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        STATE.subTab = btn.dataset.sub;
+        renderAll();
+      });
+    });
+
+    const inpSearch = document.getElementById("inpSearch");
+    if (inpSearch) {
+      inpSearch.addEventListener("input", e => {
+        STATE.search = e.target.value;
+        renderDataArea();
+      });
+    }
+    const selF1 = document.getElementById("selF1");
+    if (selF1) selF1.addEventListener("change", e => { STATE.f1 = e.target.value; renderDataArea(); });
+    const selF2 = document.getElementById("selF2");
+    if (selF2) selF2.addEventListener("change", e => { STATE.f2 = e.target.value; renderDataArea(); });
+    const selF3 = document.getElementById("selF3");
+    if (selF3) selF3.addEventListener("change", e => { STATE.f3 = e.target.value; renderDataArea(); });
+
+    const selAmmo = document.getElementById("selAmmo");
+    if (selAmmo) {
+      selAmmo.addEventListener("change", e => {
+        STATE.ammo = e.target.value;
+        selAmmo.classList.toggle("highlight-amber", STATE.ammo !== "STANDARD");
+        renderDataArea();
+      });
+    }
+
+    const selSpiritKS = document.getElementById("selSpiritKS");
+    if (selSpiritKS) {
+      selSpiritKS.addEventListener("change", e => {
+        STATE.spiritKS = e.target.value;
+        selSpiritKS.classList.toggle("highlight-purple", STATE.spiritKS !== "FORMULA");
+        renderDataArea();
+      });
+    }
+
+    const btnReset = document.getElementById("btnReset");
+    if (btnReset) {
+      btnReset.addEventListener("click", () => {
+        STATE.subTab = "ALL";
+        STATE.search = "";
+        STATE.f1 = "";
+        STATE.f2 = "";
+        STATE.f3 = "";
+        STATE.ammo = "STANDARD";
+        STATE.spiritKS = "FORMULA";
+        renderAll();
+      });
+    }
+  }
+
+  function sortItems(items) {
+    const { sortKey, sortAsc } = STATE;
+    const dir = sortAsc ? 1 : -1;
+    return [...items].sort((a, b) => {
+      if (["preis", "verf", "schaden", "entzug", "vw"].includes(sortKey)) {
+        const nA = parseNumber(a[sortKey]);
+        const nB = parseNumber(b[sortKey]);
+        if (nA !== nB) return (nA - nB) * dir;
+      }
+      return String(a[sortKey] || "").localeCompare(String(b[sortKey] || ""), "de", { numeric: true }) * dir;
     });
   }
 
-  function openModal(weapon) {
-    const ammoKey = ammoSelect.value;
-    const effective = applyAmmoToWeapon(weapon, ammoKey);
-    const ammoLabel = effective.isModded ? ` (${AMMO_MODS[ammoKey].label})` : "";
+  function renderMissingCsvCard(modKey) {
+    const t = TEMPLATES[modKey];
+    document.getElementById("statsDisplay").innerHTML = `WARTE AUF <strong>${escapeHtml(t.filename)}</strong>`;
+    document.getElementById("contentArea").innerHTML = `
+      <div class="state-box">
+        <div class="template-card">
+          <h3>// BEREIT FÜR DATEN-IMPORT: ${escapeHtml(t.title)}</h3>
+          <p style="color: var(--text-dim); margin-bottom: 10px;">${escapeHtml(t.desc)}</p>
+          <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-dim);">ERWARTETE CSV-KOPFZEILE (SEMIKOLON-GETRENNT):</div>
+          <div class="template-cols">${escapeHtml(t.header)}</div>
+          <button class="btn-template" onclick="downloadTemplate('${modKey}')">⬇ ${escapeHtml(t.filename)} Vorlage herunterladen</button>
+        </div>
+      </div>
+    `;
+  }
 
-    document.getElementById("mCat").textContent = `${weapon.kategorie} • Legalität: ${weapon.legal}`;
-    document.getElementById("mTitle").textContent = weapon.waffe + ammoLabel;
-    document.getElementById("mDmg").textContent = effective.schaden;
-    document.getElementById("mMode").textContent = weapon.modus;
-    document.getElementById("mAmmo").textContent = weapon.munition;
-    document.getElementById("mVerf").textContent = `${weapon.verf}${weapon.legal !== "Frei" ? weapon.legal : ""}`;
-    document.getElementById("mPrice").textContent = formatPrice(weapon.preis).replace(/&amp;/g, "&");
-    document.getElementById("mSource").textContent = weapon.quelle;
+  function renderDataArea() {
+    const mod = STATE.mod;
+    const q = STATE.search.trim().toLowerCase();
+    const infoStrip = document.getElementById("infoStrip");
+    const contentArea = document.getElementById("contentArea");
+    const statsDisplay = document.getElementById("statsDisplay");
 
-    effective.aw.forEach((val, idx) => {
-      document.getElementById(`mAw${idx}`).textContent = (!val || val === "-") ? "–" : val;
+    infoStrip.className = "info-strip";
+    infoStrip.innerHTML = "";
+
+    // 1. WEAPONS MODULE
+    if (mod === "weapons") {
+      if (STATE.ammo !== "STANDARD") {
+        const m = AMMO_MODS[STATE.ammo];
+        infoStrip.classList.add("visible");
+        infoStrip.innerHTML = `<span>AKTIVE MUNITION: ${m.label.toUpperCase()} • Preismultiplikator: ${m.mult}</span><span>Gilt live für kompatible Feuerwaffen</span>`;
+      }
+
+      const baseList = DB.weapons.filter(w => w.group !== "GEAR_INLINE");
+      const filtered = baseList.filter(w => {
+        if (STATE.subTab !== "ALL" && w.group !== STATE.subTab) return false;
+        if (STATE.f1 && w.kategorie !== STATE.f1) return false;
+        if (STATE.f2) {
+          const l = w.legal.trim().toUpperCase();
+          if (STATE.f2 === "Frei" && (l === "L" || l === "I")) return false;
+          if (STATE.f2 !== "Frei" && l !== STATE.f2) return false;
+        }
+        if (STATE.f3 && w.quelle !== STATE.f3) return false;
+        if (q && !`${w.name} ${w.kategorie} ${w.schaden} ${w.modus} ${w.regeln} ${w.quelle}`.toLowerCase().includes(q)) return false;
+        return true;
+      });
+
+      const sorted = sortItems(filtered);
+      statsDisplay.innerHTML = `WAFFEN &amp; MUNI • TREFFER: <strong>${sorted.length}</strong> / ${baseList.length}`;
+
+      contentArea.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th data-sort="name">Waffe <span class="sort-arrow">⇅</span></th>
+              <th data-sort="kategorie">Kategorie <span class="sort-arrow">⇅</span></th>
+              <th data-sort="schaden">Schaden <span class="sort-arrow">⇅</span></th>
+              <th data-sort="modus">Modus <span class="sort-arrow">⇅</span></th>
+              <th class="no-sort">Angriffswerte<div class="aw-header-sub"><span>SN</span><span>N</span><span>M</span><span>W</span><span>SW</span></div></th>
+              <th data-sort="munition">Munition <span class="sort-arrow">⇅</span></th>
+              <th data-sort="verf">Verf. <span class="sort-arrow">⇅</span></th>
+              <th data-sort="legal">Leg. <span class="sort-arrow">⇅</span></th>
+              <th data-sort="preis" style="text-align:right;">Preis <span class="sort-arrow">⇅</span></th>
+              <th data-sort="regeln">Ausstattung &amp; Regeln <span class="sort-arrow">⇅</span></th>
+              <th data-sort="quelle">Quelle <span class="sort-arrow">⇅</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            ${sorted.length === 0 ? `<tr><td colspan="11" class="state-box">// KEINE TREFFER GEFUNDEN</td></tr>` : sorted.map(w => {
+              const eff = applyAmmoToWeapon(w, STATE.ammo);
+              const awHtml = `<div class="aw-grid">` + eff.aw.map(v => {
+                const emp = !v || v === "-" || v === "–";
+                return `<span class="aw-cell ${emp ? "empty" : (eff.isModded ? "modded" : "")}">${escapeHtml(emp ? "–" : v)}</span>`;
+              }).join("") + `</div>`;
+              return `
+                <tr data-item-id="${w.id}">
+                  <td class="col-name">${escapeHtml(w.name)}</td>
+                  <td class="col-cat">${escapeHtml(w.kategorie)}</td>
+                  <td class="col-dmg ${eff.isModded ? "modded" : ""}">${escapeHtml(eff.schaden)}</td>
+                  <td class="col-mono">${escapeHtml(w.modus)}</td>
+                  <td>${awHtml}</td>
+                  <td class="col-mono">${escapeHtml(w.munition)}</td>
+                  <td class="col-mono">${escapeHtml(w.verf)}</td>
+                  <td>${getLegalityBadge(w.legal)}</td>
+                  <td class="col-price">${formatPrice(w.preis)}</td>
+                  <td class="col-notes">${escapeHtml(w.regeln)}</td>
+                  <td class="col-source">${escapeHtml(w.quelle)}</td>
+                </tr>
+              `;
+            }).join("")}
+          </tbody>
+        </table>
+      `;
+    }
+
+    // 2. GEAR MODULE
+    else if (mod === "gear") {
+      if (DB.gear.length === 0) {
+        renderMissingCsvCard("gear");
+        return;
+      }
+      const filtered = DB.gear.filter(g => {
+        if (STATE.f1 && g.typ !== STATE.f1) return false;
+        if (STATE.f2) {
+          const l = g.legal.trim().toUpperCase();
+          if (STATE.f2 === "Frei" && (l === "L" || l === "I")) return false;
+          if (STATE.f2 !== "Frei" && l !== STATE.f2) return false;
+        }
+        if (STATE.f3 && g.quelle !== STATE.f3) return false;
+        if (q && !`${g.name} ${g.typ} ${g.halterung} ${g.effekt} ${g.regeln} ${g.quelle}`.toLowerCase().includes(q)) return false;
+        return true;
+      });
+      const sorted = sortItems(filtered);
+      statsDisplay.innerHTML = `WAFFENZUBEHÖR • TREFFER: <strong>${sorted.length}</strong> / ${DB.gear.length}`;
+
+      contentArea.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th data-sort="name">Name <span class="sort-arrow">⇅</span></th>
+              <th data-sort="typ">Typ <span class="sort-arrow">⇅</span></th>
+              <th data-sort="halterung">Halterung / Slots <span class="sort-arrow">⇅</span></th>
+              <th data-sort="effekt">Effekt / AW <span class="sort-arrow">⇅</span></th>
+              <th data-sort="verf">Verf. <span class="sort-arrow">⇅</span></th>
+              <th data-sort="legal">Leg. <span class="sort-arrow">⇅</span></th>
+              <th data-sort="preis" style="text-align:right;">Preis <span class="sort-arrow">⇅</span></th>
+              <th data-sort="regeln">Regeln &amp; Anmerkungen <span class="sort-arrow">⇅</span></th>
+              <th data-sort="quelle">Quelle <span class="sort-arrow">⇅</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            ${sorted.length === 0 ? `<tr><td colspan="9" class="state-box">// KEINE TREFFER GEFUNDEN</td></tr>` : sorted.map(g => `
+              <tr data-item-id="${g.id}">
+                <td class="col-name">${escapeHtml(g.name)}</td>
+                <td class="col-cat">${escapeHtml(g.typ)}</td>
+                <td class="col-mono">${escapeHtml(g.halterung)}</td>
+                <td class="col-cyan">${escapeHtml(g.effekt)}</td>
+                <td class="col-mono">${escapeHtml(g.verf)}</td>
+                <td>${getLegalityBadge(g.legal)}</td>
+                <td class="col-price">${formatPrice(g.preis)}</td>
+                <td class="col-notes">${escapeHtml(g.regeln)}</td>
+                <td class="col-source">${escapeHtml(g.quelle)}</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      `;
+    }
+
+    // 3. ARMOR MODULE
+    else if (mod === "armor") {
+      if (DB.armor.length === 0) {
+        renderMissingCsvCard("armor");
+        return;
+      }
+      const filtered = DB.armor.filter(a => {
+        if (STATE.subTab !== "ALL" && !a.kategorie.toLowerCase().includes(STATE.subTab.toLowerCase())) return false;
+        if (STATE.f2) {
+          const l = a.legal.trim().toUpperCase();
+          if (STATE.f2 === "Frei" && (l === "L" || l === "I")) return false;
+          if (STATE.f2 !== "Frei" && l !== STATE.f2) return false;
+        }
+        if (STATE.f3 && a.quelle !== STATE.f3) return false;
+        if (q && !`${a.name} ${a.kategorie} ${a.merkmale} ${a.regeln} ${a.quelle}`.toLowerCase().includes(q)) return false;
+        return true;
+      });
+      const sorted = sortItems(filtered);
+      statsDisplay.innerHTML = `PANZERUNG • TREFFER: <strong>${sorted.length}</strong> / ${DB.armor.length}`;
+
+      contentArea.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th data-sort="name">Panzerung / Mod <span class="sort-arrow">⇅</span></th>
+              <th data-sort="kategorie">Kategorie <span class="sort-arrow">⇅</span></th>
+              <th data-sort="vw">V-Wert <span class="sort-arrow">⇅</span></th>
+              <th data-sort="sozial">Sozial <span class="sort-arrow">⇅</span></th>
+              <th data-sort="kap">Kapazität <span class="sort-arrow">⇅</span></th>
+              <th data-sort="merkmale">Merkmale <span class="sort-arrow">⇅</span></th>
+              <th data-sort="verf">Verf. <span class="sort-arrow">⇅</span></th>
+              <th data-sort="legal">Leg. <span class="sort-arrow">⇅</span></th>
+              <th data-sort="preis" style="text-align:right;">Preis <span class="sort-arrow">⇅</span></th>
+              <th data-sort="regeln">Regeln &amp; Anmerkungen <span class="sort-arrow">⇅</span></th>
+              <th data-sort="quelle">Quelle <span class="sort-arrow">⇅</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            ${sorted.length === 0 ? `<tr><td colspan="11" class="state-box">// KEINE TREFFER GEFUNDEN</td></tr>` : sorted.map(a => `
+              <tr data-item-id="${a.id}">
+                <td class="col-name">${escapeHtml(a.name)}</td>
+                <td class="col-cat">${escapeHtml(a.kategorie)}</td>
+                <td class="col-cyan">${escapeHtml(a.vw)}</td>
+                <td class="col-mono">${escapeHtml(a.sozial)}</td>
+                <td class="col-mono">${escapeHtml(a.kap)}</td>
+                <td class="col-notes">${escapeHtml(a.merkmale)}</td>
+                <td class="col-mono">${escapeHtml(a.verf)}</td>
+                <td>${getLegalityBadge(a.legal)}</td>
+                <td class="col-price">${formatPrice(a.preis)}</td>
+                <td class="col-notes">${escapeHtml(a.regeln)}</td>
+                <td class="col-source">${escapeHtml(a.quelle)}</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      `;
+    }
+
+    // 4. SPELLS MODULE
+    else if (mod === "spells") {
+      if (DB.spells.length === 0) {
+        renderMissingCsvCard("spells");
+        return;
+      }
+      const filtered = DB.spells.filter(s => {
+        if (STATE.subTab !== "ALL" && !s.kategorie.toLowerCase().includes(STATE.subTab.toLowerCase().replace("zauber", ""))) return false;
+        if (STATE.f1 && s.art.toUpperCase() !== STATE.f1) return false;
+        if (STATE.f2 && s.dauer.toUpperCase() !== STATE.f2) return false;
+        if (STATE.f3 && s.quelle !== STATE.f3) return false;
+        if (q && !`${s.name} ${s.kategorie} ${s.untertyp} ${s.effekt} ${s.regeln} ${s.quelle}`.toLowerCase().includes(q)) return false;
+        return true;
+      });
+      const sorted = sortItems(filtered);
+      statsDisplay.innerHTML = `ZAUBER • TREFFER: <strong>${sorted.length}</strong> / ${DB.spells.length}`;
+
+      contentArea.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th data-sort="name">Zauber <span class="sort-arrow">⇅</span></th>
+              <th data-sort="kategorie">Kategorie <span class="sort-arrow">⇅</span></th>
+              <th data-sort="untertyp">Untertyp <span class="sort-arrow">⇅</span></th>
+              <th data-sort="reichweite">RW <span class="sort-arrow">⇅</span></th>
+              <th data-sort="art">Art <span class="sort-arrow">⇅</span></th>
+              <th data-sort="dauer">Dauer <span class="sort-arrow">⇅</span></th>
+              <th data-sort="entzug">Entzug <span class="sort-arrow">⇅</span></th>
+              <th data-sort="effekt">Schaden / Effekt <span class="sort-arrow">⇅</span></th>
+              <th data-sort="regeln">Beschreibung <span class="sort-arrow">⇅</span></th>
+              <th data-sort="quelle">Quelle <span class="sort-arrow">⇅</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            ${sorted.length === 0 ? `<tr><td colspan="10" class="state-box">// KEINE TREFFER GEFUNDEN</td></tr>` : sorted.map(s => `
+              <tr data-item-id="${s.id}">
+                <td class="col-name">${escapeHtml(s.name)}</td>
+                <td class="col-cat">${escapeHtml(s.kategorie)}</td>
+                <td class="col-cat">${escapeHtml(s.untertyp)}</td>
+                <td class="col-mono">${escapeHtml(s.reichweite)}</td>
+                <td><span class="badge ${s.art.toUpperCase() === "M" ? "badge-mana" : "badge-phys"}">${escapeHtml(s.art)}</span></td>
+                <td class="col-mono">${escapeHtml(s.dauer)}</td>
+                <td class="col-dmg">${escapeHtml(s.entzug)}</td>
+                <td class="col-cyan">${escapeHtml(s.effekt)}</td>
+                <td class="col-notes">${escapeHtml(s.regeln)}</td>
+                <td class="col-source">${escapeHtml(s.quelle)}</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      `;
+    }
+
+    // 5. SPIRITS MODULE
+    else if (mod === "spirits") {
+      if (DB.spirits.length === 0) {
+        renderMissingCsvCard("spirits");
+        return;
+      }
+      const ksChoice = STATE.spiritKS;
+      const isCalc = ksChoice !== "FORMULA";
+      if (isCalc) {
+        infoStrip.classList.add("visible", "purple");
+        infoStrip.innerHTML = `<span>AKTIVER KRAFTSTUFE-RECHNER: KS ${ksChoice}</span><span>Alle Attribute, Initiative, Zustandsmonitor &amp; Verteidigung live berechnet</span>`;
+      }
+
+      const filtered = DB.spirits.filter(sp => {
+        if (STATE.f1 && sp.kategorie !== STATE.f1) return false;
+        if (STATE.f3 && sp.quelle !== STATE.f3) return false;
+        if (q && !`${sp.name} ${sp.kategorie} ${sp.fertigkeiten} ${sp.kraefte} ${sp.optKraefte} ${sp.regeln}`.toLowerCase().includes(q)) return false;
+        return true;
+      });
+      const sorted = sortItems(filtered);
+      statsDisplay.innerHTML = `GEISTER • TREFFER: <strong>${sorted.length}</strong> / ${DB.spirits.length}`;
+
+      contentArea.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th data-sort="name">Geist <span class="sort-arrow">⇅</span></th>
+              <th data-sort="kategorie">Typ <span class="sort-arrow">⇅</span></th>
+              <th class="no-sort">Attribute<div class="attr-header-sub"><span>K</span><span>G</span><span>R</span><span>S</span><span>W</span><span>L</span><span>I</span><span>C</span><span>ESS</span></div></th>
+              <th data-sort="ini">Initiative <span class="sort-arrow">⇅</span></th>
+              <th data-sort="zm">ZM <span class="sort-arrow">⇅</span></th>
+              <th data-sort="vw">Verteidigung <span class="sort-arrow">⇅</span></th>
+              <th data-sort="kraefte">Kräfte <span class="sort-arrow">⇅</span></th>
+              <th data-sort="quelle">Quelle <span class="sort-arrow">⇅</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            ${sorted.length === 0 ? `<tr><td colspan="8" class="state-box">// KEINE TREFFER GEFUNDEN</td></tr>` : sorted.map(sp => {
+              const attrHtml = `<div class="attr-grid">` + sp.attrs.map(a => {
+                const v = evalSpiritExpr(a, ksChoice);
+                return `<span class="attr-cell ${isCalc ? "calc" : ""}">${escapeHtml(v)}</span>`;
+              }).join("") + `</div>`;
+              return `
+                <tr data-item-id="${sp.id}">
+                  <td class="col-name">${escapeHtml(sp.name)}</td>
+                  <td class="col-cat">${escapeHtml(sp.kategorie)}</td>
+                  <td>${attrHtml}</td>
+                  <td class="col-mono ${isCalc ? "col-purple" : ""}">${escapeHtml(evalSpiritExpr(sp.ini, ksChoice))}</td>
+                  <td class="col-mono ${isCalc ? "col-purple" : ""}">${escapeHtml(evalSpiritExpr(sp.zm, ksChoice))}</td>
+                  <td class="col-cyan">${escapeHtml(evalSpiritExpr(sp.vw, ksChoice))}</td>
+                  <td class="col-notes">${escapeHtml(sp.kraefte)}</td>
+                  <td class="col-source">${escapeHtml(sp.quelle)}</td>
+                </tr>
+              `;
+            }).join("")}
+          </tbody>
+        </table>
+      `;
+    }
+
+    // Bind table sorting & row click modal
+    contentArea.querySelectorAll("thead th[data-sort]").forEach(th => {
+      th.addEventListener("click", () => {
+        const k = th.dataset.sort;
+        if (STATE.sortKey === k) STATE.sortAsc = !STATE.sortAsc;
+        else { STATE.sortKey = k; STATE.sortAsc = true; }
+        renderDataArea();
+      });
     });
 
-    document.getElementById("mNotes").textContent =
-      weapon.ausstattung && weapon.ausstattung !== "-"
-        ? `Ausstattung & Regeln: ${weapon.ausstattung}`
-        : "Keine besonderen Serienausstattungen oder Zusatzregeln vermerkt.";
+    contentArea.querySelectorAll("tbody tr[data-item-id]").forEach(tr => {
+      tr.addEventListener("click", () => openItemModal(tr.dataset.itemId));
+    });
+  }
 
-    const awSlash = effective.aw.map(v => (!v || v === "-") ? "–" : v).join("/");
-    const notesPart = weapon.ausstattung && weapon.ausstattung !== "-" ? ` | ${weapon.ausstattung}` : "";
-    currentModalText = `${weapon.waffe}${ammoLabel} [${weapon.kategorie} | Schaden ${effective.schaden} | ${weapon.modus} | ${awSlash} | ${weapon.munition}${notesPart}]`;
-
+  // Universal Modal Renderer
+  function openItemModal(itemId) {
+    const mCat = document.getElementById("mCat");
+    const mTitle = document.getElementById("mTitle");
+    const mBody = document.getElementById("mBody");
     document.getElementById("mCopyFeedback").textContent = "";
+
+    if (itemId.startsWith("w-")) {
+      const w = DB.weapons.find(x => x.id === itemId);
+      if (!w) return;
+      const eff = applyAmmoToWeapon(w, STATE.ammo);
+      const ammoTag = eff.isModded ? ` (${AMMO_MODS[STATE.ammo].label})` : "";
+      mCat.textContent = `${w.kategorie} • Legalität: ${w.legal}`;
+      mTitle.textContent = w.name + ammoTag;
+      mBody.innerHTML = `
+        <div class="modal-grid">
+          <div class="stat-box"><div class="stat-box-label">Schaden</div><div class="stat-box-val" style="color:var(--pink);">${escapeHtml(eff.schaden)}</div></div>
+          <div class="stat-box"><div class="stat-box-label">Feuermodus</div><div class="stat-box-val">${escapeHtml(w.modus)}</div></div>
+          <div class="stat-box"><div class="stat-box-label">Munition</div><div class="stat-box-val">${escapeHtml(w.munition)}</div></div>
+          <div class="stat-box"><div class="stat-box-label">Verfügbarkeit</div><div class="stat-box-val">${escapeHtml(w.verf)}${w.legal !== "Frei" ? escapeHtml(w.legal) : ""}</div></div>
+          <div class="stat-box"><div class="stat-box-label">Preis</div><div class="stat-box-val" style="color:#6ee7b7;">${formatPrice(w.preis)}</div></div>
+          <div class="stat-box"><div class="stat-box-label">Quelle</div><div class="stat-box-val" style="font-size:0.84rem;">${escapeHtml(w.quelle)}</div></div>
+        </div>
+        <div class="modal-ranges">
+          ${["SEHR NAH", "NAH", "MITTEL", "WEIT", "SEHR WEIT"].map((lbl, i) =>
+            `<div class="range-box"><span>${lbl}</span><strong>${escapeHtml(eff.aw[i] === "-" ? "–" : eff.aw[i])}</strong></div>`
+          ).join("")}
+        </div>
+        <div class="modal-notes"><strong>Ausstattung &amp; Regeln:</strong> ${escapeHtml(w.regeln)}</div>
+      `;
+      STATE.modalCopyText = `${w.name}${ammoTag} [${w.kategorie} | Schaden ${eff.schaden} | ${w.modus} | ${eff.aw.join("/")} | ${w.munition} | ${w.regeln}]`;
+    } else if (itemId.startsWith("g-")) {
+      const g = DB.gear.find(x => x.id === itemId);
+      if (!g) return;
+      mCat.textContent = `${g.typ} • Legalität: ${g.legal}`;
+      mTitle.textContent = g.name;
+      mBody.innerHTML = `
+        <div class="modal-grid">
+          <div class="stat-box"><div class="stat-box-label">Halterung / Slots</div><div class="stat-box-val">${escapeHtml(g.halterung)}</div></div>
+          <div class="stat-box"><div class="stat-box-label">Effekt / AW</div><div class="stat-box-val" style="color:var(--cyan);">${escapeHtml(g.effekt)}</div></div>
+          <div class="stat-box"><div class="stat-box-label">Preis</div><div class="stat-box-val" style="color:#6ee7b7;">${formatPrice(g.preis)}</div></div>
+          <div class="stat-box"><div class="stat-box-label">Verfügbarkeit</div><div class="stat-box-val">${escapeHtml(g.verf)}${g.legal !== "Frei" ? escapeHtml(g.legal) : ""}</div></div>
+          <div class="stat-box"><div class="stat-box-label">Quelle</div><div class="stat-box-val" style="font-size:0.84rem;">${escapeHtml(g.quelle)}</div></div>
+        </div>
+        <div class="modal-notes"><strong>Regeln:</strong> ${escapeHtml(g.regeln)}</div>
+      `;
+      STATE.modalCopyText = `${g.name} [${g.typ} | Halterung: ${g.halterung} | ${g.effekt} | ${g.regeln}]`;
+    } else if (itemId.startsWith("a-")) {
+      const a = DB.armor.find(x => x.id === itemId);
+      if (!a) return;
+      mCat.textContent = `${a.kategorie} • Legalität: ${a.legal}`;
+      mTitle.textContent = a.name;
+      mBody.innerHTML = `
+        <div class="modal-grid">
+          <div class="stat-box"><div class="stat-box-label">Verteidigungswert</div><div class="stat-box-val" style="color:var(--cyan);">${escapeHtml(a.vw)}</div></div>
+          <div class="stat-box"><div class="stat-box-label">Sozial</div><div class="stat-box-val">${escapeHtml(a.sozial)}</div></div>
+          <div class="stat-box"><div class="stat-box-label">Kapazität</div><div class="stat-box-val">${escapeHtml(a.kap)}</div></div>
+          <div class="stat-box"><div class="stat-box-label">Verfügbarkeit</div><div class="stat-box-val">${escapeHtml(a.verf)}${a.legal !== "Frei" ? escapeHtml(a.legal) : ""}</div></div>
+          <div class="stat-box"><div class="stat-box-label">Preis</div><div class="stat-box-val" style="color:#6ee7b7;">${formatPrice(a.preis)}</div></div>
+          <div class="stat-box"><div class="stat-box-label">Quelle</div><div class="stat-box-val" style="font-size:0.84rem;">${escapeHtml(a.quelle)}</div></div>
+        </div>
+        <div class="modal-notes"><strong>Merkmale:</strong> ${escapeHtml(a.merkmale)}<br><strong>Regeln:</strong> ${escapeHtml(a.regeln)}</div>
+      `;
+      STATE.modalCopyText = `${a.name} [${a.kategorie} | V-Wert ${a.vw} | Sozial ${a.sozial} | Kap. ${a.kap} | ${a.merkmale}]`;
+    } else if (itemId.startsWith("s-")) {
+      const s = DB.spells.find(x => x.id === itemId);
+      if (!s) return;
+      mCat.textContent = `${s.kategorie} • ${s.untertyp}`;
+      mTitle.textContent = s.name;
+      mBody.innerHTML = `
+        <div class="modal-grid">
+          <div class="stat-box"><div class="stat-box-label">Reichweite</div><div class="stat-box-val">${escapeHtml(s.reichweite)}</div></div>
+          <div class="stat-box"><div class="stat-box-label">Art</div><div class="stat-box-val">${escapeHtml(s.art)}</div></div>
+          <div class="stat-box"><div class="stat-box-label">Dauer</div><div class="stat-box-val">${escapeHtml(s.dauer)}</div></div>
+          <div class="stat-box"><div class="stat-box-label">Entzug</div><div class="stat-box-val" style="color:var(--pink);">${escapeHtml(s.entzug)}</div></div>
+          <div class="stat-box"><div class="stat-box-label">Schaden / Effekt</div><div class="stat-box-val" style="color:var(--cyan); font-size:0.84rem;">${escapeHtml(s.effekt)}</div></div>
+          <div class="stat-box"><div class="stat-box-label">Quelle</div><div class="stat-box-val" style="font-size:0.84rem;">${escapeHtml(s.quelle)}</div></div>
+        </div>
+        <div class="modal-notes">${escapeHtml(s.regeln)}</div>
+      `;
+      STATE.modalCopyText = `${s.name} [${s.kategorie} | RW ${s.reichweite} | Art ${s.art} | Dauer ${s.dauer} | Entzug ${s.entzug} | ${s.effekt}]`;
+    } else if (itemId.startsWith("sp-")) {
+      const sp = DB.spirits.find(x => x.id === itemId);
+      if (!sp) return;
+      const ks = STATE.spiritKS;
+      const ksLabel = ks === "FORMULA" ? "Formel (KS)" : `Kraftstufe ${ks}`;
+      mCat.textContent = `${sp.kategorie} • ${ksLabel}`;
+      mTitle.textContent = sp.name;
+      const attrNames = ["K", "G", "R", "S", "W", "L", "I", "C", "ESS"];
+      mBody.innerHTML = `
+        <div class="modal-attrs">
+          ${attrNames.map((n, i) => `<div class="range-box"><span>${n}</span><strong style="color:var(--purple);">${escapeHtml(evalSpiritExpr(sp.attrs[i], ks))}</strong></div>`).join("")}
+        </div>
+        <div class="modal-grid">
+          <div class="stat-box"><div class="stat-box-label">Initiative</div><div class="stat-box-val">${escapeHtml(evalSpiritExpr(sp.ini, ks))}</div></div>
+          <div class="stat-box"><div class="stat-box-label">Astrale Initiative</div><div class="stat-box-val">${escapeHtml(evalSpiritExpr(sp.aini, ks))}</div></div>
+          <div class="stat-box"><div class="stat-box-label">Handlungen</div><div class="stat-box-val" style="font-size:0.82rem;">${escapeHtml(sp.handlungen)}</div></div>
+          <div class="stat-box"><div class="stat-box-label">Zustandsmonitor</div><div class="stat-box-val">${escapeHtml(evalSpiritExpr(sp.zm, ks))}</div></div>
+          <div class="stat-box"><div class="stat-box-label">Verteidigungswert</div><div class="stat-box-val" style="color:var(--cyan);">${escapeHtml(evalSpiritExpr(sp.vw, ks))}</div></div>
+          <div class="stat-box"><div class="stat-box-label">Bewegung</div><div class="stat-box-val">${escapeHtml(sp.bewegung)}</div></div>
+        </div>
+        <div class="modal-notes">
+          <strong>Fertigkeiten:</strong> ${escapeHtml(sp.fertigkeiten)}<br>
+          <strong>Kräfte:</strong> ${escapeHtml(sp.kraefte)}<br>
+          <strong>Optionale Kräfte:</strong> ${escapeHtml(sp.optKraefte)}<br>
+          <strong>Beschwörung &amp; Regeln:</strong> ${escapeHtml(sp.regeln)} (${escapeHtml(sp.quelle)})
+        </div>
+      `;
+      STATE.modalCopyText = `${sp.name} (${ksLabel}) | K:${evalSpiritExpr(sp.attrs[0], ks)} G:${evalSpiritExpr(sp.attrs[1], ks)} R:${evalSpiritExpr(sp.attrs[2], ks)} S:${evalSpiritExpr(sp.attrs[3], ks)} W:${evalSpiritExpr(sp.attrs[4], ks)} L:${evalSpiritExpr(sp.attrs[5], ks)} I:${evalSpiritExpr(sp.attrs[6], ks)} C:${evalSpiritExpr(sp.attrs[7], ks)} | Ini ${evalSpiritExpr(sp.ini, ks)} | ZM ${evalSpiritExpr(sp.zm, ks)} | VW ${evalSpiritExpr(sp.vw, ks)} | Kräfte: ${sp.kraefte}`;
+    }
+
     document.getElementById("detailModal").classList.add("open");
   }
 
-  function renderTable() {
-    const query = searchInput.value.trim().toLowerCase();
-    const catVal = categoryFilter.value;
-    const legVal = legalityFilter.value;
-    const srcVal = sourceFilter.value;
-    const ammoKey = ammoSelect.value;
-
-    if (ammoKey !== "STANDARD") {
-      const m = AMMO_MODS[ammoKey];
-      ammoSelect.classList.add("ammo-active");
-      ammoBanner.classList.add("visible");
-      ammoBannerText.textContent = `AKTIVE MUNITION: ${m.label.toUpperCase()} • Preismultiplikator: ${m.mult}`;
-    } else {
-      ammoSelect.classList.remove("ammo-active");
-      ammoBanner.classList.remove("visible");
-    }
-
-    const filtered = allWeapons.filter(w => {
-      if (activeGroup !== "ALL" && w.group !== activeGroup) return false;
-      if (catVal && w.kategorie !== catVal) return false;
-      if (legVal) {
-        const wLeg = w.legal.trim().toUpperCase();
-        if (legVal === "Frei" && (wLeg === "L" || wLeg === "I")) return false;
-        if (legVal !== "Frei" && wLeg !== legVal.toUpperCase()) return false;
-      }
-      if (srcVal && w.quelle !== srcVal) return false;
-
-      if (query) {
-        const haystack = `${w.waffe} ${w.kategorie} ${w.schaden} ${w.modus} ${w.ausstattung} ${w.quelle}`.toLowerCase();
-        if (!haystack.includes(query)) return false;
-      }
-      return true;
-    });
-
-    const sorted = sortData(filtered);
-    statsDisplay.innerHTML = `ONLINE • TREFFER: <strong>${sorted.length}</strong> / ${allWeapons.length}`;
-
-    if (sorted.length === 0) {
-      tableBody.innerHTML = `<tr><td colspan="11" style="text-align:center; padding: 36px; color: var(--text-dim); font-family: var(--font-mono);">// KEINE WAFFEN FÜR DIESE FILTERKOMBINATION GEFUNDEN</td></tr>`;
-      return;
-    }
-
-    tableBody.innerHTML = sorted.map(w => {
-      const eff = applyAmmoToWeapon(w, ammoKey);
-      return `
-        <tr data-id="${w.id}">
-          <td class="col-name">${escapeHtml(w.waffe)}</td>
-          <td class="col-cat">${escapeHtml(w.kategorie)}</td>
-          <td class="col-dmg ${eff.isModded ? "modded" : ""}">${escapeHtml(eff.schaden)}</td>
-          <td class="col-mode">${escapeHtml(w.modus)}</td>
-          <td>${renderAwCells(eff.aw, eff.isModded)}</td>
-          <td class="col-mono">${escapeHtml(w.munition)}</td>
-          <td class="col-mono">${escapeHtml(w.verf)}</td>
-          <td>${getLegalityBadge(w.legal)}</td>
-          <td class="col-price">${formatPrice(w.preis)}</td>
-          <td class="col-notes">${escapeHtml(w.ausstattung)}</td>
-          <td class="col-source">${escapeHtml(w.quelle)}</td>
-        </tr>
-      `;
-    }).join("");
-
-    tableBody.querySelectorAll("tr[data-id]").forEach(row => {
-      row.addEventListener("click", () => {
-        const id = parseInt(row.dataset.id, 10);
-        const weapon = allWeapons.find(item => item.id === id);
-        if (weapon) openModal(weapon);
-      });
-    });
+  function renderAll() {
+    document.querySelectorAll(".mod-btn").forEach(b => b.classList.toggle("active", b.dataset.mod === STATE.mod));
+    renderModuleChrome();
+    renderDataArea();
   }
 
-  document.querySelectorAll(".tab-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      activeGroup = btn.dataset.group;
-      categoryFilter.value = "";
-      renderTable();
-    });
-  });
-
-  [searchInput, categoryFilter, legalityFilter, sourceFilter, ammoSelect].forEach(el => {
-    el.addEventListener("input", renderTable);
-    el.addEventListener("change", renderTable);
-  });
-
-  resetBtn.addEventListener("click", () => {
-    searchInput.value = "";
-    categoryFilter.value = "";
-    legalityFilter.value = "";
-    sourceFilter.value = "";
-    ammoSelect.value = "STANDARD";
-    activeGroup = "ALL";
-    document.querySelectorAll(".tab-btn").forEach(b => b.classList.toggle("active", b.dataset.group === "ALL"));
-    renderTable();
-  });
-
-  document.querySelectorAll("thead th[data-key]").forEach(th => {
-    th.addEventListener("click", () => {
-      const key = th.dataset.key;
-      if (sortState.key === key) {
-        sortState.asc = !sortState.asc;
-      } else {
-        sortState.key = key;
-        sortState.asc = true;
-      }
-
-      document.querySelectorAll("thead th").forEach(h => {
-        h.classList.remove("sort-asc", "sort-desc");
-        const arrow = h.querySelector(".sort-arrow");
-        if (arrow) arrow.textContent = "⇅";
-      });
-
-      th.classList.add(sortState.asc ? "sort-asc" : "sort-desc");
-      const activeArrow = th.querySelector(".sort-arrow");
-      if (activeArrow) activeArrow.textContent = sortState.asc ? "▲" : "▼";
-
-      renderTable();
-    });
-  });
-
-  document.getElementById("mClose").addEventListener("click", () => {
-    document.getElementById("detailModal").classList.remove("open");
-  });
-  document.getElementById("detailModal").addEventListener("click", e => {
-    if (e.target.id === "detailModal") {
-      document.getElementById("detailModal").classList.remove("open");
-    }
-  });
-  document.getElementById("mCopyBtn").addEventListener("click", async () => {
-    try {
-      await navigator.clipboard.writeText(currentModalText);
-      document.getElementById("mCopyFeedback").textContent = "✓ In Zwischenablage kopiert!";
-    } catch {
-      document.getElementById("mCopyFeedback").textContent = currentModalText;
-    }
-  });
-
-  async function loadCsvData() {
-    const logs = [];
-    const localCandidates = ["./waffen.csv", "./Waffen.csv"];
-
-    // 1. Lokale CSV im GitHub-Repository prüfen (Groß- und Kleinschreibung)
-    for (const file of localCandidates) {
+  // Fetch helper with local-first + Google Sheets fallback
+  async function tryFetchCsv(localPaths, remoteFallbackUrl = null) {
+    for (const path of localPaths) {
       try {
-        const res = await fetch(`${file}?t=${Date.now()}`, { cache: "no-store" });
+        const res = await fetch(`${path}?t=${Date.now()}`, { cache: "no-store" });
         if (res.ok) {
           const txt = await res.text();
-          if (txt && !txt.trim().startsWith("<!DOCTYPE")) {
-            return { text: txt, source: `GITHUB REPO (${file.replace("./", "")})` };
-          }
-        } else {
-          logs.push(`${file}: HTTP ${res.status}`);
-        }
-      } catch (e) {
-        logs.push(`${file}: ${e.message}`);
-      }
-    }
-
-    // 2. Direkter Versuch über Google Sheets
-    try {
-      const directRes = await fetch(SHEET_CSV_URL);
-      if (directRes.ok) {
-        const txt = await directRes.text();
-        if (txt && !txt.trim().startsWith("<!DOCTYPE")) {
-          return { text: txt, source: "GOOGLE SHEETS (DIREKT)" };
-        }
-      }
-    } catch (_) {}
-
-    // 3. CORS-Bypass für Google Sheets
-    const proxies = [
-      `https://api.allorigins.win/raw?url=${encodeURIComponent(SHEET_CSV_URL)}`,
-      `https://corsproxy.io/?${encodeURIComponent(SHEET_CSV_URL)}`
-    ];
-
-    for (const proxyUrl of proxies) {
-      try {
-        const proxyRes = await fetch(proxyUrl);
-        if (proxyRes.ok) {
-          const txt = await proxyRes.text();
-          if (txt && !txt.trim().startsWith("<!DOCTYPE") && txt.toLowerCase().includes("waffe")) {
-            return { text: txt, source: "GOOGLE SHEETS (LIVE-SYNC)" };
-          }
+          if (txt && !txt.trim().startsWith("<!DOCTYPE")) return txt;
         }
       } catch (_) {}
     }
-
-    throw new Error(`Datei noch nicht erreichbar (${logs.join(" | ") || "CORS"}).`);
+    if (remoteFallbackUrl) {
+      const candidates = [
+        remoteFallbackUrl,
+        `https://api.allorigins.win/raw?url=${encodeURIComponent(remoteFallbackUrl)}`
+      ];
+      for (const u of candidates) {
+        try {
+          const res = await fetch(u);
+          if (res.ok) {
+            const txt = await res.text();
+            if (txt && !txt.trim().startsWith("<!DOCTYPE")) return txt;
+          }
+        } catch (_) {}
+      }
+    }
+    return null;
   }
 
   async function init() {
-    try {
-      const result = await loadCsvData();
-      const rows = parseCSV(result.text);
-      allWeapons = mapRowsToObjects(rows);
+    // Module button listeners
+    document.querySelectorAll(".mod-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        STATE.mod = btn.dataset.mod;
+        STATE.subTab = "ALL";
+        STATE.search = "";
+        STATE.f1 = "";
+        STATE.f2 = "";
+        STATE.f3 = "";
+        STATE.sortKey = "name";
+        STATE.sortAsc = true;
+        renderAll();
+      });
+    });
 
-      if (allWeapons.length === 0) {
-        throw new Error(`CSV geladen (${rows.length} Zeilen), aber keine gültige Kopfzeile mit "Waffe" erkannt.`);
+    // Modal listeners
+    document.getElementById("mClose").addEventListener("click", () => document.getElementById("detailModal").classList.remove("open"));
+    document.getElementById("detailModal").addEventListener("click", e => {
+      if (e.target.id === "detailModal") document.getElementById("detailModal").classList.remove("open");
+    });
+    document.getElementById("mCopyBtn").addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(STATE.modalCopyText);
+        document.getElementById("mCopyFeedback").textContent = "✓ Kopiert!";
+      } catch {
+        document.getElementById("mCopyFeedback").textContent = STATE.modalCopyText;
       }
+    });
 
-      populateControls(allWeapons);
-      statusMessage.style.display = "none";
-      weaponsTable.style.display = "table";
-      footerSource.textContent = `DATENQUELLE: ${result.source} • HOSTED ON GITHUB PAGES`;
-      renderTable();
-    } catch (err) {
-      statusDot.style.background = "var(--pink)";
-      statusDot.style.boxShadow = "0 0 8px var(--pink)";
-      statusMessage.classList.add("error");
-      statusMessage.innerHTML = `
-        // MATRIX-FEHLER: ${escapeHtml(err.message)}
-        <div class="help-box">
-          <strong>Checkliste auf GitHub:</strong><br>
-          1. Liegt <code>waffen.csv</code> (oder <code>Waffen.csv</code>) im selben Hauptordner wie <code>index.html</code>?<br>
-          2. Falls du sie gerade erst hochgeladen hast: Warte ca. 45 Sekunden, bis unter <strong>Actions</strong> der grüne Haken erscheint, und drücke <strong>Strg + Shift + R</strong>.
-        </div>
-      `;
-      statsDisplay.textContent = "OFFLINE";
-      footerSource.textContent = "DATENQUELLE: OFFLINE";
+    // Load all CSV datasets concurrently
+    const [wCsv, gCsv, aCsv, sCsv, spCsv] = await Promise.all([
+      tryFetchCsv(["./waffen.csv", "./Waffen.csv"], SHEET_CSV_URL),
+      tryFetchCsv(["./zubehoer.csv", "./Zubehoer.csv"]),
+      tryFetchCsv(["./panzerung.csv", "./Panzerung.csv"]),
+      tryFetchCsv(["./zauber.csv", "./Zauber.csv"]),
+      tryFetchCsv(["./geister.csv", "./Geister.csv"])
+    ]);
+
+    if (wCsv) {
+      DB.weapons = mapWeapons(parseCSV(wCsv));
+      // Extract inline Zubehör rows from waffen.csv so Gear tab works immediately
+      const inlineGear = DB.weapons
+        .filter(w => w.group === "GEAR_INLINE")
+        .map((w, idx) => ({
+          id: `g-inline-${idx}`,
+          name: w.name,
+          typ: w.kategorie,
+          halterung: w.munition !== "-" ? w.munition : "–",
+          effekt: w.aw.some(v => v !== "-") ? w.aw.join("/") : (w.schaden !== "-" ? w.schaden : "–"),
+          verf: w.verf,
+          legal: w.legal,
+          preis: w.preis,
+          regeln: w.regeln,
+          quelle: w.quelle
+        }));
+      DB.gear = DB.gear.concat(inlineGear);
     }
+
+    if (gCsv) DB.gear = DB.gear.concat(mapGear(parseCSV(gCsv)));
+    if (aCsv) DB.armor = mapArmor(parseCSV(aCsv));
+    if (sCsv) DB.spells = mapSpells(parseCSV(sCsv));
+    if (spCsv) DB.spirits = mapSpirits(parseCSV(spCsv));
+
+    // Update module badges
+    document.getElementById("badge-weapons").textContent = DB.weapons.filter(w => w.group !== "GEAR_INLINE").length;
+    document.getElementById("badge-gear").textContent = DB.gear.length;
+    document.getElementById("badge-armor").textContent = DB.armor.length;
+    document.getElementById("badge-spells").textContent = DB.spells.length;
+    document.getElementById("badge-spirits").textContent = DB.spirits.length;
+
+    renderAll();
   }
 
   init();
