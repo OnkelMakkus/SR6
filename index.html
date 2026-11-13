@@ -490,14 +490,28 @@
 
   /* Loader & Error */
   .state-box {
-    padding: 60px 20px;
+    padding: 50px 20px;
     text-align: center;
     font-family: var(--font-mono);
     color: var(--cyan);
+    line-height: 1.7;
   }
 
   .state-box.error {
     color: var(--pink);
+  }
+
+  .help-box {
+    max-width: 680px;
+    margin: 18px auto 0 auto;
+    padding: 14px 18px;
+    background: var(--bg-input);
+    border: 1px solid var(--border-bright);
+    border-radius: 6px;
+    text-align: left;
+    font-family: var(--font-sans);
+    font-size: 0.86rem;
+    color: var(--text);
   }
 
   /* Weapon Detail Modal */
@@ -751,7 +765,7 @@
     </div>
 
     <div class="table-scroll">
-      <div id="statusMessage" class="state-box">// LADE WAFFENDATEN AUS GOOGLE SHEETS...</div>
+      <div id="statusMessage" class="state-box">// LADE WAFFENDATEN...</div>
       <table id="weaponsTable" style="display: none;">
         <thead>
           <tr>
@@ -782,8 +796,8 @@
     </div>
   </main>
 
-  <footer class="footer-bar">
-    LIVE-SYNC: GOOGLE SHEETS • HOSTED ON GITHUB PAGES
+  <footer class="footer-bar" id="footerSource">
+    VERBINDE DATENQUELLE...
   </footer>
 </div>
 
@@ -843,9 +857,7 @@
 </div>
 
 <script>
-  const CSV_URLS = [
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTTVrt2TcEVyjj5_a_MX1MzHZr12miRQ71vcTm2K_zbaURm3U2Aw-974pPpqoDG4vXYq9oYvFhCBKbi/pub?gid=0&single=true&output=csv"
-  ];
+  const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTTVrt2TcEVyjj5_a_MX1MzHZr12miRQ71vcTm2K_zbaURm3U2Aw-974pPpqoDG4vXYq9oYvFhCBKbi/pub?gid=0&single=true&output=csv";
 
   const AMMO_MODS = {
     STANDARD:  { label: "Standardmunition",   aw: 0, dmg: 0,  type: null,   mult: "× 1" },
@@ -874,6 +886,7 @@
   const statusMessage = document.getElementById("statusMessage");
   const statsDisplay = document.getElementById("statsDisplay");
   const statusDot = document.getElementById("statusDot");
+  const footerSource = document.getElementById("footerSource");
 
   function cleanCell(val) {
     return (val || "").replace(/\[cite:\s*[\d,\s]+\]/gi, "").trim();
@@ -963,10 +976,102 @@
       const baseType = dmgMatch[2];
       const finalNum = Math.max(1, baseNum + mod.dmg);
       const finalType = mod.type ? mod.type : baseType;
-      newDmg = `\${finalNum}${finalType}`; }  const newAw = w.aw.map(val => { if (/^\d+$/.test(val.trim())) { return String(Math.max(1, parseInt(val.trim(), 10) + mod.aw)); } return val; });  return { schaden: newDmg, aw: newAw, isModded: true }; }  function parseNumber(val) { if (!val \vert{}\vert{} val === "-" \vert{}\vert{} val === "–") return -1; const cleaned = String(val).replace(/[^\d-]/g, ""); const num = parseInt(cleaned, 10); return isNaN(num) ? -1 : num; }  function formatPrice(val) { if (!val \vert{}\vert{} val === "-" \vert{}\vert{} val === "–") return "–"; const num = parseNumber(val); if (num >= 0 && /^\d[\d.,\s]*[¥€]?$/.test(val.trim())) { return num.toLocaleString("de-DE") + " ¥"; } return escapeHtml(val); }  function mapRowsToObjects(rows) { if (rows.length < 2) return []; const headers = rows[0].map(h => h.toLowerCase().replace(/[^a-z0-9äöüß]/g, "")); const findIdx = (names, fallback) => { for (const n of names) { const idx = headers.indexOf(n); if (idx !== -1) return idx; } return fallback; };  const idxMap = { waffe: findIdx(["waffe", "name"], 0), kategorie: findIdx(["kategorie", "art", "typ"], 1), schaden: findIdx(["schaden", "schadenswert"], 2), modus: findIdx(["modus", "feuermodus"], 3), awSn: findIdx(["awsehrnah", "sehrnah"], 4), awN: findIdx(["awnah", "nah"], 5), awM: findIdx(["awmittel", "mittel"], 6), awW: findIdx(["awweit", "weit"], 7), awSw: findIdx(["awsehrweit", "sehrweit"], 8), munition: findIdx(["munition", "muni"], 9), verf: findIdx(["verfuegbarkeit", "verfügbarkeit", "verf"], 10), legal: findIdx(["legalitaet", "legalität", "leg"], 11), preis: findIdx(["preis", "kosten"], 12), ausstattung: findIdx(["ausstattung", "regeln", "anmerkungen"], 13), quelle: findIdx(["quelle", "buch"], 14) };  const items = []; for (let i = 1; i < rows.length; i++) { const r = rows[i]; const waffe = r[idxMap.waffe] \vert{}\vert{} ""; if (!waffe \vert{}\vert{} waffe.toLowerCase() === "waffe") continue; const kategorie = r[idxMap.kategorie] \vert{}\vert{} "Sonstiges";  items.push({ id: i, waffe, kategorie, group: classifyGroup(kategorie), schaden: r[idxMap.schaden] \vert{}\vert{} "-", modus: r[idxMap.modus] \vert{}\vert{} "-", aw: [ r[idxMap.awSn] \vert{}\vert{} "-", r[idxMap.awN] \vert{}\vert{} "-", r[idxMap.awM] \vert{}\vert{} "-", r[idxMap.awW] \vert{}\vert{} "-", r[idxMap.awSw] \vert{}\vert{} "-" ], munition: r[idxMap.munition] \vert{}\vert{} "-", verf: r[idxMap.verf] \vert{}\vert{} "-", legal: r[idxMap.legal] \vert{}\vert{} "Frei", preis: r[idxMap.preis] \vert{}\vert{} "-", ausstattung: r[idxMap.ausstattung] \vert{}\vert{} "-", quelle: r[idxMap.quelle] \vert{}\vert{} "-" }); } return items; }  function populateControls(data) { document.getElementById("cnt-ALL").textContent = `(${data.length})`;
+      newDmg = `${finalNum}${finalType}`;
+    }
+
+    const newAw = w.aw.map(val => {
+      if (/^\d+$/.test(val.trim())) {
+        return String(Math.max(1, parseInt(val.trim(), 10) + mod.aw));
+      }
+      return val;
+    });
+
+    return { schaden: newDmg, aw: newAw, isModded: true };
+  }
+
+  function parseNumber(val) {
+    if (!val || val === "-" || val === "–") return -1;
+    const cleaned = String(val).replace(/[^\d-]/g, "");
+    const num = parseInt(cleaned, 10);
+    return isNaN(num) ? -1 : num;
+  }
+
+  function formatPrice(val) {
+    if (!val || val === "-" || val === "–") return "–";
+    const num = parseNumber(val);
+    if (num >= 0 && /^\d[\d.,\s]*[¥€]?$/.test(val.trim())) {
+      return num.toLocaleString("de-DE") + " ¥";
+    }
+    return escapeHtml(val);
+  }
+
+  function mapRowsToObjects(rows) {
+    if (rows.length < 2) return [];
+    const headers = rows[0].map(h => h.toLowerCase().replace(/[^a-z0-9äöüß]/g, ""));
+    const findIdx = (names, fallback) => {
+      for (const n of names) {
+        const idx = headers.indexOf(n);
+        if (idx !== -1) return idx;
+      }
+      return fallback;
+    };
+
+    const idxMap = {
+      waffe: findIdx(["waffe", "name"], 0),
+      kategorie: findIdx(["kategorie", "art", "typ"], 1),
+      schaden: findIdx(["schaden", "schadenswert"], 2),
+      modus: findIdx(["modus", "feuermodus"], 3),
+      awSn: findIdx(["awsehrnah", "sehrnah"], 4),
+      awN: findIdx(["awnah", "nah"], 5),
+      awM: findIdx(["awmittel", "mittel"], 6),
+      awW: findIdx(["awweit", "weit"], 7),
+      awSw: findIdx(["awsehrweit", "sehrweit"], 8),
+      munition: findIdx(["munition", "muni"], 9),
+      verf: findIdx(["verfuegbarkeit", "verfügbarkeit", "verf"], 10),
+      legal: findIdx(["legalitaet", "legalität", "leg"], 11),
+      preis: findIdx(["preis", "kosten"], 12),
+      ausstattung: findIdx(["ausstattung", "regeln", "anmerkungen"], 13),
+      quelle: findIdx(["quelle", "buch"], 14)
+    };
+
+    const items = [];
+    for (let i = 1; i < rows.length; i++) {
+      const r = rows[i];
+      const waffe = r[idxMap.waffe] || "";
+      if (!waffe || waffe.toLowerCase() === "waffe") continue;
+      const kategorie = r[idxMap.kategorie] || "Sonstiges";
+
+      items.push({
+        id: i,
+        waffe,
+        kategorie,
+        group: classifyGroup(kategorie),
+        schaden: r[idxMap.schaden] || "-",
+        modus: r[idxMap.modus] || "-",
+        aw: [
+          r[idxMap.awSn] || "-",
+          r[idxMap.awN] || "-",
+          r[idxMap.awM] || "-",
+          r[idxMap.awW] || "-",
+          r[idxMap.awSw] || "-"
+        ],
+        munition: r[idxMap.munition] || "-",
+        verf: r[idxMap.verf] || "-",
+        legal: r[idxMap.legal] || "Frei",
+        preis: r[idxMap.preis] || "-",
+        ausstattung: r[idxMap.ausstattung] || "-",
+        quelle: r[idxMap.quelle] || "-"
+      });
+    }
+    return items;
+  }
+
+  function populateControls(data) {
+    document.getElementById("cnt-ALL").textContent = `(${data.length})`;
     ["PISTOLS", "SMG_SHOTGUN", "RIFLES", "HEAVY_EXOTIC", "MELEE_PROJ", "GEAR"].forEach(g => {
       const c = data.filter(w => w.group === g).length;
-      const el = document.getElementById(`cnt-${g}`); if (el) el.textContent = `(${c})`;
+      const el = document.getElementById(`cnt-${g}`);
+      if (el) el.textContent = `(${c})`;
     });
 
     const categories = [...new Set(data.map(w => w.kategorie).filter(Boolean))].sort((a, b) => a.localeCompare(b, "de"));
@@ -990,7 +1095,7 @@
     const clean = (leg || "").trim().toUpperCase();
     if (clean === "I") return `<span class="badge badge-i" title="Illegal">I</span>`;
     if (clean === "L") return `<span class="badge badge-l" title="Lizenzpflichtig">L</span>`;
-    return `<span class="badge badge-frei" title="Frei verkäuflich">\${escapeHtml(leg || "Frei")}</span>`;
+    return `<span class="badge badge-frei" title="Frei verkäuflich">${escapeHtml(leg || "Frei")}</span>`;
   }
 
   function renderAwCells(awArr, isModded) {
@@ -1017,13 +1122,29 @@
   function openModal(weapon) {
     const ammoKey = ammoSelect.value;
     const effective = applyAmmoToWeapon(weapon, ammoKey);
-    const ammoLabel = effective.isModded ? ` (${AMMO_MODS[ammoKey].label})` : "";  document.getElementById("mCat").textContent = `${weapon.kategorie} • Legalität: ${weapon.legal}`; document.getElementById("mTitle").textContent = weapon.waffe + ammoLabel; document.getElementById("mDmg").textContent = effective.schaden; document.getElementById("mMode").textContent = weapon.modus; document.getElementById("mAmmo").textContent = weapon.munition; document.getElementById("mVerf").textContent = `${weapon.verf}${weapon.legal !== "Frei" ? weapon.legal : ""}`; document.getElementById("mPrice").textContent = formatPrice(weapon.preis).replace(/&amp;/g, "&"); document.getElementById("mSource").textContent = weapon.quelle;  effective.aw.forEach((val, idx) => { document.getElementById(`mAw${idx}`).textContent = (!val || val === "-") ? "–" : val;
+    const ammoLabel = effective.isModded ? ` (${AMMO_MODS[ammoKey].label})` : "";
+
+    document.getElementById("mCat").textContent = `${weapon.kategorie} • Legalität: ${weapon.legal}`;
+    document.getElementById("mTitle").textContent = weapon.waffe + ammoLabel;
+    document.getElementById("mDmg").textContent = effective.schaden;
+    document.getElementById("mMode").textContent = weapon.modus;
+    document.getElementById("mAmmo").textContent = weapon.munition;
+    document.getElementById("mVerf").textContent = `${weapon.verf}${weapon.legal !== "Frei" ? weapon.legal : ""}`;
+    document.getElementById("mPrice").textContent = formatPrice(weapon.preis).replace(/&amp;/g, "&");
+    document.getElementById("mSource").textContent = weapon.quelle;
+
+    effective.aw.forEach((val, idx) => {
+      document.getElementById(`mAw${idx}`).textContent = (!val || val === "-") ? "–" : val;
     });
 
     document.getElementById("mNotes").textContent =
       weapon.ausstattung && weapon.ausstattung !== "-"
-        ? `Ausstattung & Regeln: ${weapon.ausstattung}` : "Keine besonderen Serienausstattungen oder Zusatzregeln vermerkt.";  const awSlash = effective.aw.map(v => (!v \vert{}\vert{} v === "-") ? "–" : v).join("/"); const notesPart = weapon.ausstattung && weapon.ausstattung !== "-" ? ` \vert{} ${weapon.ausstattung}` : "";
-    currentModalText = `${weapon.waffe}${ammoLabel} [${weapon.kategorie} \vert{} Schaden${effective.schaden} | ${weapon.modus} \vert{}${awSlash} | ${weapon.munition}${notesPart}]`;
+        ? `Ausstattung & Regeln: ${weapon.ausstattung}`
+        : "Keine besonderen Serienausstattungen oder Zusatzregeln vermerkt.";
+
+    const awSlash = effective.aw.map(v => (!v || v === "-") ? "–" : v).join("/");
+    const notesPart = weapon.ausstattung && weapon.ausstattung !== "-" ? ` | ${weapon.ausstattung}` : "";
+    currentModalText = `${weapon.waffe}${ammoLabel} [${weapon.kategorie} | Schaden ${effective.schaden} | ${weapon.modus} | ${awSlash} | ${weapon.munition}${notesPart}]`;
 
     document.getElementById("mCopyFeedback").textContent = "";
     document.getElementById("detailModal").classList.add("open");
@@ -1057,14 +1178,14 @@
       if (srcVal && w.quelle !== srcVal) return false;
 
       if (query) {
-        const haystack = `${w.waffe}${w.kategorie} ${w.schaden}${w.modus} ${w.ausstattung}${w.quelle}`.toLowerCase();
+        const haystack = `${w.waffe} ${w.kategorie} ${w.schaden} ${w.modus} ${w.ausstattung} ${w.quelle}`.toLowerCase();
         if (!haystack.includes(query)) return false;
       }
       return true;
     });
 
     const sorted = sortData(filtered);
-    statsDisplay.innerHTML = `ONLINE • TREFFER: <strong>${sorted.length}</strong> /${allWeapons.length}`;
+    statsDisplay.innerHTML = `ONLINE • TREFFER: <strong>${sorted.length}</strong> / ${allWeapons.length}`;
 
     if (sorted.length === 0) {
       tableBody.innerHTML = `<tr><td colspan="11" style="text-align:center; padding: 36px; color: var(--text-dim); font-family: var(--font-mono);">// KEINE WAFFEN FÜR DIESE FILTERKOMBINATION GEFUNDEN</td></tr>`;
@@ -1074,6 +1195,176 @@
     tableBody.innerHTML = sorted.map(w => {
       const eff = applyAmmoToWeapon(w, ammoKey);
       return `
-        <tr data-id="\${w.id}">
-          <td class="col-name">\${escapeHtml(w.waffe)}</td>
-          <td class="col
+        <tr data-id="${w.id}">
+          <td class="col-name">${escapeHtml(w.waffe)}</td>
+          <td class="col-cat">${escapeHtml(w.kategorie)}</td>
+          <td class="col-dmg ${eff.isModded ? "modded" : ""}">${escapeHtml(eff.schaden)}</td>
+          <td class="col-mode">${escapeHtml(w.modus)}</td>
+          <td>${renderAwCells(eff.aw, eff.isModded)}</td>
+          <td class="col-mono">${escapeHtml(w.munition)}</td>
+          <td class="col-mono">${escapeHtml(w.verf)}</td>
+          <td>${getLegalityBadge(w.legal)}</td>
+          <td class="col-price">${formatPrice(w.preis)}</td>
+          <td class="col-notes">${escapeHtml(w.ausstattung)}</td>
+          <td class="col-source">${escapeHtml(w.quelle)}</td>
+        </tr>
+      `;
+    }).join("");
+
+    tableBody.querySelectorAll("tr[data-id]").forEach(row => {
+      row.addEventListener("click", () => {
+        const id = parseInt(row.dataset.id, 10);
+        const weapon = allWeapons.find(item => item.id === id);
+        if (weapon) openModal(weapon);
+      });
+    });
+  }
+
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      activeGroup = btn.dataset.group;
+      categoryFilter.value = "";
+      renderTable();
+    });
+  });
+
+  [searchInput, categoryFilter, legalityFilter, sourceFilter, ammoSelect].forEach(el => {
+    el.addEventListener("input", renderTable);
+    el.addEventListener("change", renderTable);
+  });
+
+  resetBtn.addEventListener("click", () => {
+    searchInput.value = "";
+    categoryFilter.value = "";
+    legalityFilter.value = "";
+    sourceFilter.value = "";
+    ammoSelect.value = "STANDARD";
+    activeGroup = "ALL";
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.toggle("active", b.dataset.group === "ALL"));
+    renderTable();
+  });
+
+  document.querySelectorAll("thead th[data-key]").forEach(th => {
+    th.addEventListener("click", () => {
+      const key = th.dataset.key;
+      if (sortState.key === key) {
+        sortState.asc = !sortState.asc;
+      } else {
+        sortState.key = key;
+        sortState.asc = true;
+      }
+
+      document.querySelectorAll("thead th").forEach(h => {
+        h.classList.remove("sort-asc", "sort-desc");
+        const arrow = h.querySelector(".sort-arrow");
+        if (arrow) arrow.textContent = "⇅";
+      });
+
+      th.classList.add(sortState.asc ? "sort-asc" : "sort-desc");
+      const activeArrow = th.querySelector(".sort-arrow");
+      if (activeArrow) activeArrow.textContent = sortState.asc ? "▲" : "▼";
+
+      renderTable();
+    });
+  });
+
+  document.getElementById("mClose").addEventListener("click", () => {
+    document.getElementById("detailModal").classList.remove("open");
+  });
+  document.getElementById("detailModal").addEventListener("click", e => {
+    if (e.target.id === "detailModal") {
+      document.getElementById("detailModal").classList.remove("open");
+    }
+  });
+  document.getElementById("mCopyBtn").addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(currentModalText);
+      document.getElementById("mCopyFeedback").textContent = "✓ In Zwischenablage kopiert!";
+    } catch {
+      document.getElementById("mCopyFeedback").textContent = currentModalText;
+    }
+  });
+
+  async function loadCsvData() {
+    // 1. Prüfe zuerst, ob eine lokale waffen.csv direkt im GitHub-Repository liegt
+    try {
+      const localRes = await fetch("./waffen.csv", { cache: "no-store" });
+      if (localRes.ok) {
+        const txt = await localRes.text();
+        if (txt && txt.toLowerCase().includes("waffe")) {
+          return { text: txt, source: "GITHUB REPO (waffen.csv)" };
+        }
+      }
+    } catch (_) {}
+
+    // 2. Direkter Versuch über Google Sheets
+    try {
+      const directRes = await fetch(SHEET_CSV_URL);
+      if (directRes.ok) {
+        const txt = await directRes.text();
+        if (txt && !txt.trim().startsWith("<!DOCTYPE") && txt.toLowerCase().includes("waffe")) {
+          return { text: txt, source: "GOOGLE SHEETS (DIREKT)" };
+        }
+      }
+    } catch (_) {}
+
+    // 3. Automatischer CORS-Bypass für Google Sheets Redirects
+    const proxies = [
+      `https://api.allorigins.win/raw?url=${encodeURIComponent(SHEET_CSV_URL)}`,
+      `https://corsproxy.io/?${encodeURIComponent(SHEET_CSV_URL)}`
+    ];
+
+    for (const proxyUrl of proxies) {
+      try {
+        const proxyRes = await fetch(proxyUrl);
+        if (proxyRes.ok) {
+          const txt = await proxyRes.text();
+          if (txt && !txt.trim().startsWith("<!DOCTYPE") && txt.toLowerCase().includes("waffe")) {
+            return { text: txt, source: "GOOGLE SHEETS (LIVE-SYNC)" };
+          }
+        }
+      } catch (_) {}
+    }
+
+    throw new Error("Google Sheets blockiert den Browser-Abruf (CORS) oder ist nicht veröffentlicht.");
+  }
+
+  async function init() {
+    try {
+      const result = await loadCsvData();
+      const rows = parseCSV(result.text);
+      allWeapons = mapRowsToObjects(rows);
+
+      if (allWeapons.length === 0) {
+        throw new Error("Keine gültigen Waffenzeilen in der CSV gefunden.");
+      }
+
+      populateControls(allWeapons);
+      statusMessage.style.display = "none";
+      weaponsTable.style.display = "table";
+      footerSource.textContent = `DATENQUELLE: ${result.source} • HOSTED ON GITHUB PAGES`;
+      renderTable();
+    } catch (err) {
+      statusDot.style.background = "var(--pink)";
+      statusDot.style.boxShadow = "0 0 8px var(--pink)";
+      statusMessage.classList.add("error");
+      statusMessage.innerHTML = `
+        // MATRIX-FEHLER: ${escapeHtml(err.message)}
+        <div class="help-box">
+          <strong>Schnellste Lösung (30 Sekunden):</strong><br>
+          1. Öffne deine Google Tabelle und klicke auf <strong>Datei → Herunterladen → Kommagetrennte Werte (.csv)</strong>.<br>
+          2. Benenne die Datei in <code>waffen.csv</code> um.<br>
+          3. Lade sie auf GitHub in dein Repository über <strong>Add file → Upload files</strong> direkt neben die <code>index.html</code> hoch.
+        </div>
+      `;
+      statsDisplay.textContent = "OFFLINE";
+      footerSource.textContent = "DATENQUELLE: OFFLINE";
+    }
+  }
+
+  init();
+</script>
+</body>
+</html>
