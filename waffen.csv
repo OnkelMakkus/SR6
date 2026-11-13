@@ -187,3 +187,100 @@ Metamenschen-Anpassung,Zubehör,-,-,-,-,-,-,-,-,3,Frei,200,Hebt -2 Malus für Me
 Nahkampfverstärkung,Zubehör,-,-,-,-,-,-,-,-,3,Frei,300,Waffe im Nahkampf nutzbar,Feuer frei!,,,,
 Unterlaufgewicht / Schwerer Lauf,Zubehör,-,-,-2,+1,+1,-,-,-,2,Frei,70,"Rückstoßkompensation (HM -1, AM -2)",Feuer frei!,,,,
 Vordergriff,Zubehör,-,-,+1,+2,+1,-,-,-,2,Frei,140,Rückstoßkompensation (SM -1),Feuer frei!,,,,
+Munition: Taser;Munition (Basiskosten);-;-;-;-;-;-;-;10 Schuss;1;Frei;10;Basiskosten pro 10 Schuss für Taser;SR6 GRW
+Munition: Holdout / Leichte / Automatikpistole;Munition (Basiskosten);-;-;-;-;-;-;-;10 Schuss;1;Frei;5;Basiskosten pro 10 Schuss;SR6 GRW
+Munition: Schwere Pistole / Maschinenpistole;Munition (Basiskosten);-;-;-;-;-;-;-;10 Schuss;1;Frei;10;Basiskosten pro 10 Schuss;SR6 GRW
+Munition: Schrotflinte;Munition (Basiskosten);-;-;-;-;-;-;-;10 Schuss;2;L;15;Basiskosten pro 10 Schuss;SR6 GRW
+Munition: Gewehr (Sturm-/Jagd-/Scharfschützengewehr);Munition (Basiskosten);-;-;-;-;-;-;-;10 Schuss;2;L;20;Basiskosten pro 10 Schuss;SR6 GRW
+Munition: Maschinengewehr;Munition (Basiskosten);-;-;-;-;-;-;-;10 Schuss;2;L;15;Basiskosten pro 10 Schuss;SR6 GRW
+Munition: Sturmkanone;Munition (Basiskosten);-;-;-;-;-;-;-;10 Schuss;4;I;50;Basiskosten pro 10 Schuss (keine Sondermunition);SR6 GRW
+Munition: DMSO-Gelpack;Munition (Basiskosten);-;-;-;-;-;-;-;10 Schuss;1;Frei;10;Für Druckluftwaffen (Preis + Toxin);SR6 GRW
+Munition: Injektionspfeil (Pfeilpistole/-gewehr);Munition (Basiskosten);-;-;-;-;-;-;-;1 Pfeil;2;Frei;5;Preis + Toxin;SR6 GRW
+Munition: Armbrustbolzen;Munition (Basiskosten);-;-;-;-;-;-;-;1 Bolzen;2;Frei;5;Standardbolzen für Armbrüste;SR6 GRW
+Munition: Injektionsbolzen;Munition (Basiskosten);-;-;-;-;-;-;-;1 Bolzen;4;Frei;50;Preis + Toxin;SR6 GRW
+Munition: Pfeil (Stufe 1–14);Munition (Basiskosten);-;-;-;-;-;-;-;1 Pfeil;Stufe÷3;Frei;Stufe×2;Passend zur Bogenstufe;SR6 GRW
+Munition: Injektionspfeil (Bogen, Stufe 1–14);Munition (Basiskosten);-;-;-;-;-;-;-;1 Pfeil;4;Frei;Stufe×20;Preis + Toxin;SR6 GRW
+Standardmunition;Munitionsart;±0;-;±0;±0;±0;±0;±0;Multiplikator;1;wie Waffe;× 1;Klassisches Vollmantelgeschoss;SR6 GRW
+APDS-Munition;Munitionsart;-1;-;+2;+2;+2;+2;+2;Multiplikator;4;I;× 3;Panzerbrechend; selten hülsenlos verfügbar;SR6 GRW
+Explosivmunition;Munitionsart;+1;-;±0;±0;±0;±0;±0;Multiplikator;2;I;× 2;Explodiert bei Kritischem Patzer in der Waffe;SR6 GRW
+Flechettemunition;Munitionsart;-1;-;+1;+1;+1;+1;+1;Multiplikator;2;L;× 1,5;Schrotflinte: Breite Salve (1 Schuss) für 2 Edge (1 mit Smartgun);SR6 GRW
+Gelmunition;Munitionsart;wird zu B;-;±0;±0;±0;±0;±0;Multiplikator;1;Frei;× 1,5;Wandelt Schaden in Betäubungsschaden um;SR6 GRW
+Schockermunition;Munitionsart;-1B(e);-;+1;+1;+1;+1;+1;Multiplikator;2;L;× 2;Elektrizitätsschaden & Status Gebrutzelt (2 Kampfrunden);SR6 GRW
+Hülsenlose Munition (Option);Munitionsart;±0;-;±0;±0;±0;±0;±0;Multiplikator;2;wie Waffe;× 2;Verdoppelt den Munitionspreis; kein Hülsenauswurf;SR6 GRW
+Präzisionsmunition;Munitionsart;-1;-;+1;+2;+3;+3;+2;Multiplikator;4;L;× 4;Ausbalancierte Wettkampf-Ladung;Feuer frei!
+Selbstgemachte Munition;Munitionsart;±0;-;+1;+1;+1;+1;+1;Multiplikator;4;L;× 1,5;Handgefertigte Präzisionsladung;Feuer frei!
+rEVO-Munition;Munitionsart;+1;-;+1;-1;-1;-2;-2;Multiplikator;4;I;× 2;Hülsenmunition; zerlegt sich nach Panzerungsdurchschlag;Feuer frei!
+Krime Crackle (HEAT-Schrot);Munitionsart;+3;-;+3;+3;+3;+3;+3;Multiplikator;9;I;× 5;Nur Schrotflinten; explodiert bei Patzer in der Waffe;Krime-Katalog
+Krime Lasermunition;Munitionsart;±0;-;+2;+2;+2;+2;+2;Multiplikator;3;L;× 2;AW-Bonus gilt nur im Salven- und Vollautomatikmodus;Krime-Katalog
+Krime Penetrators (Schrot);Munitionsart;+1;-;+2;+2;+2;+2;+2;Multiplikator;8;I;× 3;Nur Schrotflinten; verchromtes Wolframschrot;Krime-Katalog
+Krime Powermunition;Munitionsart;±0;-;±0;±0;±0;±0;±0;Multiplikator;3;L;× 1,5;Erhöht Mündungsblitz & Schusslärm um 1 Stufe; überhitzt Schalldämpfer;Krime-Katalog
+Krime Punisher (Sturmkanone);Munitionsart;-2;-;-2;-2;-2;-2;-2;Multiplikator;4;L;× 0,75;Günstige, lizenzpflichtige Vollmantelmunition für Sturmkanonen;Krime-Katalog
+Krime Splash (Selbstverteidigung);Munitionsart;wird zu B;-;±0;±0;±0;±0;±0;Multiplikator;2;L;× 2;Gelgeschoss + nicht abwaschbare Farbe + Mikro-RFID-Chips;Krime-Katalog
+Wirtz Sondermunition;Munitionsart;wie Muni;-;wie Muni;wie Muni;wie Muni;wie Muni;wie Muni;Multiplikator;+1;wie Muni;× 3;Spezialkaliber für Wirtz SW11/SW31/SW64 (keine APDS);Revierbericht 2082
+Betäubungsgranate;Granate;10B / 8B / 6B;Wurf/Werfer;Waffenlos;Waffenlos-1;Waffenlos-6;-;-;Radius 15m;4;L;100;Zusätzlich Status Benommen, Ertaubt I und Geblendet I;SR6 GRW
+Flash-Pack;Granate;Geblendet III / II / I;Wurf/Werfer;Waffenlos;Waffenlos-1;Waffenlos-6;-;-;Radius 10m;4;L;125;Keine Wirkung gegen Infrarotsicht oder Ultraschall;SR6 GRW
+Gasgranate;Granate;wie Toxin;Wurf/Werfer;Waffenlos;Waffenlos-1;Waffenlos-6;-;-;Gaswolke;4;I;50;Preis 50 ¥ + 20 Dosen der Chemikalie/Toxin;SR6 GRW
+IR-Rauchgranate;Granate;-;Wurf/Werfer;Waffenlos;Waffenlos-1;Waffenlos-6;-;-;Rauchwolke;4;I;50;Blockiert auch Infrarotsicht;SR6 GRW
+Rauchgranate;Granate;-;Wurf/Werfer;Waffenlos;Waffenlos-1;Waffenlos-6;-;-;Rauchwolke;4;I;50;Erzeugt dichte Rauchwolke (Sichtmodifikator);SR6 GRW
+Splittergranate;Granate;16K / 12K / 8K;Wurf/Werfer;Waffenlos;Waffenlos-1;Waffenlos-6;-;-;Radius 20m;4;I;150;Hoher Splitterradius gegen ungepanzerte Ziele;SR6 GRW
+Sprenggranate;Granate;16K / 10K / 4K;Wurf/Werfer;Waffenlos;Waffenlos-1;Waffenlos-6;-;-;Radius 15m;4;I;150;Konzentrierte Sprengwirkung;SR6 GRW
+Brandgranate;Granate;6K / 4K / 2K;Wurf/Werfer;Waffenlos;Waffenlos-1;Waffenlos-6;-;-;Radius 15m;4;I;200;Feuerschaden; setzt Entflammbares in Brand (Status Brennend 4);Feuer frei!
+Chemische Granate;Granate;6K / 4K / 2K;Wurf/Werfer;Waffenlos;Waffenlos-1;Waffenlos-6;-;-;Radius 15m;4;I;200;Chemischer Schaden; verursacht Status Verätzt 4;Feuer frei!
+Crackshot Arms Thunder Dagger Stoßgranate;Granate;wie Granate;Nahkampf;wie Nahkampf;-;-;-;-;wie Granate;4;I;wie Granate +50%;Nur Spreng-/Splittergranate; Nahkampfangriff (Lebenswichtige Organe);Feuer frei!
+Elektrogranate;Granate;6B(e) / 4B(e) / 2B(e);Wurf/Werfer;Waffenlos;Waffenlos-1;Waffenlos-6;-;-;Radius 15m;4;I;200;Elektrizitätsschaden;Feuer frei!
+Farbgranate (Standard / Groß / Mini);Granate;-;Wurf/Werfer;Waffenlos;Waffenlos-1;Waffenlos-6;-;-;Radius 2m/5m/1m;3;L;50 / 75;Markiert Ziele mit Farbe;Feuer frei!
+Glitzergranate;Granate;-;Wurf/Werfer;Waffenlos;Waffenlos-1;Waffenlos-6;-;-;Radius 20m;3;L;100;Macht Unsichtbares durch Glitzerpartikel sichtbar;Feuer frei!
+Infrarot-Flash-Pack;Granate;Geblendet III / II / I;Wurf/Werfer;Waffenlos;Waffenlos-1;Waffenlos-6;-;-;Radius 10m;4;L;150;Wirkt wie Flash-Pack, blendet aber auch Infrarotsicht;Feuer frei!
+Krähenfüße;Granate;1K / – / –;Wurf;Waffenlos;Waffenlos-1;-;-;-;Radius 2m;2;L;50;Verursacht 1K Schaden am Ende jeder Kampfrunde beim Betreten;Feuer frei!
+Krime Krähenfüße;Granate;1K / – / –;Wurf;Waffenlos;Waffenlos-1;-;-;-;Radius 4m;3;L;35;Größerer Streubereich (4m);Feuer frei!
+Kryogranate;Granate;6B / 4B / 2B;Wurf/Werfer;Waffenlos;Waffenlos-1;Waffenlos-6;-;-;Radius 15m;5;I;200;Kälteschaden durch flüssigen Stickstoff;Feuer frei!
+Lärmgranate;Granate;Benommen / Übelkeit;Wurf/Werfer;Waffenlos;Waffenlos-1;Waffenlos-6;-;-;Radius 10m;4;L;150;DP: Benommen + Übelkeit; Sehr nah & Nah: Benommen;Feuer frei!
+Nanogranate;Granate;wie Granate;Wurf/Werfer;Waffenlos;Waffenlos-1;Waffenlos-6;-;-;wie Granate;7;I;1000;Ahmt per WiFi Splitter-, Spreng-, Brand- oder Elektrogranate nach;Feuer frei!
+Krime Cleaner;Granate;-;Wurf;Waffenlos;Waffenlos-1;Waffenlos-6;-;-;Radius 15m;5;I;200;Reinigungsmittel-Granate; beseitigt Spuren im Raum;Krime-Katalog
+Krime Cocktail;Granate;10K / 4K / 2K;Wurf/Werfer;Waffenlos;Waffenlos-1;Waffenlos-6;-;-;Radius 5m;7;I;100;Napalm-Brandgranate + dichter IR-Rauch;Krime-Katalog
+Krime Party;Granate;16K+10B / 12K+8B / 8K+6B;Wurf/Werfer;Waffenlos;Waffenlos-1;Waffenlos-6;-;-;Radius 20m/15m;7;I;190;Splittergranate (20m) + Schockgranate (15m) + AR-Musik-Spam;Krime-Katalog
+Krime Stinger;Granate;16B / 12B / 8B;Wurf/Werfer;Waffenlos;Waffenlos-1;Waffenlos-6;-;-;Radius 20m;4;L;125;Verschießt 144 Gelkugeln (Betäubungsversion der Splittergranate);Krime-Katalog
+Geckogriff (Granaten-Mod);Granaten-Modifikation;wie Granate;-;-;-;-;-;-;wie Granate;+2;wie Granate;+50;Haftet an Oberflächen;Feuer frei!
+Gerichtete Mine (Granaten-Mod);Granaten-Modifikation;wie Granate;Falle;-;-;-;-;-;45°-Kegel;+2;wie Granate;+100;Stolperdraht-/Laserauslöser; Sprengwirkung als 45°-Kegel;Feuer frei!
+Landmine (Granaten-Mod);Granaten-Modifikation;wie Granate;Falle;-;-;-;-;-;wie Granate;+2;wie Granate;+100;Druckauslöser;Feuer frei!
+Splitterrakete;Rakete;16K / 12K / 8K;Werfer;wie Werfer;wie Werfer;wie Werfer;wie Werfer;wie Werfer;Radius 20m;6;I;1500;Ungelenkt; Lenkrakete: AW +2, Sensorstufe (1–6) Würfelpoolbonus (+Stufe×500¥);SR6 GRW
+Sprengrakete;Rakete;16K / 10K / 4K;Werfer;wie Werfer;wie Werfer;wie Werfer;wie Werfer;wie Werfer;Radius 15m;6;I;1500;Ungelenkt; Lenkrakete: AW +2, Sensorstufe (1–6) Würfelpoolbonus (+Stufe×500¥);SR6 GRW
+Anti-Fahrzeug-Rakete;Rakete;12K / 8K / 4K;Werfer;wie Werfer;wie Werfer;wie Werfer;wie Werfer;wie Werfer;Radius 10m;6;I;2000;Hohlladung (+2 AW gegen Fahrzeuge); Lenkrakete (+Stufe×500¥);SR6 GRW
+Sprengstoffpaket (Stufe 1–18);Sprengstoff;Stufe / ÷2 / ÷4;Zünder;-;-;-;-;-;Radius = Stufe m;4;I;Stufe × 10–1000;1–3: 10¥/St; 4–6: 50¥/St; 7–9: 100¥/St; 10–12: 250¥/St; 13–18: 500–1000¥/St (5I);SR6 GRW
+Sprengschaum;Sprengstoff;wie Sprengstoff;Zünder;-;-;-;-;-;wie Sprengstoff;4;I;wie Sprengstoff;Plastiksprengstoff aus der Sprühdose (für Spalten/Risse);SR6 GRW
+Sprengkapsel;Sprengstoff;-;Timer/Funk;-;-;-;-;-;-;4;I;75;Zünder für Sprengstoffpakete (Timer oder WiFi-Funksignal);SR6 GRW
+Airburst-Verbindung;Zubehör;-;-;-;-;-;-;-;Werfer;4;I;600;Erfolge zählen doppelt gegen Abweichung; ignoriert Schutz durch Liegend;SR6 GRW
+Dreibein;Zubehör;-;-;-;-;-;-;-;Unterlauf;3;L;500;Neutralisiert AW-Malus für HM & SM; senkt AM-Malus auf -3;SR6 GRW
+Ersatzmagazin;Zubehör;-;-;-;-;-;-;-;-;1;Frei;5;Ungeladenes Standardmagazin (für Stangen- oder Trommelmagazine);SR6 GRW
+Gasventilsystem;Zubehör;-;-;-;-;-;-;-;Lauf (fest);2;L;200;Neutralisiert AW-Malus für HM; senkt SM-Malus auf -2 (nicht entfernbar);SR6 GRW
+Gyrostabilisator;Zubehör;-;-;-;-;-;-;-;Geschirr;4;I;3000;Für Gewehre/MGs; neutralisiert HM/SM-Malus, senkt AM-Malus auf -3;SR6 GRW
+Schalldämpfer;Zubehör;-;-;-;-;-;-;-;Lauf;2;I;500;+2 Schwellenwert für Wahrnehmungsproben (nicht für Revolver/Schrotflinten);SR6 GRW
+Schnelllader;Zubehör;-;-;-;-;-;-;-;Revolver;1;Frei;25;Lädt Trommelrevolver auf einmal nach;SR6 GRW
+Schnellziehholster;Zubehör;-;-;-;-;-;-;-;-;2;Frei;175;Erleichtert Schnellziehen von Pistolen;SR6 GRW
+Schockpolster;Zubehör;-;-;-;-;-;-;-;Schaft;2;Frei;50;Für Gewehre/Schrotflinten/Schwere Waffen; senkt HM/SM/AM-Malus um 1;SR6 GRW
+Smart-Feuerplattform;Zubehör;-;-;-;-;-;-;-;Dreibein;4;I;2500;Robotisches Dreibein (Pilot 3, Zielerfassung 3, 180° Schwenkbereich);SR6 GRW
+Smartgunsystem (extern);Zubehör;-;-;+2;+2;+2;+2;+2;Auf/Unter;2;L;200;+2 AW mit Smartlink; +1 Würfelpool per WiFi; Kamera (Kap. 1);SR6 GRW
+Smartgunsystem (intern);Zubehör;-;-;+2;+2;+2;+2;+2;Intern;3;L;500;+2 AW mit Smartlink; +1 Würfelpool per WiFi; Kamera (Kap. 1);SR6 GRW
+Springarm;Zubehör;-;-;-;-;-;-;-;Unterarm;2;L;250;Für Holdout, Leichte Pistole oder Taser; gleitet per Nebenhandlung in die Hand;SR6 GRW
+Tarnholster;Zubehör;-;-;-;-;-;-;-;-;2;Frei;150;Erhöht Tarnbarkeit der Waffe;SR6 GRW
+Zielfernrohr;Zubehör;-;-;-;-;-;-;-;Aufmontiert;1;Frei;300;Sichtvergrößerung + Kapazität 3; verhindert Verteidiger-Edge bei Zielen;SR6 GRW
+Zweibein;Zubehör;-;-;+2;+2;+2;+2;+2;Unterlauf;2;Frei;200;+2 AW (+3 per WiFi) beim Schießen aus liegender oder sitzender Position;SR6 GRW
+Abnehmbares Trommelmagazin;Zubehör;-;-;-;-;-;-;-;Lauf/Unter;3;L;75;Verdoppelt Munitionskapazität; senkt Tarnbarkeit um 2 (Pistolen: 3);Feuer frei!
+Freund-/Feind-Erkennungssystem;Zubehör;-;-;-;-;-;-;-;2 Slots;3;L;400;Benötigt Smartgunsystem; verhindert Schüsse auf bis zu 10 markierte Verbündete;Feuer frei!
+Lasermarkierer (Niedrigenergie);Zubehör;-;-;+1;+1;-;-;-;Auf/Unter;1;Frei;80;+1 AW in Sehr nah & Nah (nicht kumulativ mit Smartgun);Feuer frei!
+MG-Schutzschild (klein / groß);Zubehör;-;-;-;-;-;-;-;Lauf/Auf/Unter;4;I;250 / 350;Bietet Deckung beim Feuern mit Maschinengewehren;Feuer frei!
+Munitionsgurt;Zubehör;-;-;-;-;-;-;-;-;2;Frei;50;Tragegurt mit Halterungen für Munitionstaschen (+15¥ für Zusatztasche);Feuer frei!
+Munitionstasche (Standard);Zubehör;-;-;-;-;-;-;-;-;2;Frei;25;Macht Waffe nachladen zu einer Nebenhandlung (1 Magazin oder 8 Patronen);Feuer frei!
+Ranger Arms Eagle Eye Zielerfassung;Zubehör;-;-;-4;-5;-4;+3;+2;Auf/Unter;5;L;550;Scharfschützen-Sensorpaket; Schütze darf sich nicht bewegen;Feuer frei!
+Schnellzieh-Köcher;Zubehör;-;-;-;-;-;-;-;-;2;Frei;115;Fasst 20 Pfeile/Bolzen; WiFi-Munitionswahl;Feuer frei!
+Schnellziehscheide;Zubehör;-;-;-;-;-;-;-;-;2;Frei;160;Ermöglicht Schnellziehen von Klingenwaffen;Feuer frei!
+Schnellzieh-Tarnholster;Zubehör;-;-;-;-;-;-;-;-;2;Frei;225;Kombiniert Schnellzieh- und Tarnholster;Feuer frei!
+Tragegurt (Standard / Taktisch);Zubehör;-;-;-;-;-;-;-;-;3 / 4L;Frei;50 / 75;Taktisch (75¥, 4L): Macht Waffe bereit machen zur Nebenhandlung;Feuer frei!
+Verbessertes Gasventilsystem;Zubehör;-;-;-;+1;+2;+2;-;1 Slot;3;Frei;600;Senkt HM/SM-Malus um 1, AM-Malus um 2 (nicht mit Schalldämpfer);Feuer frei!
+Vergrößertes Stangenmagazin (Stufe 1–2);Zubehör;-;-;-;-;-;-;-;-;4;L;Stufe × 25;+5 Schuss (Stufe 1) bzw. +10 Schuss (Stufe 2); senkt Tarnbarkeit um Stufe;Feuer frei!
+Waffenkamera;Zubehör;-;-;-;-;-;-;-;Auf/Unter;4;L;350;+1 Edge bei Hinterhalt-Wahrnehmung; +1 Würfelpool auf Folgeschuss nach Fehlschuss; Kap. 2;Feuer frei!
+Waffenkommlink;Zubehör;-;-;-;-;-;-;-;2 Slots;4;L;2000;GS 1, D/F 1/2 (Firewall kumulativ mit PAN); schützt vor Matrix-Hacks;Feuer frei!
+Krime Betäubungsbajonett;Zubehör;4B(e);Nahkampf;6;-;-;-;-;Unterlauf;3;Frei;700;Elektroschock-Bajonett für Langwaffen;Krime-Katalog
+Krime Externes Dualmodus-Smartgunsystem;Zubehör;-;-;+2;+2;+2;+2;+2;Auf/Unter;2;L;500;Kann zwischen WiFi und komplettem Offline-Betrieb umschalten;Krime-Katalog
+Krime Loudener;Zubehör;-;-;+1;+1;+1;-;-;Lauf;1;Frei;250;Erhöht Schussgeräusch um 1 Stufe; +1 AW auf Sehr nah/Nah/Mittel;Krime-Katalog
+Krime Selbstverankerndes Dreibein;Zubehör;-;-;-;-;-;-;-;Unterlauf;6;L;1000;Mit Felsankern: neutralisiert auch den AM-Rückstoßmalus komplett;Krime-Katalog
